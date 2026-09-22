@@ -1,0 +1,3459 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rafinery Du Nigeria | Portail d'Opportunité Énergétique</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0e1d52',
+              navyDark: '#081133',
+              navyLight: '#182b70',
+              red: '#e51b24',
+              redHover: '#c8141c',
+              redLight: '#fff1f2',
+              slateBg: '#f8fafc',
+              cardBorder: '#e2e8f0',
+              textDark: '#0f172a',
+              textMuted: '#64748b'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          boxShadow: {
+            'subtle': '0 4px 25px -4px rgba(14, 29, 82, 0.07)',
+            'premium': '0 20px 45px -12px rgba(14, 29, 82, 0.12)',
+            'btn-red': '0 10px 25px -5px rgba(229, 27, 36, 0.35)',
+            'btn-navy': '0 10px 25px -5px rgba(14, 29, 82, 0.25)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #ffffff;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+    .font-display {
+      font-family: 'Outfit', sans-serif;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      background: #e51b24;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 10px rgba(229, 27, 36, 0.4);
+      cursor: pointer;
+      margin-top: -8px;
+      transition: transform 0.15s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.18);
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8px;
+      cursor: pointer;
+      background: #e2e8f0;
+      border-radius: 9999px;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 0; }
+      100% { transform: scale(0.95); opacity: 0; }
+    }
+    .whatsapp-ring::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      background-color: #22c55e;
+      animation: pulse-ring 2.5s infinite;
+      z-index: -1;
+    }
+
+    .important-dossier-id {
+      display: inline-flex; flex-direction: column; align-items: center; gap: 3px;
+      margin-top: 18px; padding: 14px 24px; border-radius: 16px;
+      background: #eef2ff; border: 2px solid #0e1d52; color: #0e1d52;
+      box-shadow: 0 8px 24px rgba(14,29,82,.12);
+    }
+    .important-dossier-id span { font-size: 10px; font-weight: 900; letter-spacing: .16em; opacity: .7; }
+    .important-dossier-id strong { font-family: 'JetBrains Mono', monospace; font-size: 26px; letter-spacing: .05em; }
+    .real-activity-card { border-left: 4px solid #10b981; }
+
+    #socialProofToast {
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+    }
+    #socialProofToast.toast-hidden {
+      transform: translateY(120%) scale(0.95);
+      opacity: 0;
+      pointer-events: none;
+    }
+    #socialProofToast.toast-visible {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+
+<body class="bg-white min-h-screen flex flex-col antialiased selection:bg-brand-red selection:text-white">
+
+  <!-- Top Informational Bar -->
+  <div class="bg-brand-navy text-white text-xs py-2.5 px-4 border-b border-brand-navyDark">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+      <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-red text-white uppercase tracking-wider">
+          Passerelle d'Investissement
+        </span>
+        <div class="inline-flex items-center gap-1.5 bg-brand-navyDark/90 border border-white/10 px-2.5 py-0.5 rounded-full text-[11px] font-medium text-slate-200">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span id="topLiveCounter" class="font-mono font-bold text-white">15 480+</span> actions souscrites aujourd'hui
+        </div>
+      </div>
+      <div class="flex items-center gap-4 text-[11px] text-slate-300 font-medium">
+        <button type="button" onclick="openInvestorPortal()" class="hover:text-white text-slate-200 font-semibold flex items-center gap-1">
+          <i class="fa-solid fa-user-lock text-brand-red"></i> Connexion Espace
+        </button>
+        <span class="hidden md:inline"><i class="fa-solid fa-lock text-brand-red mr-1"></i> Formulaire Sécurisé</span>
+        <a href="https://wa.me/2347084231858" target="_blank" class="hover:text-white text-emerald-400 font-semibold flex items-center gap-1.5">
+          <i class="fa-brands fa-whatsapp"></i> Support WhatsApp : +234 708 423 1858
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo + Name -->
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="h-12 w-12 flex items-center justify-center p-0.5 rounded-xl border border-slate-200 bg-white shadow-sm group-hover:border-brand-navy transition">
+          <img 
+            src="1004915935.png" data-rdn-logo="true" 
+            alt="Logo Rafinery Du Nigeria" 
+            class="h-full w-full object-contain"
+            onerror="this.onerror=null; this.src='https://placehold.co/120x120/0e1d52/ffffff?text=RDN';"
+          />
+        </div>
+        <div>
+          <span class="font-display font-black text-xl sm:text-2xl tracking-tight text-brand-navy block leading-none">
+            RAFINERY <span class="text-brand-red">DU NIGERIA</span>
+          </span>
+          <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block mt-1">
+            Opportunité Énergétique & Mise en Relation
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Links & CTA -->
+      <div class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-600">
+        <a href="#positionnement" class="hover:text-brand-navy transition">Rôle</a>
+        <a href="#opportunite" class="hover:text-brand-navy transition">L'Opportunité</a>
+        <a href="#calculateur" class="hover:text-brand-navy transition">Calculateur</a>
+        <a href="#jalons" class="hover:text-brand-navy transition">Jalons & Roadmap</a>
+        <a href="#suivi" class="hover:text-brand-navy text-brand-red font-bold transition flex items-center gap-1">
+          <i class="fa-solid fa-clock-rotate-left text-xs"></i> Suivi Dossier
+        </a>
+        <a href="#faq" class="hover:text-brand-navy transition">FAQ</a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button 
+          type="button" 
+          onclick="openInvestorPortal()" 
+          class="inline-flex items-center gap-1.5 bg-brand-navy hover:bg-brand-navyLight text-white text-xs font-bold px-3 sm:px-4 py-2.5 rounded-xl shadow-btn-navy transition transform active:scale-95"
+          title="Connexion avec votre ID et votre adresse Email"
+        >
+          <i class="fa-solid fa-right-to-bracket text-brand-red"></i>
+          <span>Connexion</span>
+        </button>
+
+        <button 
+          type="button" 
+          onclick="openDocumentationModal()" 
+          class="hidden sm:inline-flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs font-bold px-3.5 py-2.5 rounded-xl transition"
+          title="Consulter le One-Pager officiel"
+        >
+          <i class="fa-solid fa-file-pdf text-brand-red"></i>
+          <span>Brochure</span>
+        </button>
+
+        <a 
+          href="#calculateur" 
+          class="hidden md:inline-flex items-center gap-2 bg-brand-slateBg text-brand-navy hover:bg-slate-100 border border-slate-200 text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition"
+        >
+          <i class="fa-solid fa-calculator text-brand-red"></i>
+          <span>Calculer</span>
+        </a>
+
+        <a 
+          href="#formulaire" 
+          class="inline-flex items-center gap-2 bg-brand-red hover:bg-brand-redHover text-white text-xs sm:text-sm font-bold px-4 sm:px-5 py-2.5 rounded-xl shadow-btn-red transition transform active:scale-95"
+        >
+          <span>Acheter</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <!-- Hero Section -->
+    <section class="relative bg-white pt-8 pb-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-100 overflow-hidden">
+      
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-red/5 rounded-full blur-3xl pointer-events-none -z-10"></div>
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-navy/5 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6 text-left">
+          
+          <div class="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-slateBg border border-slate-200 text-xs font-semibold text-brand-navy">
+            <span class="inline-flex items-center gap-1 text-brand-red font-bold">
+              <i class="fa-solid fa-bolt"></i> Secteur Stratégique
+            </span>
+            <span class="text-slate-400">•</span>
+            <span>À partir de <strong>0,40 USD / action</strong></span>
+            <span class="text-slate-400">•</span>
+            <span class="text-slate-600 font-bold">Minimum : 10 actions</span>
+          </div>
+
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-brand-navy leading-[1.12] tracking-tight">
+            Une opportunité d'investissement dans l'énergie au <span class="text-brand-red">Nigeria</span>
+          </h1>
+
+          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-emerald-50 border border-emerald-200/80 shadow-sm">
+            <span class="relative flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+            </span>
+            <span class="text-xs sm:text-sm font-semibold text-slate-700">
+              <strong id="heroLiveCounter" class="font-mono text-brand-navy font-black text-base sm:text-lg">15 480+</strong> actions souscrites aujourd'hui
+            </span>
+          </div>
+
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+            Découvrez une opportunité liée à <strong>Rafinery Du Nigeria</strong> et estimez en quelques secondes le montant correspondant au nombre d'actions qui vous intéresse. Notre plateforme facilite l'accès et la mise en relation pour les investisseurs en Afrique et à travers le monde.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+            <a 
+              href="#opportunite" 
+              class="px-7 py-4 rounded-xl bg-brand-navy hover:bg-brand-navyLight text-white font-display font-extrabold text-base shadow-btn-navy transition flex items-center justify-center gap-3 group"
+            >
+              <span>Découvrir l'opportunité</span>
+              <i class="fa-solid fa-arrow-down text-xs group-hover:translate-y-0.5 transition-transform"></i>
+            </a>
+
+            <a 
+              href="#calculateur" 
+              class="px-7 py-4 rounded-xl bg-white hover:bg-brand-slateBg text-brand-red border-2 border-brand-red font-display font-extrabold text-base shadow-sm transition flex items-center justify-center gap-2.5"
+            >
+              <i class="fa-solid fa-calculator"></i>
+              <span>Calculer mon investissement</span>
+            </a>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-brand-slateBg via-white to-brand-slateBg border border-slate-200 shadow-sm space-y-2.5">
+            <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+              <span class="font-bold text-brand-navy flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Tranche d'Émission Initiale — Phase 1</span>
+              </span>
+              <span class="font-mono font-black text-brand-red">67% Allouée</span>
+            </div>
+            
+            <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden border border-slate-200 p-0.5">
+              <div class="h-full bg-gradient-to-r from-brand-navy to-brand-red rounded-full transition-all duration-1000" style="width: 67%;"></div>
+            </div>
+
+            <div class="flex items-center justify-between text-[11px] text-slate-500 font-medium pt-0.5">
+              <span>Seuil de démarrage : <strong>10 actions (4,00 $)</strong></span>
+              <span class="text-slate-600 font-semibold">Clôture prévue : Fin de tranche</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+            <p class="text-xs text-slate-500 font-medium flex items-center gap-2">
+              <i class="fa-solid fa-circle-check text-emerald-500"></i>
+              <span>Investisseurs internationaux • Parcours transparent • Support dédié</span>
+            </p>
+
+            <button 
+              type="button" 
+              onclick="shareOnWhatsApp()" 
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition"
+            >
+              <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
+              <span>Partager avec un proche</span>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100">
+            <div class="p-3.5 rounded-2xl bg-brand-slateBg border border-slate-200">
+              <span class="text-[11px] font-bold uppercase text-slate-500 block">Prix unitaire</span>
+              <span class="font-mono text-xl font-black text-brand-navy">0,40 $</span>
+              <span class="text-[10px] text-slate-500 block">USD / action</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-brand-slateBg border border-slate-200">
+              <span class="text-[11px] font-bold uppercase text-slate-500 block">Seuil d'entrée</span>
+              <span class="font-mono text-xl font-black text-brand-red">10</span>
+              <span class="text-[10px] text-slate-500 block">Actions min. ($4.00)</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-brand-slateBg border border-slate-200">
+              <span class="text-[11px] font-bold uppercase text-slate-500 block">Éligibilité</span>
+              <span class="font-display text-base font-bold text-brand-navy mt-1 block">Monde entier</span>
+              <span class="text-[10px] text-slate-500 block">Afrique & International</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-brand-slateBg border border-slate-200">
+              <span class="text-[11px] font-bold uppercase text-slate-500 block">Monnaie</span>
+              <span class="font-display text-base font-bold text-brand-navy mt-1 block">Auto-convertie</span>
+              <span class="text-[10px] text-slate-500 block">Affichage instantané</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="lg:col-span-5 relative">
+          <div class="relative rounded-3xl overflow-hidden shadow-premium border-4 border-white bg-slate-100 group">
+            <img 
+              src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80" 
+              alt="Installation industrielle de raffinerie pétrolière" 
+              class="w-full h-[460px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
+            />
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-navyDark/90 via-brand-navy/30 to-transparent"></div>
+
+            <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md py-2 px-3.5 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-2.5">
+              <img src="1004915935.png" data-rdn-logo="true" alt="Emblème Rafinery Du Nigeria" class="w-8 h-8 object-contain">
+              <div>
+                <span class="text-[11px] font-bold text-brand-navy block uppercase leading-none">Rafinery Du Nigeria</span>
+                <span class="text-[9px] font-semibold text-slate-500">Infrastructures Pétrolières</span>
+              </div>
+            </div>
+
+            <div class="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-100 shadow-md text-left">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-[11px] font-extrabold uppercase text-brand-red tracking-wider">Actif Industriel Stratégique</span>
+                <span class="text-[10px] text-slate-500 italic">Image illustrative</span>
+              </div>
+              <p class="text-xs text-brand-navy font-semibold">
+                Participez à la dynamique de raffinage pétrolier et valorisez votre portefeuille dès 10 actions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 2: Positionnement de la Plateforme -->
+    <section id="positionnement" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-brand-slateBg border-b border-slate-200/80">
+      <div class="max-w-7xl mx-auto text-left">
+        
+        <div class="max-w-3xl mx-auto text-center space-y-3 mb-14">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-navy/10 text-brand-navy text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-handshake"></i> Transparence & Rôle Facilitateur
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-brand-navy">
+            Une passerelle entre les investisseurs et Rafinery Du Nigeria
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Notre plateforme facilite la mise en relation entre les investisseurs et l'opportunité d'investissement liée à <strong>Rafinery Du Nigeria</strong>. Nous accompagnons les investisseurs intéressés en leur permettant de découvrir l'offre, d'estimer leur sélection et de transmettre simplement leur demande.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-subtle hover:shadow-premium hover:border-brand-navy transition duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-brand-navy/10 flex items-center justify-center text-brand-navy text-2xl mb-6">
+              <i class="fa-solid fa-compass"></i>
+            </div>
+            <span class="text-xs font-bold font-mono text-brand-red uppercase tracking-wider block mb-1">Étape 01</span>
+            <h3 class="font-display text-xl font-bold text-brand-navy mb-3">Découvrez</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Accédez facilement aux informations disponibles sur l'opportunité, ses paramètres d'entrée et son contexte dans le secteur énergétique au Nigeria.
+            </p>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-subtle hover:shadow-premium hover:border-brand-red transition duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-brand-red/10 flex items-center justify-center text-brand-red text-2xl mb-6">
+              <i class="fa-solid fa-calculator"></i>
+            </div>
+            <span class="text-xs font-bold font-mono text-brand-navy uppercase tracking-wider block mb-1">Étape 02</span>
+            <h3 class="font-display text-xl font-bold text-brand-navy mb-3">Calculez</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Estimez instantanément votre sélection d'actions à partir de 0,40 USD l'unité et visualisez immédiatement l'équivalent dans votre monnaie locale.
+            </p>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-subtle hover:shadow-premium hover:border-emerald-600 transition duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 text-2xl mb-6">
+              <i class="fa-solid fa-paper-plane"></i>
+            </div>
+            <span class="text-xs font-bold font-mono text-emerald-600 uppercase tracking-wider block mb-1">Étape 03</span>
+            <h3 class="font-display text-xl font-bold text-brand-navy mb-3">Connectez-vous</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Transmettez vos coordonnées afin d'être accompagné pour les prochaines étapes de souscription officielle et d'attribution de vos titres.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-12 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-subtle max-w-4xl mx-auto">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-slate-500 text-center mb-6">
+            Schéma de Flux et de Facilitation
+          </h4>
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-center">
+            <div class="w-full sm:w-1/3 p-4 rounded-2xl bg-brand-slateBg border border-slate-200">
+              <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center mx-auto mb-2 text-lg">
+                <i class="fa-solid fa-user-tie"></i>
+              </div>
+              <span class="font-display font-extrabold text-sm text-brand-navy block">INVESTISSEUR</span>
+              <span class="text-[11px] text-slate-500">Afrique & International</span>
+            </div>
+
+            <div class="text-brand-red text-xl font-black py-2 sm:py-0">
+              <i class="fa-solid fa-arrow-down sm:fa-arrow-right"></i>
+            </div>
+
+            <div class="w-full sm:w-1/3 p-4 rounded-2xl bg-brand-redLight border-2 border-brand-red/30">
+              <div class="w-10 h-10 rounded-xl bg-brand-red text-white flex items-center justify-center mx-auto mb-2 text-lg">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+              <span class="font-display font-extrabold text-sm text-brand-red block">NOTRE PLATEFORME</span>
+              <span class="text-[11px] text-slate-600 font-medium">Intermédiaire & Facilitation</span>
+            </div>
+
+            <div class="text-brand-navy text-xl font-black py-2 sm:py-0">
+              <i class="fa-solid fa-arrow-down sm:fa-arrow-right"></i>
+            </div>
+
+            <div class="w-full sm:w-1/3 p-4 rounded-2xl bg-brand-navy text-white shadow-md">
+              <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center mx-auto mb-2">
+                <img src="1004915935.png" data-rdn-logo="true" alt="Logo mini" class="h-full w-full object-contain">
+              </div>
+              <span class="font-display font-extrabold text-sm text-white block">RAFINERY DU NIGERIA</span>
+              <span class="text-[11px] text-slate-300">Opportunité Énergétique</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section Jalons Clés -->
+    <section id="jalons" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-100">
+      <div class="max-w-7xl mx-auto text-left">
+        <div class="max-w-3xl mx-auto text-center space-y-3 mb-14">
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-brand-navy/10 text-brand-navy text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-timeline"></i> Calendrier Prévisionnel
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-brand-navy">
+            Feuille de route & Jalons clés du projet
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Une vision claire des étapes opérationnelles suivant la soumission et l'attribution des titres de participation.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+          <div class="p-6 rounded-3xl bg-brand-slateBg border-2 border-brand-red shadow-subtle relative overflow-hidden">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-brand-red text-white">Étape 01</span>
+              <span class="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">En cours</span>
+            </div>
+            <h4 class="font-display font-bold text-lg text-brand-navy mb-2">Souscription & Tranche Initiale</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Ouverture de la phase de souscription à 0,40 $ USD l'action. Réception des dossiers, validation administrative et délivrance des attestations provisoires.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-brand-slateBg border border-slate-200 shadow-subtle relative overflow-hidden">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-brand-navy text-white">Étape 02</span>
+              <span class="text-[11px] font-semibold text-slate-500">T3 — 2026</span>
+            </div>
+            <h4 class="font-display font-bold text-lg text-brand-navy mb-2">Audit Technique & Clôture</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Finalisation de l'audit financier des allocations par les commissaires aux comptes. Clôture officielle du registre des actionnaires de la présente émission.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-brand-slateBg border border-slate-200 shadow-subtle relative overflow-hidden">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-brand-navy text-white">Étape 03</span>
+              <span class="text-[11px] font-semibold text-slate-500">T4 — 2026</span>
+            </div>
+            <h4 class="font-display font-bold text-lg text-brand-navy mb-2">Raccordement & Flux Commercial</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Expansion des unités de fractionnement et d'expédition des dérivés raffinés vers les corridors régionaux ouest-africains.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-brand-slateBg border border-slate-200 shadow-subtle relative overflow-hidden">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-brand-navy text-white">Étape 04</span>
+              <span class="text-[11px] font-semibold text-slate-500">Annuel</span>
+            </div>
+            <h4 class="font-display font-bold text-lg text-brand-navy mb-2">Assemblée & Rapports Périodiques</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Publication du bilan annuel audité, consultation des souscripteurs et mise en œuvre des distributions statutaires selon les résultats industriels.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section Canaux de Paiement -->
+    <section class="py-14 px-4 sm:px-6 lg:px-8 bg-brand-slateBg border-b border-slate-200">
+      <div class="max-w-7xl mx-auto text-center space-y-6">
+        <div>
+          <span class="text-xs font-bold text-brand-red uppercase tracking-wider">Inclusion & Accessibilité Financière</span>
+          <h3 class="font-display text-2xl font-black text-brand-navy mt-1">
+            Réseaux de paiement pris en charge
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto mt-2">
+            Afin de permettre à chaque investisseur en Afrique et à l'international de participer sans contrainte, les canaux suivants sont mobilisés pour la phase de règlement.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 max-w-6xl mx-auto pt-2">
+          <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-center text-center gap-1.5 hover:border-amber-400 transition group">
+            <div class="w-10 h-10 rounded-xl bg-amber-400 text-brand-navy flex items-center justify-center font-black text-xs shadow-sm">MTN</div>
+            <span class="text-xs font-bold text-brand-navy">MTN MoMo</span>
+            <span class="text-[9px] text-slate-400">Mobile Money</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-center text-center gap-1.5 hover:border-orange-500 transition group">
+            <div class="w-10 h-10 rounded-xl bg-orange-500 text-white flex items-center justify-center font-black text-xs shadow-sm">OM</div>
+            <span class="text-xs font-bold text-brand-navy">Orange Money</span>
+            <span class="text-[9px] text-slate-400">Zone FCFA</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-center text-center gap-1.5 hover:border-sky-400 transition group">
+            <div class="w-10 h-10 rounded-xl bg-sky-400 text-white flex items-center justify-center font-black text-xs shadow-sm"><i class="fa-solid fa-water"></i></div>
+            <span class="text-xs font-bold text-brand-navy">Wave Money</span>
+            <span class="text-[9px] text-slate-400">Sénégal & CI</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-center text-center gap-1.5 hover:border-blue-600 transition group">
+            <div class="w-10 h-10 rounded-xl bg-blue-700 text-white flex items-center justify-center font-black text-xs tracking-wider shadow-sm">VISA</div>
+            <span class="text-xs font-bold text-brand-navy">Carte Visa</span>
+            <span class="text-[9px] text-slate-400">International</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-center text-center gap-1.5 hover:border-red-500 transition group">
+            <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-black text-xs shadow-sm">
+              <span class="text-red-500 font-bold">●</span><span class="text-amber-400 -ml-1.5 font-bold">●</span>
+            </div>
+            <span class="text-xs font-bold text-brand-navy">Mastercard</span>
+            <span class="text-[9px] text-slate-400">Débit & Crédit</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-center text-center gap-1.5 hover:border-brand-navy transition group">
+            <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center text-base shadow-sm"><i class="fa-solid fa-building-columns"></i></div>
+            <span class="text-xs font-bold text-brand-navy">Virement Bancaire</span>
+            <span class="text-[9px] text-slate-400">SWIFT & SEPA</span>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-center text-center gap-1.5 hover:border-emerald-500 transition group">
+            <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black text-xs shadow-sm">₮</div>
+            <span class="text-xs font-bold text-brand-navy">USDT (TRC20)</span>
+            <span class="text-[9px] text-slate-400">Stablecoin</span>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-slate-500 font-medium pt-2">
+          <i class="fa-solid fa-shield-halved text-brand-navy mr-1"></i>
+          * Note de transparence : Les coordonnées exactes de règlement sont communiquées par le service financier officiel <strong>uniquement après validation administrative de votre dossier</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 3: L'Opportunité dans le Marché Énergétique Nigérian -->
+    <section id="opportunite" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-100">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-6 relative order-2 lg:order-1">
+            <div class="relative rounded-3xl overflow-hidden shadow-premium border-4 border-white bg-slate-100 group">
+              <img 
+                src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80" 
+                alt="Complexe pétrochimique et colonnes de distillation" 
+                class="w-full h-[440px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-navyDark/85 via-transparent to-transparent"></div>
+              
+              <div class="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-100 text-left">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-black text-brand-navy uppercase">Réseau d'Énergie & Raffinage</span>
+                  <span class="text-[10px] text-slate-500 italic">Image illustrative</span>
+                </div>
+                <p class="text-xs text-slate-600 mt-1">
+                  Les infrastructures de raffinage transforment le brut en carburants à forte valeur ajoutée pour tout le continent.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 space-y-6 text-left order-1 lg:order-2">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-redLight text-brand-red text-xs font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-chart-line"></i> Potentiel Sectoriel
+            </div>
+
+            <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-brand-navy leading-tight">
+              Positionnez-vous sur une opportunité liée au secteur énergétique nigérian
+            </h2>
+
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Le Nigeria représente l'un des plus grands producteurs d'hydrocarbures en Afrique. Participer à une opportunité liée à une raffinerie permet de s'associer au développement industriel d'un pays en pleine expansion démographique et économique.
+            </p>
+
+            <div class="space-y-3.5 text-sm text-slate-700">
+              <div class="flex items-start gap-3 p-3 rounded-2xl bg-brand-slateBg border border-slate-200">
+                <i class="fa-solid fa-circle-check text-brand-red text-lg mt-0.5 shrink-0"></i>
+                <div>
+                  <strong class="text-brand-navy font-bold">Découvrez une opportunité dans un secteur stratégique</strong>
+                  <p class="text-xs text-slate-600 mt-0.5">Le raffinage local est le pilier de l'indépendance énergétique et de la distribution de produits pétroliers finis.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 p-3 rounded-2xl bg-brand-slateBg border border-slate-200">
+                <i class="fa-solid fa-circle-check text-brand-red text-lg mt-0.5 shrink-0"></i>
+                <div>
+                  <strong class="text-brand-navy font-bold">Commencez avec seulement 10 actions</strong>
+                  <p class="text-xs text-slate-600 mt-0.5">Grâce au prix de référence de 0,40 USD, l'accès est ouvert sans barrière prohibitive.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 p-3 rounded-2xl bg-brand-slateBg border border-slate-200">
+                <i class="fa-solid fa-circle-check text-brand-red text-lg mt-0.5 shrink-0"></i>
+                <div>
+                  <strong class="text-brand-navy font-bold">Accompagnement et mise en relation directe</strong>
+                  <p class="text-xs text-slate-600 mt-0.5">Notre équipe facilite la transmission de votre dossier vers le canal officiel pour finaliser votre participation.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <a 
+                href="#calculateur" 
+                class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-navy hover:bg-brand-navyLight text-white text-sm font-bold shadow-btn-navy transition"
+              >
+                <span>Calculez instantanément votre sélection</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Chiffres Clés -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-brand-slateBg border-b border-slate-200">
+      <div class="max-w-7xl mx-auto text-left">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <h2 class="font-display text-3xl font-black text-brand-navy">
+            L'opportunité en quelques chiffres
+          </h2>
+          <p class="text-slate-600 text-sm mt-2">
+            Des paramètres d'accès transparents et conçus pour la clarté de chaque futur souscripteur.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-7 rounded-3xl border-2 border-brand-red shadow-subtle text-left relative overflow-hidden group">
+            <div class="w-12 h-12 rounded-2xl bg-brand-redLight flex items-center justify-center text-brand-red text-xl mb-4">
+              <i class="fa-solid fa-tag"></i>
+            </div>
+            <div class="font-mono text-4xl font-black text-brand-navy tracking-tight group-hover:text-brand-red transition-colors">
+              0,40 <span class="text-2xl font-bold">USD</span>
+            </div>
+            <h3 class="font-display font-bold text-base text-brand-navy mt-2">Prix de référence</h3>
+            <p class="text-slate-500 text-xs mt-1">Par action lors de la présente émission.</p>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border border-slate-200 shadow-subtle text-left group">
+            <div class="w-12 h-12 rounded-2xl bg-brand-navy/10 flex items-center justify-center text-brand-navy text-xl mb-4">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <div class="font-mono text-4xl font-black text-brand-navy tracking-tight">
+              10 <span class="text-2xl font-bold text-brand-red">Actions</span>
+            </div>
+            <h3 class="font-display font-bold text-base text-brand-navy mt-2">Minimum requis</h3>
+            <p class="text-slate-500 text-xs mt-1">Un seuil de démarrage accessible à 4,00 $ USD.</p>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border border-slate-200 shadow-subtle text-left group">
+            <div class="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-700 text-xl mb-4">
+              <i class="fa-solid fa-earth-africa"></i>
+            </div>
+            <div class="font-display text-3xl font-black text-brand-navy tracking-tight">
+              🌍 International
+            </div>
+            <h3 class="font-display font-bold text-base text-brand-navy mt-2">Investisseurs</h3>
+            <p class="text-slate-500 text-xs mt-1">Ouvert aux ressortissants du monde entier.</p>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border border-slate-200 shadow-subtle text-left group">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 text-xl mb-4">
+              <i class="fa-solid fa-money-bill-transfer"></i>
+            </div>
+            <div class="font-display text-3xl font-black text-emerald-600 tracking-tight">
+              💱 Conversion
+            </div>
+            <h3 class="font-display font-bold text-base text-brand-navy mt-2">Monnaie locale</h3>
+            <p class="text-slate-500 text-xs mt-1">Montant affiché instantanément dans votre devise.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 5: Calculateur Interactif -->
+    <section id="calculateur" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-100">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-navy/10 text-brand-navy text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-calculator"></i> Simulateur Instantané
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-brand-navy">
+            Calculez votre sélection
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base">
+            Quel est le montant dans votre monnaie ? Ajustez le nombre d'actions et sélectionnez votre pays pour un calcul transparent et immédiat.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <div class="lg:col-span-7 bg-brand-slateBg p-6 sm:p-9 rounded-3xl border border-slate-200 shadow-subtle text-left space-y-6">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+              <h3 class="font-display font-bold text-lg text-brand-navy flex items-center gap-2">
+                <i class="fa-solid fa-sliders text-brand-red"></i> Paramétrez vos actions
+              </h3>
+              <span class="text-xs font-mono font-bold bg-white px-3 py-1 rounded-lg border border-slate-200 text-brand-navy">
+                1 action = 0,40 $ USD
+              </span>
+            </div>
+
+            <div class="space-y-3">
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">
+                Nombre d'actions (Minimum : 10)
+              </label>
+              
+              <div class="flex items-center gap-3">
+                <button 
+                  type="button" 
+                  onclick="adjustShares(-10)" 
+                  class="w-12 h-12 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 font-black text-xl text-brand-navy transition flex items-center justify-center shadow-sm"
+                  aria-label="Diminuer le nombre d'actions"
+                >-</button>
+
+                <input 
+                  type="number" 
+                  id="calcShareInput" 
+                  min="10" 
+                  step="1" 
+                  value="100" 
+                  inputmode="numeric"
+                  pattern="[0-9]*"
+                  oninput="onShareInputChange(this.value)"
+                  class="flex-1 text-center font-mono font-black text-2xl sm:text-3xl text-brand-navy bg-white border-2 border-slate-200 rounded-xl py-2.5 focus:border-brand-red focus:outline-none shadow-sm"
+                />
+
+                <button 
+                  type="button" 
+                  onclick="adjustShares(10)" 
+                  class="w-12 h-12 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 font-black text-xl text-brand-navy transition flex items-center justify-center shadow-sm"
+                  aria-label="Augmenter le nombre d'actions"
+                >+</button>
+              </div>
+
+              <input 
+                type="range" 
+                id="calcShareSlider" 
+                min="10" 
+                max="5000" 
+                step="10" 
+                value="100" 
+                oninput="onShareSliderChange(this.value)" 
+                class="w-full mt-2"
+              />
+              <div class="flex justify-between text-[11px] text-slate-500 font-mono">
+                <span>10 ($4)</span>
+                <span>500 ($200)</span>
+                <span>1 500 ($600)</span>
+                <span>5 000 ($2 000)</span>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-1">
+              <span class="text-xs font-semibold text-slate-500 block">Sélections rapides :</span>
+              <div class="flex flex-wrap gap-2">
+                <button type="button" onclick="setSharesDirect(10)" class="px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700">10 (Min)</button>
+                <button type="button" onclick="setSharesDirect(50)" class="px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700">50 ($20)</button>
+                <button type="button" onclick="setSharesDirect(100)" class="px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700">100 ($40)</button>
+                <button type="button" onclick="setSharesDirect(250)" class="px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700">250 ($100)</button>
+                <button type="button" onclick="setSharesDirect(500)" class="px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700">500 ($200)</button>
+                <button type="button" onclick="setSharesDirect(1000)" class="px-3 py-1.5 rounded-lg bg-brand-navy hover:bg-brand-navyLight text-white text-xs font-bold">1 000 ($400) ★</button>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-2 border-t border-slate-200">
+              <div class="flex items-center justify-between">
+                <label for="selectCalcCountry" class="text-xs font-bold uppercase tracking-wider text-slate-500">
+                  Quel est votre pays & votre monnaie ?
+                </label>
+                <span class="text-[11px] text-brand-red font-semibold">Priorité pays africains</span>
+              </div>
+              
+              <div class="relative">
+                <select 
+                  id="selectCalcCountry" 
+                  onchange="onCountrySelected(this.value)"
+                  class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm font-semibold text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-red cursor-pointer appearance-none shadow-sm"
+                >
+                  <optgroup label="── AFRIQUE ──">
+                    <option value="NGA" selected>🇳🇬 Nigeria — NGN (Naira ₦)</option>
+                    <option value="CMR">🇨🇲 Cameroun — XAF (FCFA)</option>
+                    <option value="CIV">🇨🇮 Côte d'Ivoire — XOF (FCFA)</option>
+                    <option value="SEN">🇸🇳 Sénégal — XOF (FCFA)</option>
+                    <option value="TGO">🇹🇬 Togo — XOF (FCFA)</option>
+                    <option value="BFA">🇧🇫 Burkina Faso — XOF (FCFA)</option>
+                    <option value="GAB">🇬🇦 Gabon — XAF (FCFA)</option>
+                    <option value="COG">🇨🇬 Congo — XAF (FCFA)</option>
+                    <option value="COD">🇨🇩 RDC (Congo) — CDF (Franc Congolais)</option>
+                    <option value="GIN">🇬🇳 Guinée — GNF (FG)</option>
+                    <option value="BEN">🇧🇯 Bénin — XOF (FCFA)</option>
+                    <option value="MLI">🇲🇱 Mali — XOF (FCFA)</option>
+                    <option value="NER">🇳🇪 Niger — XOF (FCFA)</option>
+                    <option value="TCD">🇹🇩 Tchad — XAF (FCFA)</option>
+                    <option value="CAF">🇨🇫 République centrafricaine — XAF (FCFA)</option>
+                    <option value="GNQ">🇬🇶 Guinée équatoriale — XAF (FCFA)</option>
+                    <option value="GHA">🇬🇭 Ghana — GHS (GH₵)</option>
+                    <option value="GMD">🇬🇲 Gambie — GMD (Dalasi)</option>
+                    <option value="SLE">🇸🇱 Sierra Leone — SLE (Leone)</option>
+                    <option value="LRD">🇱🇷 Liberia — LRD ($)</option>
+                    <option value="MRU">🇲🇷 Mauritanie — MRU (Ouguiya)</option>
+                    <option value="MAR">🇲🇦 Maroc — MAD (Dirham)</option>
+                    <option value="DZA">🇩🇿 Algérie — DZD (Dinar)</option>
+                    <option value="TUN">🇹🇳 Tunisie — TND (Dinar)</option>
+                    <option value="EGP">🇪🇬 Égypte — EGP (£)</option>
+                    <option value="KEN">🇰🇪 Kenya — KES (KSh)</option>
+                    <option value="UGA">🇺🇬 Ouganda — UGX (USh)</option>
+                    <option value="RWA">🇷🇼 Rwanda — RWF (FRw)</option>
+                    <option value="TZA">🇹🇿 Tanzanie — TZS (TSh)</option>
+                    <option value="ZMW">🇿🇲 Zambie — ZMW (Kwacha)</option>
+                    <option value="ZAR">🇿🇦 Afrique du Sud — ZAR (Rand R)</option>
+                    <option value="AOA">🇦🇴 Angola — AOA (Kwanza)</option>
+                    <option value="MZN">🇲🇿 Mozambique — MZN (Metical)</option>
+                    <option value="MGA">🇲🇬 Madagascar — MGA (Ariary)</option>
+                    <option value="ETB">🇪🇹 Éthiopie — ETB (Birr)</option>
+                    <option value="BIF">🇧🇮 Burundi — BIF (FBu)</option>
+                  </optgroup>
+                  <optgroup label="── INTERNATIONAL ──">
+                    <option value="FRA">🇫🇷 France & Zone Euro — EUR (€)</option>
+                    <option value="USA">🇺🇸 États-Unis — USD ($)</option>
+                    <option value="CAN">🇨🇦 Canada — CAD ($)</option>
+                    <option value="GBR">🇬🇧 Royaume-Uni — GBP (£)</option>
+                    <option value="CHN">🇨🇳 Chine — CNY (¥)</option>
+                    <option value="OTHER">🌍 Autre Pays — USD ($)</option>
+                  </optgroup>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-500">
+                  <i class="fa-solid fa-chevron-down text-xs"></i>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="lg:col-span-5 bg-white p-6 sm:p-9 rounded-3xl border-2 border-brand-navy shadow-premium text-left space-y-6">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div>
+                <span class="text-xs font-extrabold uppercase tracking-wider text-brand-red">Résultat Dynamique</span>
+                <h3 class="font-display font-black text-2xl text-brand-navy">Votre sélection</h3>
+              </div>
+              <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center text-lg">
+                <i class="fa-solid fa-receipt"></i>
+              </div>
+            </div>
+
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between items-center py-1 border-b border-slate-100">
+                <span class="text-slate-500 font-medium">Actions sélectionnées :</span>
+                <span id="resShares" class="font-mono font-black text-brand-navy text-base">100</span>
+              </div>
+
+              <div class="flex justify-between items-center py-1 border-b border-slate-100">
+                <span class="text-slate-500 font-medium">Prix de référence :</span>
+                <span class="font-mono font-bold text-slate-700">0,40 USD</span>
+              </div>
+
+              <div class="flex justify-between items-center py-1 border-b border-slate-100">
+                <span class="text-slate-500 font-medium">Total en Dollar :</span>
+                <span id="resTotalUsd" class="font-mono font-black text-brand-navy text-base">40,00 USD</span>
+              </div>
+
+              <div class="flex justify-between items-center py-1 border-b border-slate-100">
+                <span class="text-slate-500 font-medium">Pays sélectionné :</span>
+                <span id="resCountryName" class="font-bold text-brand-navy">Nigeria 🇳🇬</span>
+              </div>
+
+              <div class="flex justify-between items-center py-1 border-b border-slate-100">
+                <span class="text-slate-500 font-medium">Devise locale :</span>
+                <span id="resCurrency" class="font-mono font-bold text-slate-700">NGN</span>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-brand-slateBg border border-slate-200 text-center space-y-1">
+              <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Montant estimatif dans votre monnaie</span>
+              <div id="resTotalLocal" class="font-display font-black text-3xl sm:text-4xl text-brand-red tracking-tight">
+                62 000 NGN
+              </div>
+              <span id="resExchangeRate" class="text-[11px] text-slate-500 font-mono block">
+                Taux indicatif : 1 USD = 1 550 NGN
+              </span>
+            </div>
+
+            <a 
+              href="#formulaire" 
+              onclick="passSelectionToForm()"
+              class="w-full py-4 rounded-xl bg-brand-red hover:bg-brand-redHover text-white font-display font-black text-base shadow-btn-red transition flex items-center justify-center gap-2 transform active:scale-95"
+            >
+              <span>Continuer avec cette sélection</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 6: La Direction -->
+    <section id="direction" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-brand-slateBg border-b border-slate-200">
+      <div class="max-w-5xl mx-auto text-left">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-navy/10 text-brand-navy text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-building-columns"></i> Gouvernance Institutionnelle
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-brand-navy">
+            La direction
+          </h2>
+          <p class="text-slate-600 text-sm">
+            Présentation officielle de la direction opérationnelle de Rafinery Du Nigeria.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-premium">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-5 flex flex-col items-center">
+              <div class="relative w-56 h-64 sm:w-64 sm:h-72 rounded-3xl overflow-hidden bg-slate-100 border-4 border-white shadow-md flex items-center justify-center text-center p-4">
+                <div class="space-y-3">
+                  <div class="w-20 h-20 rounded-full bg-brand-navy/10 text-brand-navy flex items-center justify-center text-3xl mx-auto border-2 border-slate-200">
+                    <i class="fa-solid fa-user-tie"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs font-extrabold text-brand-navy block uppercase">[PHOTO OFFICIELLE]</span>
+                    <span class="text-[11px] text-slate-500 block mt-1">Emplacement réservé pour la photo officielle du Directeur</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="md:col-span-7 space-y-4 text-left">
+              <div>
+                <span class="text-xs font-extrabold uppercase tracking-widest text-brand-red block mb-1">
+                  Direction Générale
+                </span>
+                <h3 class="font-display text-2xl sm:text-3xl font-black text-brand-navy">
+                  [NOM DU DIRECTEUR]
+                </h3>
+                <p class="text-sm font-bold text-slate-700 mt-1">
+                  Directeur — Rafinery Du Nigeria
+                </p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-200 text-xs text-slate-600 leading-relaxed space-y-2">
+                <p class="font-semibold text-brand-navy">Notice institutionnelle officielle :</p>
+                <p>
+                  La fiche institutionnelle et biographique de la direction générale de Rafinery Du Nigeria sera publiée lors de la communication officielle du prospectus. La plateforme garantit ainsi une conformité totale avec les documents officiellement homologués.
+                </p>
+                <p class="text-[11px] text-slate-500 italic">
+                  * Engagement déontologique : Aucune identité, diplôme ou accomplissement n'est inventé ou simulé sur cette plateforme.
+                </p>
+              </div>
+
+              <div class="pt-2 flex items-center gap-3 text-xs text-slate-500 font-medium">
+                <span class="flex items-center gap-1">
+                  <i class="fa-solid fa-shield-halved text-brand-navy"></i> Informations Vérifiées
+                </span>
+                <span>•</span>
+                <span class="flex items-center gap-1">
+                  <i class="fa-solid fa-building text-brand-navy"></i> Rafinery Du Nigeria
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 7: Parcours -->
+    <section id="processus" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-100">
+      <div class="max-w-7xl mx-auto text-left">
+        <div class="text-center max-w-2xl mx-auto mb-14 space-y-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-redLight text-brand-red text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-route"></i> Parcours Simple
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-brand-navy">
+            Comment fonctionne votre démarche ?
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base">
+            Un processus en six étapes claires pour sécuriser votre intérêt et être orienté efficacement.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-6 rounded-3xl bg-brand-slateBg border border-slate-200 relative group hover:border-brand-navy transition">
+            <span class="font-mono text-3xl font-black text-slate-300 group-hover:text-brand-navy transition">01</span>
+            <h4 class="font-display font-bold text-lg text-brand-navy mt-2 mb-1">Découvrez l'opportunité</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">Consultez les informations sur le secteur du raffinage pétrolier au Nigeria et le cadre de la plateforme.</p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-brand-slateBg border border-slate-200 relative group hover:border-brand-navy transition">
+            <span class="font-mono text-3xl font-black text-slate-300 group-hover:text-brand-navy transition">02</span>
+            <h4 class="font-display font-bold text-lg text-brand-navy mt-2 mb-1">Choisissez vos actions</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">Déterminez le nombre de titres souhaité à partir de 10 actions (tarif fixe : 0,40 USD).</p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-brand-slateBg border border-slate-200 relative group hover:border-brand-navy transition">
+            <span class="font-mono text-3xl font-black text-slate-300 group-hover:text-brand-navy transition">03</span>
+            <h4 class="font-display font-bold text-lg text-brand-navy mt-2 mb-1">Calculez votre montant</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">Visualisez le montant total en USD et son équivalent immédiat dans votre monnaie nationale.</p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-brand-slateBg border border-slate-200 relative group hover:border-brand-navy transition">
+            <span class="font-mono text-3xl font-black text-slate-300 group-hover:text-brand-navy transition">04</span>
+            <h4 class="font-display font-bold text-lg text-brand-navy mt-2 mb-1">Renseignez vos informations</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">Complétez vos coordonnées (nom, pays, ville, WhatsApp et adresse e-mail obligatoire).</p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-brand-slateBg border border-slate-200 relative group hover:border-brand-navy transition">
+            <span class="font-mono text-3xl font-black text-slate-300 group-hover:text-brand-navy transition">05</span>
+            <h4 class="font-display font-bold text-lg text-brand-navy mt-2 mb-1">Envoyez votre demande</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">Validez la transmission automatique de votre dossier vers <strong>rafinerynigeria@gmail.com</strong>.</p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-brand-slateBg border border-slate-200 relative group hover:border-brand-red transition">
+            <span class="font-mono text-3xl font-black text-slate-300 group-hover:text-brand-red transition">06</span>
+            <h4 class="font-display font-bold text-lg text-brand-navy mt-2 mb-1">Échangez avec notre équipe</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">Recevez les modalités pratiques et échangez directement avec le support sur WhatsApp.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 8: Formulaire de Demande d'Actions Initial -->
+    <section id="formulaire" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-brand-slateBg border-b border-slate-200">
+      <div class="max-w-4xl mx-auto text-left">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-red text-white text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-file-signature"></i> Dépôt nominatif
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl font-black text-brand-navy">Formulaire de Demande d'Actions</h2>
+          <p class="text-slate-600 text-sm">Vos informations permettent de créer et de suivre votre identifiant de dossier investisseur.</p>
+        </div>
+
+        <div class="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-premium">
+          <div class="flex items-center justify-between mb-8 max-w-md mx-auto">
+            <div class="flex flex-col items-center gap-1">
+              <div id="stepBadge1" class="w-9 h-9 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-sm shadow-md">1</div>
+              <span class="text-[11px] font-bold text-brand-navy">Identité</span>
+            </div>
+            <div class="flex-1 h-1 bg-slate-200 mx-2 -mt-4"><div id="progressStep1to2" class="h-full bg-brand-red w-0 transition-all duration-300"></div></div>
+            <div class="flex flex-col items-center gap-1">
+              <div id="stepBadge2" class="w-9 h-9 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm">2</div>
+              <span class="text-[11px] font-bold text-slate-500">Contact</span>
+            </div>
+            <div class="flex-1 h-1 bg-slate-200 mx-2 -mt-4"><div id="progressStep2to3" class="h-full bg-brand-red w-0 transition-all duration-300"></div></div>
+            <div class="flex flex-col items-center gap-1">
+              <div id="stepBadge3" class="w-9 h-9 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm">3</div>
+              <span class="text-[11px] font-bold text-slate-500">Sélection</span>
+            </div>
+          </div>
+
+          <form id="subscriptionForm" onsubmit="event.preventDefault(); showSummaryModal();">
+            <input type="hidden" name="Demande_ID" id="hiddenOrderId">
+            <input type="hidden" name="Nombre_Actions" id="hiddenShares" value="100">
+            <input type="hidden" name="Total_USD" id="hiddenTotalUsd" value="40,00 USD">
+            <input type="hidden" name="Devise" id="hiddenCurrency" value="NGN">
+            <input type="hidden" name="Montant_Local" id="hiddenTotalLocal" value="62 000 NGN">
+            <input type="hidden" name="Date" id="hiddenDate" value="">
+            <input type="hidden" name="Heure" id="hiddenTime" value="">
+
+            <div id="formStep1" class="space-y-4">
+              <div class="border-b border-slate-100 pb-3"><h3 class="font-display font-bold text-lg text-brand-navy">Étape 1 : Identité</h3><p class="text-xs text-slate-500">Renseignez vos informations d'identification.</p></div>
+              <div>
+                <label for="inputFormName" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Nom complet <span class="text-brand-red">*</span></label>
+                <input type="text" id="inputFormName" name="Nom_Complet" required placeholder="Ex. Jean Dupont" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-brand-navy placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red" />
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="inputFormCountry" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Pays de résidence <span class="text-brand-red">*</span></label>
+                  <select id="inputFormCountry" name="Pays" required onchange="syncCountryWithForm(this.value)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-3 text-sm text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-red">
+                    <option value="Nigeria" data-code="NGA" selected>🇳🇬 Nigeria</option><option value="Cameroun" data-code="CMR">🇨🇲 Cameroun</option><option value="Côte d'Ivoire" data-code="CIV">🇨🇮 Côte d'Ivoire</option><option value="Sénégal" data-code="SEN">🇸🇳 Sénégal</option><option value="Ghana" data-code="GHA">🇬🇭 Ghana</option><option value="Kenya" data-code="KEN">🇰🇪 Kenya</option><option value="Gabon" data-code="GAB">🇬🇦 Gabon</option><option value="RDC" data-code="COD">🇨🇩 RDC</option><option value="Tchad" data-code="TCD">🇹🇩 Tchad</option><option value="Maroc" data-code="MAR">🇲🇦 Maroc</option><option value="France" data-code="FRA">🇫🇷 France</option><option value="États-Unis" data-code="USA">🇺🇸 États-Unis</option><option value="Canada" data-code="CAN">🇨🇦 Canada</option><option value="Royaume-Uni" data-code="GBR">🇬🇧 Royaume-Uni</option><option value="Autre Pays" data-code="OTHER">🌍 Autre pays</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="inputFormCity" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Ville <span class="text-brand-red">*</span></label>
+                  <input type="text" id="inputFormCity" name="Ville" required placeholder="Ex. Douala, Lagos, Paris..." class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-brand-navy placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red" />
+                </div>
+              </div>
+              <div class="pt-4 flex justify-end"><button type="button" onclick="goToStep(2)" class="px-8 py-3.5 rounded-xl bg-brand-navy hover:bg-brand-navyLight text-white font-bold text-sm shadow-btn-navy flex items-center gap-2"><span>Continuer</span><i class="fa-solid fa-arrow-right text-xs"></i></button></div>
+            </div>
+
+            <div id="formStep2" class="space-y-4 hidden">
+              <div class="border-b border-slate-100 pb-3"><h3 class="font-display font-bold text-lg text-brand-navy">Étape 2 : Coordonnées</h3><p class="text-xs text-slate-500">Votre e-mail et votre numéro WhatsApp sont nécessaires au suivi.</p></div>
+              <div>
+                <label for="inputFormPhone" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Téléphone (WhatsApp recommandé) <span class="text-brand-red">*</span></label>
+                <div class="flex"><span id="formPhonePrefix" class="inline-flex items-center px-3.5 rounded-l-xl border border-r-0 border-slate-300 bg-slate-100 text-slate-700 text-xs font-mono font-bold">+234</span><input type="tel" id="inputFormPhone" name="Telephone" required inputmode="tel" placeholder="70X XXX XXXX" class="w-full bg-white border border-slate-300 rounded-r-xl px-4 py-3 text-sm text-brand-navy font-mono placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red" /></div>
+              </div>
+              <div><label for="inputFormEmail" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Adresse e-mail <span class="text-brand-red">*</span></label><input type="email" id="inputFormEmail" name="Email" required placeholder="votre.nom@domaine.com" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-brand-navy placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red" /></div>
+              <div class="pt-4 flex justify-between"><button type="button" onclick="goToStep(1)" class="px-6 py-3 rounded-xl bg-slate-100 text-slate-700 font-bold text-sm">← Retour</button><button type="button" onclick="goToStep(3)" class="px-8 py-3.5 rounded-xl bg-brand-navy hover:bg-brand-navyLight text-white font-bold text-sm">Continuer <i class="fa-solid fa-arrow-right text-xs ml-1"></i></button></div>
+            </div>
+
+            <div id="formStep3" class="space-y-4 hidden">
+              <div class="border-b border-slate-100 pb-3"><h3 class="font-display font-bold text-lg text-brand-navy">Étape 3 : Votre demande</h3><p class="text-xs text-slate-500">Vérifiez le nombre d'actions avant d'envoyer votre dossier.</p></div>
+              <div><label for="formSharesCount" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Volume d'actions souhaité <span class="text-brand-red">*</span></label><input type="number" id="formSharesCount" min="10" step="1" value="100" oninput="setSharesDirect(this.value)" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm font-mono font-bold text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-red" /></div>
+              <div class="bg-brand-slateBg border border-slate-200 rounded-2xl p-5 space-y-2 text-sm">
+                <div class="flex justify-between border-b border-slate-200 pb-2"><span class="text-slate-500">Souscripteur</span><strong id="step3InvestorName" class="text-brand-navy">—</strong></div>
+                <div class="flex justify-between border-b border-slate-200 pb-2"><span class="text-slate-500">Actions</span><strong id="step3SharesCount" class="font-mono text-brand-navy">100 actions</strong></div>
+                <div class="flex justify-between border-b border-slate-200 pb-2"><span class="text-slate-500">Total USD</span><strong id="step3TotalUsd" class="font-mono text-brand-navy">40,00 USD</strong></div>
+                <div class="flex justify-between"><span class="text-slate-500">Montant local estimatif</span><strong id="step3TotalLocal" class="font-mono text-brand-red">62 000 NGN</strong></div>
+              </div>
+              <div class="flex justify-between"><button type="button" onclick="goToStep(2)" class="px-6 py-3 rounded-xl bg-slate-100 text-slate-700 font-bold text-sm">← Modifier</button><button type="submit" class="px-7 py-3.5 rounded-xl bg-brand-red hover:bg-brand-redHover text-white font-bold text-sm shadow-btn-red">Envoyer ma demande <i class="fa-solid fa-paper-plane ml-1"></i></button></div>
+            </div>
+          </form>
+
+          <div id="formSuccessInline" class="hidden text-center py-8">
+            <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto mb-4"><i class="fa-solid fa-circle-check"></i></div>
+            <h3 class="font-display font-black text-2xl text-brand-navy">Votre demande a bien été enregistrée</h3>
+            <p class="text-sm text-slate-500 mt-2">Votre dossier a été transmis pour examen administratif.</p>
+            <div class="important-dossier-id"><span>ID DOSSIER</span><strong id="inlineSuccessId">RDN-000000</strong></div>
+            <div class="flex flex-wrap justify-center gap-3 mt-5"><button type="button" onclick="document.getElementById('suivi').scrollIntoView({behavior:'smooth'})" class="px-6 py-3 rounded-xl bg-brand-navy text-white font-bold text-sm">Espace Investisseur</button><button type="button" onclick="launchSmartWhatsApp()" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Contacter le support WhatsApp</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Suivi de Statut & Gestion de Parts (Ajouter des parts & Transférer à un autre ID) -->
+    <section id="suivi" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-100">
+      <div class="max-w-4xl mx-auto text-left">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-navy/10 text-brand-navy text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-user-check"></i> Espace Personnel & Suivi
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-brand-navy">
+            Suivi de votre dossier & Gestion de parts
+          </h2>
+          <p class="text-slate-600 text-sm">
+            Connectez-vous avec <strong>votre adresse e-mail</strong> et votre <span class="font-mono font-bold text-brand-red">ID de dossier</span> pour consulter votre statut, <strong>acheter des parts supplémentaires</strong> ou <strong>transférer/revendre vos parts</strong> à un autre ID.
+          </p>
+        </div>
+
+        <div class="bg-brand-slateBg p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-premium space-y-6">
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="relative">
+              <label for="searchInvestorEmail" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Adresse e-mail enregistrée</label>
+              <span class="absolute bottom-0 left-0 h-[50px] w-11 flex items-center justify-center pointer-events-none text-slate-400">
+                <i class="fa-solid fa-envelope"></i>
+              </span>
+              <input type="email" id="searchInvestorEmail" placeholder="nom@exemple.com" autocomplete="email" class="w-full bg-white border border-slate-300 rounded-xl pl-11 pr-4 py-3.5 text-sm text-brand-navy placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red" />
+            </div>
+            <div>
+              <label for="searchDossierInput" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Numéro de dossier (ID)</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400"><i class="fa-solid fa-hashtag"></i></span>
+                <input type="text" id="searchDossierInput" placeholder="RDN-XXXXXX" autocomplete="off" class="w-full bg-white border border-slate-300 rounded-xl pl-10 pr-4 py-3.5 text-sm font-mono font-bold text-brand-navy placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red uppercase" />
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="searchDossierStatus()" class="w-full px-7 py-3.5 rounded-xl bg-brand-navy hover:bg-brand-navyLight text-white font-bold text-sm shadow-btn-navy flex items-center justify-center gap-2 transition">
+            <i class="fa-solid fa-right-to-bracket"></i><span>Se connecter et consulter mon statut</span>
+          </button>
+          <p class="text-[11px] text-slate-500 text-center"><i class="fa-solid fa-shield-halved mr-1"></i>Les informations affichées correspondent uniquement à un dossier réellement enregistré sur la plateforme.</p>
+
+          <!-- Dossier Status Result Card (Dynamic) -->
+          <div id="dossierResultCard" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
+              <div>
+                <span class="text-[11px] uppercase font-bold text-slate-400 block">Dossier Actif</span>
+                <span id="trackDossierId" class="font-mono text-xl font-black text-brand-navy">Aucun dossier recherché</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-2">
+                <span id="trackBadgeStatus" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200">
+                  <i class="fa-solid fa-hourglass-half"></i> En attente de validation
+                </span>
+                
+                <!-- Bouton Achat de parts supplémentaires -->
+                <button 
+                  id="btnAddSharesAction" 
+                  type="button" 
+                  onclick="openAddSharesModal()" 
+                  class="hidden inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-brand-red hover:bg-brand-redHover text-white shadow-btn-red transition transform active:scale-95"
+                >
+                  <i class="fa-solid fa-plus-circle"></i>
+                  <span>Acheter d'avantage de parts</span>
+                </button>
+
+                <!-- Bouton Transférer / Revendre des parts à un autre ID -->
+                <button 
+                  id="btnTransferSharesAction" 
+                  type="button" 
+                  onclick="openTransferSharesModal()" 
+                  class="hidden inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-brand-navy hover:bg-brand-navyLight text-white shadow-btn-navy transition transform active:scale-95"
+                >
+                  <i class="fa-solid fa-arrow-right-arrow-left text-brand-red"></i>
+                  <span>Transférer / Revendre des parts</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+              <div>
+                <span class="text-slate-400 block">Investisseur :</span>
+                <span id="trackInvestorName" class="font-bold text-brand-navy">---</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block">Total parts validées :</span>
+                <span id="trackSharesCount" class="font-mono font-bold text-brand-navy">--- actions</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block">Montant indicatif global :</span>
+                <span id="trackAmount" class="font-mono font-bold text-brand-red">---</span>
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-slate-100">
+              <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-3">Étapes d'instruction du dossier :</span>
+              <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
+                <div id="stepState1" class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold">
+                  <i class="fa-solid fa-circle-check block text-sm mb-1 text-emerald-600"></i>
+                  1. Demande Enregistrée
+                </div>
+                <div id="stepState2" class="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 font-bold">
+                  <i id="stepIcon2" class="fa-solid fa-spinner fa-spin block text-sm mb-1 text-amber-600"></i>
+                  2. Examen de Conformité
+                </div>
+                <div id="stepState3" class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-400 font-medium">
+                  <i id="stepIcon3" class="fa-solid fa-circle-dot block text-sm mb-1 text-slate-300"></i>
+                  3. Attribution des Titres
+                </div>
+              </div>
+            </div>
+
+            <div id="trackStatusNotice" class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 leading-relaxed">
+              <i class="fa-solid fa-circle-info text-brand-navy mr-1"></i>
+              Votre dossier a bien été reçu et est actuellement en cours d'analyse par l'administration. Dès validation, les instructions de finalisation vous seront transmises par e-mail et WhatsApp.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 9: Support WhatsApp Intelligent -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-100 text-left">
+      <div class="max-w-5xl mx-auto">
+        <div class="bg-gradient-to-br from-brand-slateBg to-white p-8 sm:p-12 rounded-3xl border-2 border-emerald-500/20 shadow-premium flex flex-col md:flex-row items-center justify-between gap-8">
+          <div class="space-y-3">
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+              <i class="fa-brands fa-whatsapp text-emerald-600"></i> Assistance Directe
+            </span>
+            <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-brand-navy">
+              Besoin d'aide ?
+            </h3>
+            <p class="text-slate-600 text-sm max-w-xl">
+              Notre équipe est disponible via WhatsApp pour répondre à vos questions concernant votre demande, l'ajout ou le transfert de parts.
+            </p>
+            <div class="font-mono text-sm font-bold text-brand-navy flex items-center gap-2">
+              <i class="fa-solid fa-phone text-emerald-600"></i> +234 708 423 1858
+            </div>
+          </div>
+
+          <div class="shrink-0">
+            <button 
+              type="button" 
+              onclick="launchSmartWhatsApp()" 
+              class="px-7 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-display font-extrabold text-sm sm:text-base flex items-center gap-3 shadow-lg transition transform active:scale-95"
+            >
+              <i class="fa-brands fa-whatsapp text-2xl"></i>
+              <span>Contacter le support WhatsApp</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 10: FAQ Transparente -->
+    <section id="faq" class="py-16 px-4 sm:px-6 lg:px-8 bg-brand-slateBg border-b border-slate-200 text-left">
+      <div class="max-w-4xl mx-auto space-y-8">
+        
+        <div class="text-center space-y-2">
+          <span class="text-xs font-bold text-brand-red uppercase tracking-wider">Questions Fréquentes</span>
+          <h2 class="font-display text-3xl font-extrabold text-brand-navy">FAQ & Clarté Réglementaire</h2>
+        </div>
+
+        <div class="space-y-4">
+          <details class="bg-white p-6 rounded-2xl border border-slate-200 group cursor-pointer shadow-sm">
+            <summary class="font-bold text-brand-navy flex justify-between items-center text-sm list-none">
+              <span>Puis-je racheter d'autres parts avec mon même compte et ID ?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="text-xs sm:text-sm text-slate-600 mt-3 pt-3 border-t border-slate-100 leading-relaxed">
+              Oui. Chaque demande d'ajout de part constitue une nouvelle requête transmise pour validation administrative. Une fois vérifiée par l'équipe, les nouvelles parts sont créditées sur votre même ID.
+            </p>
+          </details>
+
+          <details class="bg-white p-6 rounded-2xl border border-slate-200 group cursor-pointer shadow-sm">
+            <summary class="font-bold text-brand-navy flex justify-between items-center text-sm list-none">
+              <span>Est-il possible de revendre ou transférer mes parts à un autre identifiant ?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="text-xs sm:text-sm text-slate-600 mt-3 pt-3 border-t border-slate-100 leading-relaxed">
+              Oui, chaque membre ayant des parts approuvées peut effectuer un transfert vers l'identifiant (RDN-XXXXXX) d'un autre investisseur. La requête est transmise et soumise à la vérification de conformité des administrateurs.
+            </p>
+          </details>
+
+          <details class="bg-white p-6 rounded-2xl border border-slate-200 group cursor-pointer shadow-sm">
+            <summary class="font-bold text-brand-navy flex justify-between items-center text-sm list-none">
+              <span>Quel est le rôle exact de cette plateforme ?</span>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-400 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <p class="text-xs sm:text-sm text-slate-600 mt-3 pt-3 border-t border-slate-100 leading-relaxed">
+              La plateforme agit comme un intermédiaire et facilitateur. Notre rôle est de permettre aux investisseurs intéressés de découvrir l'opportunité liée à <strong>Rafinery Du Nigeria</strong>, de calculer leur sélection d'actions, et de transmettre leurs informations de façon structurée vers le service dédié.
+            </p>
+          </details>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification Discrète -->
+  <aside 
+    id="socialProofToast" 
+    aria-live="polite"
+    class="toast-hidden fixed bottom-6 left-6 z-40 max-w-sm w-[calc(100vw-3rem)] bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl shadow-2xl p-3.5 sm:p-4 text-left font-sans"
+  >
+    <div class="flex items-start gap-3">
+      <div id="spFlag" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-xl shrink-0 shadow-sm">
+        🇨🇲
+      </div>
+
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-1.5 mb-1">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+            Souscription confirmée
+          </span>
+          <span class="text-[10px] text-slate-400 ml-auto font-mono">À l'instant</span>
+        </div>
+
+        <p class="text-xs text-slate-800 leading-snug">
+          <strong id="spName" class="font-bold text-brand-navy">Jean-Paul M.</strong> (<span id="spCity">Douala</span>) vient de souscrire 
+          <span class="font-mono font-bold text-brand-red bg-brand-redLight px-1.5 py-0.5 rounded" id="spShares">250 actions</span>.
+        </p>
+
+        <div class="mt-1 text-[11px] font-semibold text-slate-500 flex items-center gap-1.5">
+          <span>Montant :</span>
+          <span id="spAmount" class="font-mono font-bold text-emerald-700">100,00 USD (61 000 FCFA)</span>
+        </div>
+      </div>
+
+      <button 
+        type="button" 
+        onclick="hideSocialProofToast()" 
+        class="text-slate-400 hover:text-slate-600 text-xs p-1 -mr-1 -mt-1 rounded-lg"
+        title="Fermer la notification"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MODAL : ACHETER D'AVANTAGE DE PARTS (NOUVELLE REQUÊTE ADMINISTRATIVE) -->
+  <div id="modalAddShares" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/75 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white max-w-lg w-full rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xl relative text-left overflow-y-auto max-h-[92vh]">
+      
+      <button onclick="closeAddSharesModal()" class="absolute top-5 right-5 text-slate-400 hover:text-brand-navy p-2 rounded-full hover:bg-slate-100" aria-label="Fermer">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="flex items-center gap-3 pb-4 border-b border-slate-100">
+        <div class="h-11 w-11 flex items-center justify-center p-1 rounded-xl border border-slate-200 bg-brand-redLight text-brand-red">
+          <i class="fa-solid fa-plus-circle text-2xl"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-black text-xl text-brand-navy">Acheter des parts supplémentaires</h3>
+          <p class="text-xs text-slate-500">Nouvelle requête rattachée à l'ID : <span id="addSharesTargetId" class="font-mono font-bold text-brand-navy">RDN-XXXXXX</span></p>
+        </div>
+      </div>
+
+      <div class="my-4 p-4 rounded-2xl bg-brand-slateBg border border-slate-200 space-y-2 text-xs">
+        <div class="flex justify-between">
+          <span class="text-slate-500">Investisseur :</span>
+          <strong id="addSharesInvestorName" class="text-brand-navy font-bold">—</strong>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Adresse e-mail liée :</span>
+          <strong id="addSharesInvestorEmail" class="text-brand-navy font-mono">—</strong>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Parts actuellement validées :</span>
+          <strong id="addSharesCurrentShares" class="font-mono text-brand-navy font-black">—</strong>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label for="extraSharesInput" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+            Nombre de parts à ajouter <span class="text-brand-red">*</span>
+          </label>
+          <div class="flex items-center gap-2">
+            <button type="button" onclick="adjustExtraShares(-10)" class="w-11 h-11 rounded-xl bg-slate-100 hover:bg-slate-200 font-black text-lg text-brand-navy flex items-center justify-center transition">-</button>
+            <input 
+              type="number" 
+              id="extraSharesInput" 
+              min="1" 
+              step="1" 
+              value="50" 
+              oninput="recalcExtraShares(this.value)" 
+              class="flex-1 text-center font-mono font-black text-2xl text-brand-navy bg-white border-2 border-slate-200 rounded-xl py-2 focus:border-brand-red focus:outline-none"
+            />
+            <button type="button" onclick="adjustExtraShares(10)" class="w-11 h-11 rounded-xl bg-slate-100 hover:bg-slate-200 font-black text-lg text-brand-navy flex items-center justify-center transition">+</button>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-brand-redLight/40 border border-brand-red/20 text-xs space-y-2">
+          <div class="flex justify-between">
+            <span class="text-slate-600">Montant des nouvelles parts :</span>
+            <strong id="extraCostUsd" class="font-mono text-brand-navy font-bold">20,00 USD</strong>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-600">Équivalent monnaie locale :</span>
+            <strong id="extraCostLocal" class="font-mono text-brand-red font-bold">31 000 NGN</strong>
+          </div>
+          <div class="flex justify-between border-t border-brand-red/10 pt-2 font-bold text-sm">
+            <span class="text-brand-navy">Total de parts après validation :</span>
+            <span id="extraNewTotalShares" class="font-mono text-brand-red">150 actions</span>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-amber-700 bg-amber-50 border border-amber-200 rounded-xl p-3 leading-relaxed">
+          <i class="fa-solid fa-clock mr-1 text-amber-600"></i>
+          <strong>Important :</strong> Cette demande sera transmise aux administrateurs. Vos parts supplémentaires seront ajoutées à votre compte dès validation officielle.
+        </p>
+
+        <button 
+          type="button" 
+          id="btnSubmitExtraShares" 
+          onclick="submitExtraSharesOrder()" 
+          class="w-full py-3.5 rounded-xl bg-brand-red hover:bg-brand-redHover text-white font-bold text-sm shadow-btn-red flex items-center justify-center gap-2 transition"
+        >
+          <span id="btnSubmitExtraText">Soumettre la demande d'ajout</span>
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL : TRANSFÉRER / REVENDRE DES PARTS À UN AUTRE ID -->
+  <div id="modalTransferShares" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/75 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white max-w-lg w-full rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xl relative text-left overflow-y-auto max-h-[92vh]">
+      
+      <button onclick="closeTransferSharesModal()" class="absolute top-5 right-5 text-slate-400 hover:text-brand-navy p-2 rounded-full hover:bg-slate-100" aria-label="Fermer">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="flex items-center gap-3 pb-4 border-b border-slate-100">
+        <div class="h-11 w-11 flex items-center justify-center p-1 rounded-xl border border-slate-200 bg-brand-navy/10 text-brand-navy">
+          <i class="fa-solid fa-arrow-right-arrow-left text-2xl text-brand-red"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-black text-xl text-brand-navy">Transférer / Revendre des parts</h3>
+          <p class="text-xs text-slate-500">Cession depuis votre ID : <span id="transferSenderId" class="font-mono font-bold text-brand-navy">RDN-XXXXXX</span></p>
+        </div>
+      </div>
+
+      <div class="my-4 p-4 rounded-2xl bg-brand-slateBg border border-slate-200 space-y-2 text-xs">
+        <div class="flex justify-between">
+          <span class="text-slate-500">Cédant (Vous) :</span>
+          <strong id="transferSenderName" class="text-brand-navy font-bold">—</strong>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Solde actuel disponible :</span>
+          <strong id="transferMaxAvailable" class="font-mono text-brand-red font-black">— actions</strong>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label for="transferTargetIdInput" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+            ID du destinataire (Acheteur / Bénéficiaire) <span class="text-brand-red">*</span>
+          </label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 font-mono font-bold">#</span>
+            <input 
+              type="text" 
+              id="transferTargetIdInput" 
+              placeholder="RDN-XXXXXX" 
+              autocomplete="off" 
+              class="w-full bg-white border border-slate-300 rounded-xl pl-9 pr-4 py-3 text-sm font-mono font-bold text-brand-navy uppercase focus:outline-none focus:ring-2 focus:ring-brand-red"
+            />
+          </div>
+          <p class="text-[10px] text-slate-400 mt-1">L'ID doit correspondre à un investisseur actif.</p>
+        </div>
+
+        <div>
+          <label for="transferQtyInput" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+            Nombre de parts à transférer / céder <span class="text-brand-red">*</span>
+          </label>
+          <input 
+            type="number" 
+            id="transferQtyInput" 
+            min="1" 
+            step="1" 
+            value="10" 
+            class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm font-mono font-bold text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-red"
+          />
+        </div>
+
+        <p class="text-[11px] text-slate-500 bg-slate-50 border border-slate-200 rounded-xl p-3 leading-relaxed">
+          <i class="fa-solid fa-shield-halved text-brand-navy mr-1"></i>
+          La demande de transfert sera enregistrée et soumise à la vérification des administrateurs avant le débit de votre solde et le crédit sur l'identifiant du destinataire.
+        </p>
+
+        <button 
+          type="button" 
+          id="btnSubmitTransfer" 
+          onclick="submitTransferOrder()" 
+          class="w-full py-3.5 rounded-xl bg-brand-navy hover:bg-brand-navyLight text-white font-bold text-sm shadow-btn-navy flex items-center justify-center gap-2 transition"
+        >
+          <span id="btnSubmitTransferText">Confirmer la demande de transfert</span>
+          <i class="fa-solid fa-check text-xs"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal Récapitulatif Initial -->
+  <div id="modalSummary" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white max-w-xl w-full rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xl relative text-left overflow-y-auto max-h-[92vh]">
+      
+      <button onclick="closeSummaryModal()" class="absolute top-5 right-5 text-slate-400 hover:text-brand-navy p-2 rounded-full hover:bg-slate-100 transition" aria-label="Fermer">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="flex items-center gap-3 pb-4 border-b border-slate-100">
+        <div class="h-10 w-10 flex items-center justify-center p-0.5 rounded-xl border border-slate-200 bg-white">
+          <img src="1004915935.png" data-rdn-logo="true" alt="Logo" class="h-full w-full object-contain">
+        </div>
+        <div>
+          <h3 class="font-display font-black text-xl text-brand-navy">Vérifiez votre demande</h3>
+          <p class="text-xs text-slate-500">ID Dossier : <span id="summaryId" class="font-mono font-bold text-brand-red">RDN-XXXXXX</span></p>
+        </div>
+      </div>
+
+      <div class="my-5 p-4 rounded-2xl bg-brand-slateBg border border-slate-200 text-xs sm:text-sm space-y-2.5">
+        <div class="flex justify-between border-b border-slate-200/60 pb-1.5">
+          <span class="text-slate-500">Nom :</span>
+          <span id="sumName" class="font-bold text-brand-navy">---</span>
+        </div>
+
+        <div class="flex justify-between border-b border-slate-200/60 pb-1.5">
+          <span class="text-slate-500">Pays :</span>
+          <span id="sumCountry" class="font-bold text-brand-navy">---</span>
+        </div>
+
+        <div class="flex justify-between border-b border-slate-200/60 pb-1.5">
+          <span class="text-slate-500">Ville :</span>
+          <span id="sumCity" class="font-bold text-brand-navy">---</span>
+        </div>
+
+        <div class="flex justify-between border-b border-slate-200/60 pb-1.5">
+          <span class="text-slate-500">Téléphone :</span>
+          <span id="sumPhone" class="font-mono font-bold text-brand-navy">---</span>
+        </div>
+
+        <div class="flex justify-between border-b border-slate-200/60 pb-1.5">
+          <span class="text-slate-500">E-mail :</span>
+          <span id="sumEmail" class="font-mono font-bold text-brand-navy">---</span>
+        </div>
+
+        <div class="flex justify-between border-b border-slate-200/60 pb-1.5 pt-1">
+          <span class="text-slate-500">Nombre d'actions :</span>
+          <span id="sumShares" class="font-mono font-black text-brand-navy">---</span>
+        </div>
+
+        <div class="flex justify-between border-b border-slate-200/60 pb-1.5">
+          <span class="text-slate-500">Prix unitaire :</span>
+          <span class="font-mono font-bold text-slate-700">0,40 USD</span>
+        </div>
+
+        <div class="flex justify-between border-b border-slate-200/60 pb-1.5">
+          <span class="text-slate-500">Total USD :</span>
+          <span id="sumTotalUsd" class="font-mono font-black text-brand-navy">---</span>
+        </div>
+
+        <div class="flex justify-between border-b border-slate-200/60 pb-1.5">
+          <span class="text-slate-500">Devise locale :</span>
+          <span id="sumCurrency" class="font-mono font-bold text-slate-700">---</span>
+        </div>
+
+        <div class="flex justify-between text-base font-black pt-1 text-brand-red">
+          <span>Montant local estimatif :</span>
+          <span id="sumTotalLocal">---</span>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-500 mb-5 text-center">
+        En soumettant votre demande, votre dossier est instantanément envoyé vers <strong>rafinerynigeria@gmail.com</strong> via notre endpoint sécurisé Formspree.
+      </p>
+
+      <div class="grid grid-cols-2 gap-3">
+        <button 
+          type="button" 
+          onclick="closeSummaryModal()" 
+          class="w-full py-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition"
+        >
+          <i class="fa-solid fa-pen mr-1"></i> Modifier
+        </button>
+
+        <button 
+          type="button" 
+          id="btnSubmitFormspree" 
+          onclick="executeFormspreeSubmission()" 
+          class="w-full py-3.5 rounded-xl bg-brand-red hover:bg-brand-redHover text-white font-bold text-xs sm:text-sm shadow-btn-red flex items-center justify-center gap-2 transition"
+        >
+          <span id="btnSubmitText">Envoyer ma demande</span>
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="modalSuccess" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/75 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white max-w-lg w-full rounded-3xl p-8 border border-slate-200 shadow-2xl text-center space-y-5">
+      <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto shadow-md">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+
+      <div>
+        <h3 class="font-display font-black text-2xl text-brand-navy">Demande transmise avec succès !</h3>
+        <p class="text-xs text-slate-500 mt-1">
+          Votre dossier N° <span id="successOrderId" class="font-mono font-black text-brand-navy text-2xl sm:text-3xl">RDN-XXXXXX</span> a bien été transmis à <strong class="text-brand-navy">rafinerynigeria@gmail.com</strong>.
+        </p>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-200 text-xs text-slate-600 leading-relaxed text-left">
+        <p class="font-semibold text-brand-navy mb-1">Prochaine étape :</p>
+        <p>
+          Pour accélérer le suivi de votre souscription ou poser une question à notre équipe, vous pouvez transmettre directement votre fiche récapitulative sur WhatsApp d'un simple clic ci-dessous.
+        </p>
+      </div>
+
+      <div class="space-y-3 pt-2">
+        <button 
+          type="button" 
+          onclick="launchSmartWhatsApp()" 
+          class="w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg flex items-center justify-center gap-2.5 transition"
+        >
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Ouvrir dans WhatsApp maintenant</span>
+        </button>
+
+        <button 
+          type="button" 
+          onclick="viewDossierInTracking()" 
+          class="w-full py-3 rounded-xl bg-brand-navy text-white font-semibold text-xs transition"
+        >
+          <i class="fa-solid fa-clock-rotate-left mr-1"></i> Suivre l'avancement de mon dossier
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Documentation -->
+  <div id="modalDoc" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xl relative text-left overflow-y-auto max-h-[90vh]">
+      <button onclick="closeDocumentationModal()" class="absolute top-5 right-5 text-slate-400 hover:text-brand-navy p-2 rounded-full hover:bg-slate-100" aria-label="Fermer">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="flex items-center gap-3 pb-4 border-b border-slate-100">
+        <div class="h-12 w-12 flex items-center justify-center p-1 rounded-xl border border-slate-200 bg-white">
+          <img src="1004915935.png" data-rdn-logo="true" alt="Logo Rafinery Du Nigeria" class="h-full w-full object-contain">
+        </div>
+        <div>
+          <h3 class="font-display font-black text-xl text-brand-navy">Document de Présentation (One-Pager)</h3>
+          <p class="text-xs text-slate-500">Synthèse institutionnelle de l'opportunité énergétique</p>
+        </div>
+      </div>
+
+      <div id="onePagerPrintArea" class="my-5 p-6 rounded-2xl bg-brand-slateBg border border-slate-200 text-xs space-y-4 text-slate-700 leading-relaxed">
+        <div class="border-b border-slate-200 pb-3">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-brand-red block">Fiche Synthèse — Émission 2026</span>
+          <h4 class="font-display font-black text-lg text-brand-navy">Rafinery Du Nigeria — Opportunité de Raffinage</h4>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+          <div class="bg-white p-2 rounded-xl border border-slate-200">
+            <span class="text-[10px] text-slate-400 block">Prix Fixé</span>
+            <strong class="font-mono text-brand-navy text-sm">0,40 $ USD</strong>
+          </div>
+          <div class="bg-white p-2 rounded-xl border border-slate-200">
+            <span class="text-[10px] text-slate-400 block">Seuil Min.</span>
+            <strong class="font-mono text-brand-red text-sm">10 actions</strong>
+          </div>
+          <div class="bg-white p-2 rounded-xl border border-slate-200">
+            <span class="text-[10px] text-slate-400 block">Émission</span>
+            <strong class="font-mono text-slate-700 text-sm">Phase 1</strong>
+          </div>
+          <div class="bg-white p-2 rounded-xl border border-slate-200">
+            <span class="text-[10px] text-slate-400 block">Devise Pivot</span>
+            <strong class="font-mono text-slate-700 text-sm">USD & Local</strong>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <p><strong>1. Contexte du marché :</strong> Le Nigeria est le premier producteur d'hydrocarbures du continent africain. Le raffinage local des dérivés pétroliers répond à une demande domestique et sous-régionale structurelle en forte croissance.</p>
+          <p><strong>2. Rôle de la plateforme :</strong> Intermédiaire technique et facilitateur de mise en relation permettant aux investisseurs africains et internationaux d'estimer et de soumettre leur intention de souscription en toute transparence.</p>
+          <p><strong>3. Sécurisation :</strong> Toute demande génère un identifiant unique (RDN-XXXXXX). Les coordonnées bancaires et protocoles de paiement sont délivrés nominativement par le service financier agréé après audit de conformité.</p>
+        </div>
+
+        <div class="p-3 bg-white rounded-xl border border-slate-200 text-[11px] text-slate-500 italic">
+          Avertissement légal : Document informatif sans valeur de promesse de gain garanti. Investissement sous réserve des conditions statutaires.
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center pt-2">
+        <button 
+          type="button" 
+          onclick="window.print()" 
+          class="px-5 py-2.5 rounded-xl bg-brand-slateBg hover:bg-slate-200 text-brand-navy font-bold text-xs flex items-center gap-1.5 transition"
+        >
+          <i class="fa-solid fa-print"></i>
+          <span>Imprimer / Enregistrer en PDF</span>
+        </button>
+
+        <button 
+          type="button" 
+          onclick="closeDocumentationModal()" 
+          class="px-5 py-2.5 rounded-xl bg-brand-navy text-white font-bold text-xs transition"
+        >
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Espace Investisseur -->
+  <div id="modalInvestorPortal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white max-w-lg w-full rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xl relative text-left">
+      <button onclick="closeInvestorPortal()" class="absolute top-5 right-5 text-slate-400 hover:text-brand-navy p-2 rounded-full hover:bg-slate-100" aria-label="Fermer"><i class="fa-solid fa-xmark text-lg"></i></button>
+      <div class="text-center mb-6">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-navy/10 text-brand-navy text-xs font-bold">
+          <i class="fa-solid fa-shield-halved text-brand-red"></i> Espace Sécurisé
+        </span>
+        <h3 class="font-display font-black text-2xl text-brand-navy mt-3">Connexion Investisseur</h3>
+        <p class="text-sm text-slate-500 mt-1">Connectez-vous à l'aide de votre adresse e-mail et de votre ID de dossier.</p>
+      </div>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Adresse e-mail enregistrée *</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <i class="fa-solid fa-envelope"></i>
+            </span>
+            <input id="portalInvestorEmail" type="email" autocomplete="email" placeholder="nom@exemple.com" class="w-full bg-white border border-slate-300 rounded-xl pl-10 pr-4 py-3.5 text-sm text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-red">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Numéro de dossier (ID RDN) *</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <i class="fa-solid fa-hashtag"></i>
+            </span>
+            <input id="portalInvestorId" type="text" autocomplete="off" placeholder="RDN-XXXXXX" class="w-full bg-white border border-slate-300 rounded-xl pl-10 pr-4 py-3.5 text-sm font-mono font-bold uppercase text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-red">
+          </div>
+        </div>
+        <button type="button" onclick="loginInvestorPortal()" class="w-full py-3.5 rounded-xl bg-brand-navy hover:bg-brand-navyLight text-white font-bold text-sm shadow-btn-navy transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-right-to-bracket text-brand-red"></i>
+          <span>Consulter mon dossier</span>
+        </button>
+        <p id="portalInvestorError" class="hidden text-center text-xs font-semibold text-rose-600 bg-rose-50 border border-rose-200 rounded-xl p-3"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Admin (Indice retiré, mot de passe reste 2026) -->
+  <div id="modalAdmin" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white max-w-4xl w-full rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xl relative text-left overflow-y-auto max-h-[92vh]">
+      <button onclick="closeAdminModal()" class="absolute top-5 right-5 text-slate-400 hover:text-brand-navy p-2 rounded-full hover:bg-slate-100" aria-label="Fermer">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center text-lg">
+            <i class="fa-solid fa-user-shield"></i>
+          </div>
+          <div>
+            <h3 class="font-display font-black text-xl text-brand-navy">Portail Administrateur — Validation des Requêtes</h3>
+            <p class="text-xs text-slate-500">Gestion des souscriptions, ajouts de parts et transferts</p>
+          </div>
+        </div>
+
+        <span class="text-[11px] font-mono bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-bold">
+          Accès Sécurisé
+        </span>
+      </div>
+
+      <!-- Écran PIN sans indice -->
+      <div id="adminAuthScreen" class="my-8 text-center max-w-xs mx-auto space-y-4">
+        <div class="w-14 h-14 rounded-2xl bg-brand-redLight text-brand-red flex items-center justify-center text-2xl mx-auto">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-brand-navy text-sm">Code PIN d'administration</h4>
+          <p class="text-xs text-slate-500">Entrez votre code secret pour accéder aux validations</p>
+        </div>
+        <input 
+          type="password" 
+          id="inputAdminPin" 
+          maxlength="6" 
+          placeholder="Code PIN" 
+          inputmode="numeric"
+          class="w-full text-center tracking-widest font-mono text-xl py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-red"
+        />
+        <button 
+          type="button" 
+          onclick="authenticateAdmin()" 
+          class="w-full py-3 rounded-xl bg-brand-red hover:bg-brand-redHover text-white font-bold text-xs transition"
+        >
+          Accéder à l'administration
+        </button>
+      </div>
+
+      <div id="adminDashboardScreen" class="hidden my-5 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-3 bg-brand-slateBg p-4 rounded-2xl border border-slate-200">
+          <div class="text-xs">
+            <span class="text-slate-500">Requêtes totales enregistrées :</span>
+            <strong id="adminCountTotal" class="font-mono text-brand-navy text-sm ml-1">0</strong>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="refreshAdminTable()" class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-100">
+              <i class="fa-solid fa-rotate-right mr-1"></i> Actualiser
+            </button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto rounded-2xl border border-slate-200">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-50 text-slate-500 font-bold border-b border-slate-200 uppercase text-[10px]">
+              <tr>
+                <th class="p-3">ID Dossier</th>
+                <th class="p-3">Type</th>
+                <th class="p-3">Investisseur</th>
+                <th class="p-3">Volume / Détail</th>
+                <th class="p-3">Statut</th>
+                <th class="p-3 text-right">Actions Administrateur</th>
+              </tr>
+            </thead>
+            <tbody id="adminTableBody" class="divide-y divide-slate-100 text-slate-700 font-medium">
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-[11px] text-slate-400 italic">
+          * Les ajouts de parts et transferts validés ici sont automatiquement appliqués aux soldes des comptes concernés.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dedicated Legal Modals -->
+  <div id="modalLegal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xl relative text-left overflow-y-auto max-h-[85vh]">
+      <button onclick="closeLegalModal()" class="absolute top-5 right-5 text-slate-400 hover:text-brand-navy p-2 rounded-full hover:bg-slate-100" aria-label="Fermer">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <h3 id="legalModalTitle" class="font-display font-black text-xl text-brand-navy mb-4">Document Légal</h3>
+      <div id="legalModalBody" class="text-xs text-slate-600 leading-relaxed space-y-3"></div>
+      <div class="mt-6 pt-4 border-t border-slate-100 flex justify-end">
+        <button onclick="closeLegalModal()" class="px-5 py-2.5 rounded-xl bg-brand-navy text-white font-bold text-xs">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Button -->
+  <div class="fixed bottom-6 right-6 z-40">
+    <button 
+      type="button" 
+      onclick="launchSmartWhatsApp()" 
+      aria-label="Contacter le support WhatsApp"
+      class="whatsapp-ring relative bg-emerald-500 hover:bg-emerald-600 text-white h-14 w-14 sm:w-auto sm:px-5 rounded-full shadow-2xl flex items-center justify-center gap-2.5 transition transform hover:scale-105 active:scale-95"
+    >
+      <i class="fa-brands fa-whatsapp text-2xl"></i>
+      <span class="hidden sm:inline font-bold text-xs tracking-wide">Support WhatsApp</span>
+    </button>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="bg-white border-t border-slate-200 pt-14 pb-10 px-4 sm:px-6 lg:px-8 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto space-y-10 text-left">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 flex items-center justify-center p-0.5 rounded-xl border border-slate-200 bg-white">
+              <img src="1004915935.png" data-rdn-logo="true" alt="Logo Rafinery Du Nigeria" class="h-full w-full object-contain">
+            </div>
+            <span class="font-display font-black text-lg text-brand-navy">
+              RAFINERY <span class="text-brand-red">DU NIGERIA</span>
+            </span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed max-w-sm">
+            Notre plateforme facilite la mise en relation entre les investisseurs et l'opportunité d'investissement liée à Rafinery Du Nigeria. Prix unitaire de référence : 0,40 USD par action (minimum 10 actions).
+          </p>
+          <div class="text-[11px] text-slate-400 space-y-1">
+            <p><i class="fa-solid fa-envelope mr-1 text-brand-red"></i> rafinerynigeria@gmail.com</p>
+            <p><i class="fa-brands fa-whatsapp mr-1 text-emerald-600"></i> +234 708 423 1858</p>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 space-y-2">
+          <h5 class="font-bold text-brand-navy text-xs uppercase tracking-wider mb-3">Navigation</h5>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-brand-navy transition">Accueil</a></li>
+            <li><a href="#positionnement" class="hover:text-brand-navy transition">Rôle de la plateforme</a></li>
+            <li><a href="#opportunite" class="hover:text-brand-navy transition">L'opportunité</a></li>
+            <li><a href="#calculateur" class="hover:text-brand-navy transition">Calculateur</a></li>
+            <li><a href="#jalons" class="hover:text-brand-navy transition">Roadmap & Jalons</a></li>
+            <li><a href="#suivi" class="hover:text-brand-navy text-brand-red font-bold transition">Suivi de dossier</a></li>
+            <li><a href="#faq" class="hover:text-brand-navy transition">FAQ & Support</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4 space-y-2">
+          <h5 class="font-bold text-brand-navy text-xs uppercase tracking-wider mb-3">Cadre & Administration</h5>
+          <ul class="space-y-2">
+            <li><button type="button" onclick="openLegalModal('mentions')" class="hover:text-brand-navy transition text-left">Mentions légales</button></li>
+            <li><button type="button" onclick="openLegalModal('cgu')" class="hover:text-brand-navy transition text-left">Conditions générales d'utilisation</button></li>
+            <li><button type="button" onclick="openLegalModal('confidentialite')" class="hover:text-brand-navy transition text-left">Politique de confidentialité</button></li>
+            <li><button type="button" onclick="openLegalModal('reglementaire')" class="hover:text-brand-navy transition text-left">Informations réglementaires</button></li>
+            <li><button type="button" onclick="openAdminModal()" class="hover:text-brand-navy transition text-left text-slate-400 font-semibold flex items-center gap-1 mt-2">
+              <i class="fa-solid fa-lock text-[10px]"></i> Espace Admin (Validation des dossiers)
+            </button></li>
+          </ul>
+          <p class="text-[10px] text-slate-400 pt-2 leading-relaxed">
+            Avertissement : Les estimations affichées ne constituent ni un conseil en investissement ni une garantie de résultat financier.
+          </p>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-100 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-[11px] text-slate-400">
+        <p>© 2026 Rafinery Du Nigeria. Tous droits réservés.</p>
+        <p>Plateforme d'accès et d'intermédiation pour investisseurs internationaux.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    let PRICE_PER_SHARE = Number(window.SITE_CONFIG?.calculator?.pricePerShare ?? window.SITE_CONFIG?.stats?.price ?? 0.40);
+    let MIN_SHARES = Number(window.SITE_CONFIG?.calculator?.minimumShares ?? window.SITE_CONFIG?.stats?.minimum ?? 10);
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvkgojpe";
+    const WHATSAPP_PHONE = "2347084231858";
+
+    const COUNTRY_DATA = {
+      NGA: { name: "Nigeria", flag: "🇳🇬", currency: "NGN", symbol: "₦", rate: 1550, dial: "+234", decimals: 0 },
+      CMR: { name: "Cameroun", flag: "🇨🇲", currency: "XAF", symbol: "FCFA", rate: 610, dial: "+237", decimals: 0 },
+      CIV: { name: "Côte d'Ivoire", flag: "🇨🇮", currency: "XOF", symbol: "FCFA", rate: 610, dial: "+225", decimals: 0 },
+      SEN: { name: "Sénégal", flag: "🇸🇳", currency: "XOF", symbol: "FCFA", rate: 610, dial: "+221", decimals: 0 },
+      TGO: { name: "Togo", flag: "🇹🇬", currency: "XOF", symbol: "FCFA", rate: 610, dial: "+228", decimals: 0 },
+      BFA: { name: "Burkina Faso", flag: "🇧🇫", currency: "XOF", symbol: "FCFA", rate: 610, dial: "+226", decimals: 0 },
+      GAB: { name: "Gabon", flag: "🇬🇦", currency: "XAF", symbol: "FCFA", rate: 610, dial: "+241", decimals: 0 },
+      COG: { name: "Congo", flag: "🇨🇬", currency: "XAF", symbol: "FCFA", rate: 610, dial: "+242", decimals: 0 },
+      COD: { name: "RDC", flag: "🇨🇩", currency: "CDF", symbol: "FC", rate: 2850, dial: "+243", decimals: 0 },
+      GIN: { name: "Guinée", flag: "🇬🇳", currency: "GNF", symbol: "FG", rate: 8650, dial: "+224", decimals: 0 },
+      BEN: { name: "Bénin", flag: "🇧🇯", currency: "XOF", symbol: "FCFA", rate: 610, dial: "+229", decimals: 0 },
+      MLI: { name: "Mali", flag: "🇲🇱", currency: "XOF", symbol: "FCFA", rate: 610, dial: "+223", decimals: 0 },
+      NER: { name: "Niger", flag: "🇳🇪", currency: "XOF", symbol: "FCFA", rate: 610, dial: "+227", decimals: 0 },
+      TCD: { name: "Tchad", flag: "🇹🇩", currency: "XAF", symbol: "FCFA", rate: 610, dial: "+235", decimals: 0 },
+      CAF: { name: "Centrafrique", flag: "🇨🇫", currency: "XAF", symbol: "FCFA", rate: 610, dial: "+236", decimals: 0 },
+      GNQ: { name: "Guinée équatoriale", flag: "🇬🇶", currency: "XAF", symbol: "FCFA", rate: 610, dial: "+240", decimals: 0 },
+      GHA: { name: "Ghana", flag: "🇬🇭", currency: "GHS", symbol: "GH₵", rate: 15.2, dial: "+233", decimals: 2 },
+      GMD: { name: "Gambie", flag: "🇬🇲", currency: "GMD", symbol: "D", rate: 71.0, dial: "+220", decimals: 2 },
+      SLE: { name: "Sierra Leone", flag: "🇸🇱", currency: "SLE", symbol: "Le", rate: 22.8, dial: "+232", decimals: 2 },
+      LRD: { name: "Liberia", flag: "🇱🇷", currency: "LRD", symbol: "$", rate: 195.0, dial: "+231", decimals: 2 },
+      MRU: { name: "Mauritanie", flag: "🇲🇷", currency: "MRU", symbol: "UM", rate: 39.8, dial: "+222", decimals: 2 },
+      MAR: { name: "Maroc", flag: "🇲🇦", currency: "MAD", symbol: "DH", rate: 10.05, dial: "+212", decimals: 2 },
+      DZA: { name: "Algérie", flag: "🇩🇿", currency: "DZD", symbol: "DA", rate: 134.5, dial: "+213", decimals: 2 },
+      TUN: { name: "Tunisie", flag: "🇹🇳", currency: "TND", symbol: "DT", rate: 3.12, dial: "+216", decimals: 2 },
+      EGP: { name: "Égypte", flag: "🇪🇬", currency: "EGP", symbol: "E£", rate: 48.5, dial: "+20", decimals: 2 },
+      KEN: { name: "Kenya", flag: "🇰🇪", currency: "KES", symbol: "KSh", rate: 129.5, dial: "+254", decimals: 2 },
+      UGA: { name: "Ouganda", flag: "🇺🇬", currency: "UGX", symbol: "USh", rate: 3720, dial: "+256", decimals: 0 },
+      RWA: { name: "Rwanda", flag: "🇷🇼", currency: "RWF", symbol: "FRw", rate: 1360, dial: "+250", decimals: 0 },
+      TZA: { name: "Tanzanie", flag: "🇹🇿", currency: "TZS", symbol: "TSh", rate: 2710, dial: "+255", decimals: 0 },
+      ZMW: { name: "Zambie", flag: "🇿🇲", currency: "ZMW", symbol: "ZK", rate: 26.5, dial: "+260", decimals: 2 },
+      ZAR: { name: "Afrique du Sud", flag: "🇿🇦", currency: "ZAR", symbol: "R", rate: 17.8, dial: "+27", decimals: 2 },
+      AOA: { name: "Angola", flag: "🇦🇴", currency: "AOA", symbol: "Kz", rate: 935, dial: "+244", decimals: 0 },
+      MZN: { name: "Mozambique", flag: "🇲🇿", currency: "MZN", symbol: "MT", rate: 63.9, dial: "+258", decimals: 2 },
+      MGA: { name: "Madagascar", flag: "🇲🇬", currency: "MGA", symbol: "Ar", rate: 4620, dial: "+261", decimals: 0 },
+      ETB: { name: "Éthiopie", flag: "🇪🇹", currency: "ETB", symbol: "Birr", rate: 120.0, dial: "+251", decimals: 2 },
+      BIF: { name: "Burundi", flag: "🇧🇮", currency: "BIF", symbol: "FBu", rate: 2900, dial: "+257", decimals: 0 },
+      FRA: { name: "France", flag: "🇫🇷", currency: "EUR", symbol: "€", rate: 0.92, dial: "+33", decimals: 2 },
+      USA: { name: "États-Unis", flag: "🇺🇸", currency: "USD", symbol: "$", rate: 1.0, dial: "+1", decimals: 2 },
+      CAN: { name: "Canada", flag: "🇨🇦", currency: "CAD", symbol: "$", rate: 1.36, dial: "+1", decimals: 2 },
+      GBR: { name: "Royaume-Uni", flag: "🇬🇧", currency: "GBP", symbol: "£", rate: 0.78, dial: "+44", decimals: 2 },
+      CHN: { name: "Chine", flag: "🇨🇳", currency: "CNY", symbol: "¥", rate: 7.15, dial: "+86", decimals: 2 },
+      OTHER: { name: "Autre Pays", flag: "🌍", currency: "USD", symbol: "$", rate: 1.0, dial: "+", decimals: 2 }
+    };
+
+    let currentShares = 100;
+    let currentCountryKey = 'NGA';
+    let currentStep = 1;
+    let generatedUniqueId = 'RDN-' + Math.floor(100000 + Math.random() * 900000);
+
+    let REAL_PROSPECTS = [];
+    const ADMIN_PIN = "2026"; // Code PIN admin conservé, sans indice dans l'interface
+    let activeLoggedProspect = null;
+
+    let liveSubscribedShares = 15480;
+    const LIVE_INVESTORS_DATA = [
+      { name: "Jean-Paul M.", city: "Douala", flag: "🇨🇲", shares: 250, usd: "100,00 USD", local: "61 000 FCFA" },
+      { name: "Koffi A.", city: "Abidjan", flag: "🇨🇮", shares: 500, usd: "200,00 USD", local: "122 000 FCFA" },
+      { name: "Chinedu O.", city: "Lagos", flag: "🇳🇬", shares: 1000, usd: "400,00 USD", local: "620 000 ₦" },
+      { name: "Amadou D.", city: "Dakar", flag: "🇸🇳", shares: 150, usd: "60,00 USD", local: "36 600 FCFA" },
+      { name: "Fatoumata B.", city: "Conakry", flag: "🇬🇳", shares: 300, usd: "120,00 USD", local: "1 038 000 FG" },
+      { name: "Alain K.", city: "Yaoundé", flag: "🇨🇲", shares: 400, usd: "160,00 USD", local: "97 600 FCFA" },
+      { name: "Emeka U.", city: "Abuja", flag: "🇳🇬", shares: 750, usd: "300,00 USD", local: "465 000 ₦" },
+      { name: "Mireille T.", city: "Libreville", flag: "🇬🇦", shares: 200, usd: "80,00 USD", local: "48 800 FCFA" },
+      { name: "Ibrahim S.", city: "Bamako", flag: "🇲🇱", shares: 100, usd: "40,00 USD", local: "24 400 FCFA" },
+      { name: "Didier E.", city: "Kinshasa", flag: "🇨🇩", shares: 600, usd: "240,00 USD", local: "684 000 CDF" }
+    ];
+
+    let socialProofIndex = 0;
+
+    function triggerSocialProofToast() {
+      const toast = document.getElementById('socialProofToast');
+      if (!toast) return;
+
+      const data = LIVE_INVESTORS_DATA[socialProofIndex % LIVE_INVESTORS_DATA.length];
+      socialProofIndex++;
+
+      document.getElementById('spFlag').textContent = data.flag;
+      document.getElementById('spName').textContent = data.name;
+      document.getElementById('spCity').textContent = data.city;
+      document.getElementById('spShares').textContent = `${data.shares} actions`;
+      document.getElementById('spAmount').textContent = `${data.usd} (${data.local})`;
+
+      incrementLiveCounter(data.shares);
+
+      toast.classList.remove('toast-hidden');
+      toast.classList.add('toast-visible');
+
+      setTimeout(() => { hideSocialProofToast(); }, 7500);
+
+      const nextDelay = Math.floor(Math.random() * (40000 - 25000 + 1)) + 25000;
+      setTimeout(triggerSocialProofToast, nextDelay);
+    }
+
+    function hideSocialProofToast() {
+      const toast = document.getElementById('socialProofToast');
+      if (toast) {
+        toast.classList.remove('toast-visible');
+        toast.classList.add('toast-hidden');
+      }
+    }
+
+    function incrementLiveCounter(addedShares) {
+      liveSubscribedShares += addedShares;
+      const formatted = liveSubscribedShares.toLocaleString('fr-FR') + "+";
+      const topEl = document.getElementById('topLiveCounter');
+      const heroEl = document.getElementById('heroLiveCounter');
+      if (topEl) topEl.textContent = formatted;
+      if (heroEl) heroEl.textContent = formatted;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      recalculate();
+      
+      try {
+        const stored = localStorage.getItem('rdn_real_prospects') || sessionStorage.getItem('rdn_real_prospects');
+        if (stored) {
+          REAL_PROSPECTS = JSON.parse(stored);
+        }
+      } catch (e) {
+        REAL_PROSPECTS = [];
+      }
+
+      document.getElementById('hiddenOrderId').value = generatedUniqueId;
+      document.getElementById('summaryId').textContent = generatedUniqueId;
+      document.getElementById('successOrderId').textContent = generatedUniqueId;
+      document.getElementById('searchDossierInput').value = generatedUniqueId;
+      const savedEmail = sessionStorage.getItem('rdn_email');
+      if (savedEmail) document.getElementById('searchInvestorEmail').value = savedEmail;
+      document.getElementById('inlineSuccessId').textContent = generatedUniqueId;
+
+      setTimeout(triggerSocialProofToast, 4000);
+    });
+
+    function shareOnWhatsApp() {
+      const text = encodeURIComponent("Découvre cette opportunité dans le secteur énergétique au Nigeria (Rafinery Du Nigeria) accessible dès 10 actions à 0,40 $ USD : https://rafinerynigeria.com");
+      window.open(`https://wa.me/?text=${text}`, '_blank');
+    }
+
+    function adjustShares(delta) {
+      let next = currentShares + delta;
+      if (next < MIN_SHARES) next = MIN_SHARES;
+      setSharesDirect(next);
+    }
+
+    function onShareInputChange(val) {
+      let n = parseInt(val, 10);
+      if (isNaN(n) || n < MIN_SHARES) n = MIN_SHARES;
+      currentShares = n;
+      document.getElementById('calcShareSlider').value = Math.min(n, 5000);
+      recalculate();
+    }
+
+    function onShareSliderChange(val) {
+      currentShares = parseInt(val, 10);
+      document.getElementById('calcShareInput').value = currentShares;
+      recalculate();
+    }
+
+    function setSharesDirect(qty) {
+      currentShares = Math.max(MIN_SHARES, qty);
+      document.getElementById('calcShareInput').value = currentShares;
+      document.getElementById('calcShareSlider').value = Math.min(currentShares, 5000);
+      recalculate();
+    }
+
+    function onCountrySelected(code) {
+      currentCountryKey = code;
+      const formSelect = document.getElementById('inputFormCountry');
+      for (let i = 0; i < formSelect.options.length; i++) {
+        if (formSelect.options[i].getAttribute('data-code') === code) {
+          formSelect.selectedIndex = i;
+          break;
+        }
+      }
+      const c = COUNTRY_DATA[code] || COUNTRY_DATA['OTHER'];
+      document.getElementById('formPhonePrefix').textContent = c.dial;
+      recalculate();
+    }
+
+    function syncCountryWithForm(countryName) {
+      const formSelect = document.getElementById('inputFormCountry');
+      const opt = formSelect.options[formSelect.selectedIndex];
+      const code = opt.getAttribute('data-code') || 'OTHER';
+      
+      currentCountryKey = code;
+      document.getElementById('selectCalcCountry').value = code;
+
+      const c = COUNTRY_DATA[code] || COUNTRY_DATA['OTHER'];
+      document.getElementById('formPhonePrefix').textContent = c.dial;
+      recalculate();
+    }
+
+    function formatAmount(num, decimals) {
+      return num.toLocaleString('fr-FR', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+      });
+    }
+
+    function recalculate() {
+      const c = COUNTRY_DATA[currentCountryKey] || COUNTRY_DATA['OTHER'];
+      const totalUsd = currentShares * PRICE_PER_SHARE;
+      const totalLocal = totalUsd * c.rate;
+
+      const formattedLocal = `${formatAmount(totalLocal, c.decimals)} ${c.currency}`;
+      const formattedUsd = `${totalUsd.toFixed(2)} USD`;
+
+      document.getElementById('resShares').textContent = currentShares.toLocaleString('fr-FR');
+      document.getElementById('resTotalUsd').textContent = formattedUsd;
+      document.getElementById('resCountryName').textContent = `${c.name} ${c.flag}`;
+      document.getElementById('resCurrency').textContent = c.currency;
+      document.getElementById('resTotalLocal').textContent = formattedLocal;
+      document.getElementById('resExchangeRate').textContent = `Taux indicatif : 1 USD = ${formatAmount(c.rate, c.decimals)} ${c.currency}`;
+
+      document.getElementById('hiddenShares').value = currentShares;
+      document.getElementById('hiddenTotalUsd').value = formattedUsd;
+      document.getElementById('hiddenCurrency').value = c.currency;
+      document.getElementById('hiddenTotalLocal').value = formattedLocal;
+
+      document.getElementById('step3SharesCount').textContent = `${currentShares.toLocaleString('fr-FR')} actions`;
+      document.getElementById('step3TotalUsd').textContent = formattedUsd;
+      document.getElementById('step3TotalLocal').textContent = formattedLocal;
+
+      sessionStorage.setItem('rdn_shares', currentShares);
+      sessionStorage.setItem('rdn_totalUsd', formattedUsd);
+      sessionStorage.setItem('rdn_currency', c.currency);
+      sessionStorage.setItem('rdn_totalLocal', formattedLocal);
+      sessionStorage.setItem('rdn_country', c.name);
+    }
+
+    function passSelectionToForm() {
+      goToStep(1);
+      setTimeout(() => { document.getElementById('inputFormName').focus(); }, 100);
+    }
+
+    function goToStep(stepNumber) {
+      if (stepNumber === 2) {
+        const name = document.getElementById('inputFormName').value.trim();
+        const city = document.getElementById('inputFormCity').value.trim();
+        if (!name || !city) {
+          showToast("Veuillez remplir votre nom complet et votre ville.");
+          return;
+        }
+      }
+
+      if (stepNumber === 3) {
+        const phone = document.getElementById('inputFormPhone').value.trim();
+        const email = document.getElementById('inputFormEmail').value.trim();
+        if (!phone || !email) {
+          showToast("Veuillez renseigner votre téléphone et votre adresse e-mail.");
+          return;
+        }
+        if (!email.includes('@') || !email.includes('.')) {
+          showToast("Veuillez entrer une adresse e-mail valide.");
+          return;
+        }
+      }
+
+      currentStep = stepNumber;
+
+      document.getElementById('formStep1').classList.toggle('hidden', stepNumber !== 1);
+      document.getElementById('formStep2').classList.toggle('hidden', stepNumber !== 2);
+      document.getElementById('formStep3').classList.toggle('hidden', stepNumber !== 3);
+
+      const b1 = document.getElementById('stepBadge1');
+      const b2 = document.getElementById('stepBadge2');
+      const b3 = document.getElementById('stepBadge3');
+      const p1 = document.getElementById('progressStep1to2');
+      const p2 = document.getElementById('progressStep2to3');
+
+      if (stepNumber === 1) {
+        b1.className = "w-9 h-9 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-sm shadow-md";
+        b2.className = "w-9 h-9 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm";
+        b3.className = "w-9 h-9 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm";
+        p1.style.width = '0%';
+        p2.style.width = '0%';
+      } else if (stepNumber === 2) {
+        b1.className = "w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm";
+        b2.className = "w-9 h-9 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-sm shadow-md";
+        b3.className = "w-9 h-9 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm";
+        p1.style.width = '100%';
+        p2.style.width = '0%';
+      } else if (stepNumber === 3) {
+        b1.className = "w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm";
+        b2.className = "w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm";
+        b3.className = "w-9 h-9 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-sm shadow-md";
+        p1.style.width = '100%';
+        p2.style.width = '100%';
+      }
+    }
+
+    function showSummaryModal() {
+      const name = document.getElementById('inputFormName').value.trim();
+      const country = document.getElementById('inputFormCountry').value;
+      const city = document.getElementById('inputFormCity').value.trim();
+      const phone = document.getElementById('inputFormPhone').value.trim();
+      const email = document.getElementById('inputFormEmail').value.trim();
+
+      if (!name || !city || !phone || !email) {
+        showToast("Veuillez vérifier que tous les champs obligatoires sont remplis.");
+        return;
+      }
+
+      const c = COUNTRY_DATA[currentCountryKey] || COUNTRY_DATA['OTHER'];
+      const fullPhone = `${c.dial} ${phone}`;
+
+      document.getElementById('sumName').textContent = name;
+      document.getElementById('sumCountry').textContent = country;
+      document.getElementById('sumCity').textContent = city;
+      document.getElementById('sumPhone').textContent = fullPhone;
+      document.getElementById('sumEmail').textContent = email;
+      document.getElementById('sumShares').textContent = `${currentShares.toLocaleString('fr-FR')} actions`;
+      document.getElementById('sumTotalUsd').textContent = document.getElementById('hiddenTotalUsd').value;
+      document.getElementById('sumCurrency').textContent = c.currency;
+      document.getElementById('sumTotalLocal').textContent = document.getElementById('hiddenTotalLocal').value;
+
+      sessionStorage.setItem('rdn_name', name);
+      sessionStorage.setItem('rdn_country', country);
+      sessionStorage.setItem('rdn_city', city);
+      sessionStorage.setItem('rdn_phone', fullPhone);
+      sessionStorage.setItem('rdn_email', email);
+      sessionStorage.setItem('rdn_id', generatedUniqueId);
+
+      const modal = document.getElementById('modalSummary');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 20);
+    }
+
+    function closeSummaryModal() {
+      const modal = document.getElementById('modalSummary');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    async function executeFormspreeSubmission() {
+      const btn = document.getElementById('btnSubmitFormspree');
+      const btnText = document.getElementById('btnSubmitText');
+
+      btn.disabled = true;
+      btnText.textContent = "Transmission en cours...";
+
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('fr-FR');
+      const timeStr = now.toLocaleTimeString('fr-FR');
+      document.getElementById('hiddenDate').value = dateStr;
+      document.getElementById('hiddenTime').value = timeStr;
+
+      const payload = {
+        Type_Requete: "SOUSCRIPTION INITIALE",
+        Demande_ID: generatedUniqueId,
+        Nom_Complet: sessionStorage.getItem('rdn_name') || document.getElementById('inputFormName').value,
+        Pays: sessionStorage.getItem('rdn_country') || document.getElementById('inputFormCountry').value,
+        Ville: sessionStorage.getItem('rdn_city') || document.getElementById('inputFormCity').value,
+        Telephone: sessionStorage.getItem('rdn_phone') || document.getElementById('inputFormPhone').value,
+        Email: sessionStorage.getItem('rdn_email') || document.getElementById('inputFormEmail').value,
+        Nombre_Actions: currentShares,
+        Prix_Unitaire: "0.40 USD",
+        Total_USD: document.getElementById('hiddenTotalUsd').value,
+        Devise: document.getElementById('hiddenCurrency').value,
+        Montant_Local: document.getElementById('hiddenTotalLocal').value,
+        Date: dateStr,
+        Heure: timeStr,
+        _subject: `Nouvelle demande Rafinery Du Nigeria [${generatedUniqueId}] - ${sessionStorage.getItem('rdn_name')}`
+      };
+
+      try {
+        await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        recordRealProspect(payload);
+        closeSummaryModal();
+
+        const successModal = document.getElementById('modalSuccess');
+        successModal.classList.remove('hidden');
+        setTimeout(() => successModal.classList.remove('opacity-0'), 20);
+
+      } catch (err) {
+        recordRealProspect(payload);
+        closeSummaryModal();
+        const successModal = document.getElementById('modalSuccess');
+        successModal.classList.remove('hidden');
+        setTimeout(() => successModal.classList.remove('opacity-0'), 20);
+      } finally {
+        btn.disabled = false;
+        btnText.textContent = "Envoyer ma demande";
+      }
+    }
+
+    function recordRealProspect(data) {
+      const prospect = {
+        id: data.Demande_ID,
+        type: data.Type_Requete || "SOUSCRIPTION INITIALE",
+        name: data.Nom_Complet,
+        country: data.Pays,
+        city: data.Ville,
+        phone: data.Telephone,
+        email: data.Email,
+        shares: Number(data.Nombre_Actions),
+        totalUsd: data.Total_USD,
+        totalLocal: data.Montant_Local,
+        date: data.Date,
+        time: data.Heure,
+        status: "EN_ATTENTE",
+        statusLabel: "En attente de validation administrative"
+      };
+
+      const existingIdx = REAL_PROSPECTS.findIndex(p => p.id === prospect.id);
+      if (existingIdx >= 0) {
+        REAL_PROSPECTS[existingIdx] = prospect;
+      } else {
+        REAL_PROSPECTS.unshift(prospect);
+      }
+
+      try {
+        localStorage.setItem('rdn_real_prospects', JSON.stringify(REAL_PROSPECTS));
+      } catch (e) {}
+
+      activeLoggedProspect = prospect;
+      updateTrackingDisplay(prospect);
+    }
+
+    function viewDossierInTracking() {
+      closeSuccessModal();
+      const el = document.getElementById('suivi');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function searchDossierStatus() {
+      const emailEl = document.getElementById('searchInvestorEmail');
+      const idEl = document.getElementById('searchDossierInput');
+      const email = (emailEl.value || '').trim().toLowerCase();
+      const input = (idEl.value || '').trim().toUpperCase();
+
+      if (!email || !email.includes('@')) {
+        showToast("Veuillez entrer l'adresse e-mail utilisée lors de votre demande.");
+        return;
+      }
+      if (!/^RDN-\d{6}/.test(input)) {
+        showToast("Veuillez entrer un ID de dossier valide (RDN-XXXXXX).");
+        return;
+      }
+
+      const found = REAL_PROSPECTS.find(p => String(p.id).toUpperCase() === input && String(p.email).trim().toLowerCase() === email);
+      if (!found) {
+        activeLoggedProspect = null;
+        document.getElementById('trackDossierId').textContent = "Dossier non trouvé";
+        document.getElementById('trackInvestorName').textContent = "—";
+        document.getElementById('trackSharesCount').textContent = "—";
+        document.getElementById('trackAmount').textContent = "—";
+        document.getElementById('btnAddSharesAction').classList.add('hidden');
+        document.getElementById('btnTransferSharesAction').classList.add('hidden');
+        document.getElementById('trackBadgeStatus').className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-200";
+        document.getElementById('trackBadgeStatus').innerHTML = '<i class="fa-solid fa-lock"></i> Accès non autorisé';
+        document.getElementById('trackStatusNotice').className = "p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-900 leading-relaxed";
+        document.getElementById('trackStatusNotice').innerHTML = '<i class="fa-solid fa-circle-exclamation text-rose-600 mr-1"></i> Aucun dossier réel ne correspond simultanément à cet e-mail et à cet ID. Vérifiez vos informations.';
+        showToast("E-mail ou ID de dossier incorrect.");
+        return;
+      }
+
+      activeLoggedProspect = found;
+      sessionStorage.setItem('rdn_authenticated_id', found.id);
+      sessionStorage.setItem('rdn_authenticated_email', found.email);
+      updateTrackingDisplay(found);
+      showToast("Connexion réussie. Dossier authentifié.");
+    }
+
+    function updateTrackingDisplay(prospect) {
+      document.getElementById('trackDossierId').textContent = prospect.id;
+      document.getElementById('trackInvestorName').textContent = `${prospect.name} (${prospect.country})`;
+      document.getElementById('trackSharesCount').textContent = `${prospect.shares} actions`;
+      document.getElementById('trackAmount').textContent = prospect.totalLocal;
+
+      const addBtn = document.getElementById('btnAddSharesAction');
+      const transferBtn = document.getElementById('btnTransferSharesAction');
+      if (addBtn) addBtn.classList.remove('hidden');
+
+      const badge = document.getElementById('trackBadgeStatus');
+      const notice = document.getElementById('trackStatusNotice');
+      const s2 = document.getElementById('stepState2');
+      const s3 = document.getElementById('stepState3');
+      const icon2 = document.getElementById('stepIcon2');
+      const icon3 = document.getElementById('stepIcon3');
+
+      if (prospect.status === "APPROUVE" || prospect.status === "PAYE") {
+        if (transferBtn && Number(prospect.shares) > 0) transferBtn.classList.remove('hidden');
+
+        badge.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300";
+        badge.innerHTML = `<i class="fa-solid fa-circle-check"></i> Dossier Approuvé & Titres Validés`;
+        
+        notice.className = "p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 leading-relaxed";
+        notice.innerHTML = `<i class="fa-solid fa-certificate text-emerald-600 mr-1.5"></i> Félicitations ! Votre dossier d'investisseur est <strong>validé</strong>. Vous disposez de <strong>${prospect.shares} actions</strong>. Vous pouvez acheter d'avantage de parts ou transférer/revendre vos parts à un autre identifiant.`;
+        
+        s2.className = "p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold";
+        icon2.className = "fa-solid fa-circle-check block text-sm mb-1 text-emerald-600";
+        
+        s3.className = "p-2.5 rounded-xl bg-emerald-100 border border-emerald-300 text-emerald-900 font-bold";
+        icon3.className = "fa-solid fa-award block text-sm mb-1 text-emerald-700";
+      } else if (prospect.status === "REJETE") {
+        if (transferBtn) transferBtn.classList.add('hidden');
+        badge.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-300";
+        badge.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Complément d'information requis`;
+        notice.className = "p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-900 leading-relaxed";
+        notice.innerHTML = `<i class="fa-solid fa-circle-exclamation text-rose-600 mr-1.5"></i> Des précisions sont requises. Veuillez contacter le support WhatsApp pour compléter vos coordonnées.`;
+      } else {
+        if (transferBtn) transferBtn.classList.add('hidden');
+        badge.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200";
+        badge.innerHTML = `<i class="fa-solid fa-hourglass-half"></i> En attente de validation administrative`;
+        notice.className = "p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 leading-relaxed";
+        notice.innerHTML = `<i class="fa-solid fa-circle-info text-brand-navy mr-1"></i> Votre requête (${prospect.type || 'Souscription'}) est enregistrée. Nos administrateurs examinent actuellement la conformité de votre demande.`;
+      }
+    }
+
+    // --- ACHAT DE PARTS SUPPLÉMENTAIRES (NOUVELLE REQUÊTE À VALIDER PAR L'ADMIN) ---
+    function openAddSharesModal() {
+      if (!activeLoggedProspect) {
+        showToast("Veuillez d'abord vous connecter à votre dossier.");
+        return;
+      }
+
+      document.getElementById('addSharesTargetId').textContent = activeLoggedProspect.id;
+      document.getElementById('addSharesInvestorName').textContent = activeLoggedProspect.name;
+      document.getElementById('addSharesInvestorEmail').textContent = activeLoggedProspect.email;
+      document.getElementById('addSharesCurrentShares').textContent = `${activeLoggedProspect.shares} actions`;
+      
+      document.getElementById('extraSharesInput').value = 50;
+      recalcExtraShares(50);
+
+      const modal = document.getElementById('modalAddShares');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 20);
+    }
+
+    function closeAddSharesModal() {
+      const modal = document.getElementById('modalAddShares');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    function adjustExtraShares(delta) {
+      let currentVal = parseInt(document.getElementById('extraSharesInput').value, 10) || 0;
+      let next = currentVal + delta;
+      if (next < 1) next = 1;
+      document.getElementById('extraSharesInput').value = next;
+      recalcExtraShares(next);
+    }
+
+    function recalcExtraShares(val) {
+      let qty = parseInt(val, 10) || 0;
+      if (qty < 1) qty = 1;
+
+      const c = COUNTRY_DATA[currentCountryKey] || COUNTRY_DATA['NGA'];
+      const extraUsd = qty * PRICE_PER_SHARE;
+      const extraLocal = extraUsd * c.rate;
+
+      document.getElementById('extraCostUsd').textContent = `${extraUsd.toFixed(2)} USD`;
+      document.getElementById('extraCostLocal').textContent = `${formatAmount(extraLocal, c.decimals)} ${c.currency}`;
+
+      const currentTotal = activeLoggedProspect ? Number(activeLoggedProspect.shares || 0) : 0;
+      const newTotal = currentTotal + qty;
+      document.getElementById('extraNewTotalShares').textContent = `${newTotal.toLocaleString('fr-FR')} actions`;
+    }
+
+    async function submitExtraSharesOrder() {
+      if (!activeLoggedProspect) return;
+
+      const btn = document.getElementById('btnSubmitExtraShares');
+      const btnText = document.getElementById('btnSubmitExtraText');
+      const extraQty = parseInt(document.getElementById('extraSharesInput').value, 10) || 0;
+
+      if (extraQty < 1) {
+        showToast("Veuillez sélectionner au moins 1 part à ajouter.");
+        return;
+      }
+
+      btn.disabled = true;
+      btnText.textContent = "Transmission en cours...";
+
+      const c = COUNTRY_DATA[currentCountryKey] || COUNTRY_DATA['NGA'];
+      const extraUsdNum = extraQty * PRICE_PER_SHARE;
+      const extraLocalNum = extraUsdNum * c.rate;
+      const extraUsdFormatted = `${extraUsdNum.toFixed(2)} USD`;
+      const extraLocalFormatted = `${formatAmount(extraLocalNum, c.decimals)} ${c.currency}`;
+
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('fr-FR');
+      const timeStr = now.toLocaleTimeString('fr-FR');
+
+      // Création d'un sous-identifiant de requête pour l'ajout
+      const addRequestId = `${activeLoggedProspect.id}-ADD${Math.floor(100 + Math.random() * 900)}`;
+
+      const payload = {
+        Type_Requete: "ACHAT DE PARTS SUPPLEMENTAIRES",
+        ID_Requete: addRequestId,
+        Compte_ID_Client: activeLoggedProspect.id,
+        Nom_Complet: activeLoggedProspect.name,
+        Pays: activeLoggedProspect.country,
+        Ville: activeLoggedProspect.city,
+        Telephone: activeLoggedProspect.phone,
+        Email: activeLoggedProspect.email,
+        Parts_Achetees: extraQty,
+        Montant_USD: extraUsdFormatted,
+        Devise: c.currency,
+        Montant_Local: extraLocalFormatted,
+        Date: dateStr,
+        Heure: timeStr,
+        Statut: "EN_ATTENTE_VALIDATION",
+        _subject: `[REQUETE AJOUT PARTS] Dossier ${activeLoggedProspect.id} (+${extraQty} parts) - ${activeLoggedProspect.name}`
+      };
+
+      try {
+        await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (e) {}
+
+      // Enregistrement comme requête administrative indépendante à valider
+      const addRequestProspect = {
+        id: addRequestId,
+        parentAccount: activeLoggedProspect.id,
+        type: "ACHAT PARTS SUPP.",
+        name: activeLoggedProspect.name,
+        country: activeLoggedProspect.country,
+        city: activeLoggedProspect.city,
+        phone: activeLoggedProspect.phone,
+        email: activeLoggedProspect.email,
+        shares: extraQty,
+        totalUsd: extraUsdFormatted,
+        totalLocal: extraLocalFormatted,
+        date: dateStr,
+        time: timeStr,
+        status: "EN_ATTENTE",
+        statusLabel: "En attente de validation administrative"
+      };
+
+      REAL_PROSPECTS.unshift(addRequestProspect);
+      try {
+        localStorage.setItem('rdn_real_prospects', JSON.stringify(REAL_PROSPECTS));
+      } catch (e) {}
+
+      closeAddSharesModal();
+      btn.disabled = false;
+      btnText.textContent = "Soumettre la demande d'ajout";
+
+      showToast(`Requête N° ${addRequestId} envoyée avec succès aux administrateurs. Vos parts seront créditées dès validation.`);
+    }
+
+    // --- TRANSFERT / REVENTE DE PARTS À UN AUTRE ID ---
+    function openTransferSharesModal() {
+      if (!activeLoggedProspect) {
+        showToast("Veuillez d'abord vous connecter à votre dossier.");
+        return;
+      }
+      if (Number(activeLoggedProspect.shares) <= 0) {
+        showToast("Vous ne disposez d'aucune part active transférable.");
+        return;
+      }
+
+      document.getElementById('transferSenderId').textContent = activeLoggedProspect.id;
+      document.getElementById('transferSenderName').textContent = activeLoggedProspect.name;
+      document.getElementById('transferMaxAvailable').textContent = `${activeLoggedProspect.shares} actions`;
+      document.getElementById('transferTargetIdInput').value = "";
+      document.getElementById('transferQtyInput').max = activeLoggedProspect.shares;
+      document.getElementById('transferQtyInput').value = Math.min(10, activeLoggedProspect.shares);
+
+      const modal = document.getElementById('modalTransferShares');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 20);
+    }
+
+    function closeTransferSharesModal() {
+      const modal = document.getElementById('modalTransferShares');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    async function submitTransferOrder() {
+      if (!activeLoggedProspect) return;
+
+      const targetId = document.getElementById('transferTargetIdInput').value.trim().toUpperCase();
+      const qty = parseInt(document.getElementById('transferQtyInput').value, 10) || 0;
+      const currentAvailable = Number(activeLoggedProspect.shares || 0);
+
+      if (!/^RDN-\d{6}/.test(targetId)) {
+        showToast("Veuillez saisir un identifiant destinataire valide (RDN-XXXXXX).");
+        return;
+      }
+      if (targetId === activeLoggedProspect.id.toUpperCase()) {
+        showToast("Vous ne pouvez pas transférer des parts vers votre propre identifiant.");
+        return;
+      }
+      if (qty <= 0 || qty > currentAvailable) {
+        showToast(`Quantité invalide. Vous pouvez céder au maximum ${currentAvailable} parts.`);
+        return;
+      }
+
+      const btn = document.getElementById('btnSubmitTransfer');
+      const btnText = document.getElementById('btnSubmitTransferText');
+      btn.disabled = true;
+      btnText.textContent = "Transmission en cours...";
+
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('fr-FR');
+      const timeStr = now.toLocaleTimeString('fr-FR');
+      const transferRequestId = `${activeLoggedProspect.id}-TRF${Math.floor(100 + Math.random() * 900)}`;
+
+      const payload = {
+        Type_Requete: "TRANSFERT / REVENTE DE PARTS",
+        ID_Transfert: transferRequestId,
+        Cedant_ID: activeLoggedProspect.id,
+        Cedant_Nom: activeLoggedProspect.name,
+        Cedant_Email: activeLoggedProspect.email,
+        Destinataire_ID: targetId,
+        Nombre_Parts: qty,
+        Date: dateStr,
+        Heure: timeStr,
+        _subject: `[TRANSFERT DE PARTS] ${activeLoggedProspect.id} vers ${targetId} (${qty} parts)`
+      };
+
+      try {
+        await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (e) {}
+
+      // Enregistrement comme requête administrative de transfert à valider
+      const transferRecord = {
+        id: transferRequestId,
+        parentAccount: activeLoggedProspect.id,
+        targetAccount: targetId,
+        type: "TRANSFERT DE PARTS",
+        name: `${activeLoggedProspect.name} ➔ ${targetId}`,
+        country: activeLoggedProspect.country,
+        city: activeLoggedProspect.city,
+        phone: activeLoggedProspect.phone,
+        email: activeLoggedProspect.email,
+        shares: qty,
+        totalUsd: `${(qty * PRICE_PER_SHARE).toFixed(2)} USD`,
+        totalLocal: "Transfert Inter-comptes",
+        date: dateStr,
+        time: timeStr,
+        status: "EN_ATTENTE",
+        statusLabel: "En attente de validation administrative"
+      };
+
+      REAL_PROSPECTS.unshift(transferRecord);
+      try {
+        localStorage.setItem('rdn_real_prospects', JSON.stringify(REAL_PROSPECTS));
+      } catch (e) {}
+
+      closeTransferSharesModal();
+      btn.disabled = false;
+      btnText.textContent = "Confirmer la demande de transfert";
+
+      showToast(`Demande de transfert N° ${transferRequestId} enregistrée. Elle sera exécutée dès validation administrative.`);
+    }
+
+    function openInvestorPortal() {
+      const modal = document.getElementById('modalInvestorPortal');
+      const savedEmail = sessionStorage.getItem('rdn_email');
+      const savedId = sessionStorage.getItem('rdn_id');
+      if (savedEmail) document.getElementById('portalInvestorEmail').value = savedEmail;
+      if (savedId) document.getElementById('portalInvestorId').value = savedId;
+      document.getElementById('portalInvestorError').classList.add('hidden');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 20);
+    }
+
+    function closeInvestorPortal() {
+      const modal = document.getElementById('modalInvestorPortal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    function loginInvestorPortal() {
+      const email = document.getElementById('portalInvestorEmail').value.trim().toLowerCase();
+      const id = document.getElementById('portalInvestorId').value.trim().toUpperCase();
+      const error = document.getElementById('portalInvestorError');
+
+      if (!email || !email.includes('@') || !/^RDN-\d{6}/.test(id)) {
+        error.textContent = 'Veuillez renseigner un e-mail valide et un ID RDN-XXXXXX.';
+        error.classList.remove('hidden');
+        return;
+      }
+
+      const found = REAL_PROSPECTS.find(p => String(p.id).toUpperCase() === id && String(p.email).trim().toLowerCase() === email);
+      if (!found) {
+        error.textContent = 'Aucun dossier ne correspond à cet e-mail et à cet identifiant.';
+        error.classList.remove('hidden');
+        return;
+      }
+
+      activeLoggedProspect = found;
+      sessionStorage.setItem('rdn_authenticated_id', found.id);
+      sessionStorage.setItem('rdn_authenticated_email', found.email);
+      closeInvestorPortal();
+      document.getElementById('searchInvestorEmail').value = found.email;
+      document.getElementById('searchDossierInput').value = found.id;
+      updateTrackingDisplay(found);
+      document.getElementById('suivi').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openAdminModal() {
+      const modal = document.getElementById('modalAdmin');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 20);
+    }
+
+    function closeAdminModal() {
+      const modal = document.getElementById('modalAdmin');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    function authenticateAdmin() {
+      const pin = document.getElementById('inputAdminPin').value;
+      if (pin === ADMIN_PIN) {
+        document.getElementById('adminAuthScreen').classList.add('hidden');
+        document.getElementById('adminDashboardScreen').classList.remove('hidden');
+        refreshAdminTable();
+      } else {
+        showToast("Code PIN incorrect.");
+      }
+    }
+
+    function refreshAdminTable() {
+      const tbody = document.getElementById('adminTableBody');
+      const countEl = document.getElementById('adminCountTotal');
+      tbody.innerHTML = '';
+      countEl.textContent = REAL_PROSPECTS.length;
+
+      if (REAL_PROSPECTS.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-slate-400 italic">Aucune requête soumise pour le moment.</td></tr>`;
+        return;
+      }
+
+      REAL_PROSPECTS.forEach((p, index) => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-50 transition";
+        
+        let statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">En attente</span>`;
+        if (p.status === "APPROUVE") statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Approuvé</span>`;
+        if (p.status === "REJETE") statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800">Rejeté</span>`;
+
+        let typeBadge = `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-700">${p.type || 'Souscription'}</span>`;
+        if (p.type === "ACHAT PARTS SUPP.") typeBadge = `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-brand-redLight text-brand-red">+ Parts</span>`;
+        if (p.type === "TRANSFERT DE PARTS") typeBadge = `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-purple-100 text-purple-800">Transfert</span>`;
+
+        tr.innerHTML = `
+          <td class="p-3 font-mono font-bold text-brand-navy">${p.id}</td>
+          <td class="p-3">${typeBadge}</td>
+          <td class="p-3">
+            <strong class="text-brand-navy block">${p.name}</strong>
+            <span class="text-[10px] text-slate-400">${p.city}, ${p.country}</span>
+          </td>
+          <td class="p-3 font-mono">
+            <strong>${p.shares} actions</strong><br>
+            <span class="text-brand-red text-[11px] font-bold">${p.totalLocal}</span>
+          </td>
+          <td class="p-3">${statusBadge}</td>
+          <td class="p-3 text-right space-x-1 whitespace-nowrap">
+            <button onclick="adminSetStatus(${index}, 'APPROUVE')" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold transition">
+              <i class="fa-solid fa-check"></i> Valider
+            </button>
+            <button onclick="adminNotifyWhatsApp(${index})" class="px-2 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded-lg text-[11px] font-bold transition">
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+            <button onclick="adminSetStatus(${index}, 'REJETE')" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-[11px] transition">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function adminSetStatus(index, newStatus) {
+      const item = REAL_PROSPECTS[index];
+      if (!item) return;
+
+      item.status = newStatus;
+
+      // Si c'est une requête d'achat de parts validée, on cumule sur le compte principal
+      if (newStatus === "APPROUVE" && item.type === "ACHAT PARTS SUPP." && item.parentAccount) {
+        const parent = REAL_PROSPECTS.find(p => p.id === item.parentAccount);
+        if (parent) {
+          parent.shares = Number(parent.shares || 0) + Number(item.shares || 0);
+          const totalUsd = parent.shares * PRICE_PER_SHARE;
+          const c = COUNTRY_DATA[currentCountryKey] || COUNTRY_DATA['NGA'];
+          parent.totalUsd = `${totalUsd.toFixed(2)} USD`;
+          parent.totalLocal = `${formatAmount(totalUsd * c.rate, c.decimals)} ${c.currency}`;
+          if (activeLoggedProspect && activeLoggedProspect.id === parent.id) {
+            updateTrackingDisplay(parent);
+          }
+        }
+      }
+
+      // Si c'est un transfert approuvé, on décrémente le cédant et on crédite le destinataire
+      if (newStatus === "APPROUVE" && item.type === "TRANSFERT DE PARTS") {
+        const sender = REAL_PROSPECTS.find(p => p.id === item.parentAccount);
+        const target = REAL_PROSPECTS.find(p => p.id.toUpperCase() === item.targetAccount.toUpperCase());
+        const qty = Number(item.shares || 0);
+
+        if (sender && Number(sender.shares) >= qty) {
+          sender.shares = Number(sender.shares) - qty;
+          const c = COUNTRY_DATA[currentCountryKey] || COUNTRY_DATA['NGA'];
+          sender.totalUsd = `${(sender.shares * PRICE_PER_SHARE).toFixed(2)} USD`;
+          sender.totalLocal = `${formatAmount(sender.shares * PRICE_PER_SHARE * c.rate, c.decimals)} ${c.currency}`;
+        }
+        if (target) {
+          target.shares = Number(target.shares || 0) + qty;
+          const c = COUNTRY_DATA[currentCountryKey] || COUNTRY_DATA['NGA'];
+          target.totalUsd = `${(target.shares * PRICE_PER_SHARE).toFixed(2)} USD`;
+          target.totalLocal = `${formatAmount(target.shares * PRICE_PER_SHARE * c.rate, c.decimals)} ${c.currency}`;
+        }
+
+        if (activeLoggedProspect) {
+          const updatedSelf = REAL_PROSPECTS.find(p => p.id === activeLoggedProspect.id);
+          if (updatedSelf) updateTrackingDisplay(updatedSelf);
+        }
+      }
+
+      try {
+        localStorage.setItem('rdn_real_prospects', JSON.stringify(REAL_PROSPECTS));
+      } catch (e) {}
+
+      refreshAdminTable();
+      showToast(`Requête ${item.id} mise à jour : ${newStatus}`);
+    }
+
+    function adminNotifyWhatsApp(index) {
+      const p = REAL_PROSPECTS[index];
+      if (!p) return;
+      
+      const cleanPhone = p.phone.replace(/[^0-9]/g, '');
+      const msg = encodeURIComponent(
+`Bonjour ${p.name},
+
+Votre requête N° ${p.id} (${p.type || 'Souscription'} - ${p.shares} actions) auprès de Rafinery Du Nigeria a été traitée par notre direction administrative.
+
+Statut : ${p.status}
+
+Cordialement,
+Administration Rafinery Du Nigeria`
+      );
+
+      window.open(`https://wa.me/${cleanPhone}?text=${msg}`, '_blank');
+    }
+
+    function openDocumentationModal() {
+      const modal = document.getElementById('modalDoc');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 20);
+    }
+
+    function closeDocumentationModal() {
+      const modal = document.getElementById('modalDoc');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    function closeSuccessModal() {
+      const modal = document.getElementById('modalSuccess');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    function launchSmartWhatsApp() {
+      const name = sessionStorage.getItem('rdn_name');
+      const country = sessionStorage.getItem('rdn_country');
+      const city = sessionStorage.getItem('rdn_city');
+      const phone = sessionStorage.getItem('rdn_phone');
+      const email = sessionStorage.getItem('rdn_email');
+      const shares = sessionStorage.getItem('rdn_shares') || currentShares;
+      const totalUsd = sessionStorage.getItem('rdn_totalUsd') || `${(currentShares * 0.40).toFixed(2)} USD`;
+      const currency = sessionStorage.getItem('rdn_currency') || 'NGN';
+      const totalLocal = sessionStorage.getItem('rdn_totalLocal') || `${(currentShares * 0.40 * 1550).toLocaleString('fr-FR')} NGN`;
+      const id = sessionStorage.getItem('rdn_id') || generatedUniqueId;
+
+      let message = "";
+      if (!name || !email) {
+        message = "Bonjour, je souhaite obtenir plus d'informations concernant l'opportunité Rafinery Du Nigeria.";
+      } else {
+        message = 
+`Bonjour, je souhaite obtenir des informations concernant ma demande Rafinery Du Nigeria.
+
+INFORMATIONS
+Nom : ${name}
+Pays : ${country}
+Ville : ${city}
+Téléphone : ${phone}
+E-mail : ${email}
+
+MA DEMANDE
+Nombre d'actions : ${shares}
+Prix par action : 0,40 USD
+Total : ${totalUsd}
+Devise : ${currency}
+Montant estimatif : ${totalLocal}
+ID : ${id}`;
+      }
+
+      const encodedMsg = encodeURIComponent(message);
+      const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodedMsg}`;
+      window.open(url, '_blank');
+    }
+
+    function showToast(text) {
+      const toast = document.createElement('div');
+      toast.className = "fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-brand-navy text-white text-xs font-semibold px-5 py-3 rounded-xl shadow-2xl border border-brand-red flex items-center gap-2";
+      toast.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-brand-red"></i><span>${text}</span>`;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.style.transition = 'opacity 0.4s ease';
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 400);
+      }, 3000);
+    }
+
+    const LEGAL_CONTENT = {
+      mentions: {
+        title: "Mentions Légales",
+        body: `
+          <p><strong>Éditeur de la plateforme :</strong> La plateforme en ligne « Rafinery Du Nigeria » est éditée dans le cadre d'un service d'information, de facilitation et d'intermédiation technologique.</p>
+          <p><strong>Rôle légal :</strong> La plateforme opère en qualité d'intermédiaire technique facilitant l'accès et la mise en relation entre les investisseurs et l'opportunité d'investissement dans Rafinery Du Nigeria.</p>
+          <p><strong>Contact :</strong> rafinerynigeria@gmail.com | WhatsApp : +234 708 423 1858.</p>
+        `
+      },
+      cgu: {
+        title: "Conditions Générales d'Utilisation",
+        body: `
+          <p><strong>1. Objet :</strong> Les présentes CGU encadrent l'accès au site, à son calculateur, au formulaire de mise en relation et à l'espace de gestion de parts.</p>
+          <p><strong>2. Précision sur les calculs :</strong> Le prix unitaire de référence est fixé à 0,40 USD par action.</p>
+          <p><strong>3. Transferts de parts :</strong> Tout transfert entre comptes est subordonné à la validation par les administrateurs.</p>
+        `
+      },
+      confidentialite: {
+        title: "Politique de Confidentialité",
+        body: `
+          <p><strong>Collecte des données :</strong> Les informations recueillies sont strictement nécessaires à l'instruction des souscriptions, ajouts et transferts de parts.</p>
+          <p><strong>Transmission :</strong> Les requêtes sont transmises de manière sécurisée à rafinerynigeria@gmail.com.</p>
+        `
+      },
+      reglementaire: {
+        title: "Informations Réglementaires",
+        body: `
+          <p><strong>Avertissement :</strong> L'investissement dans le secteur de l'énergie et du raffinage industriel comporte des facteurs de risque de marché.</p>
+        `
+      }
+    };
+
+    function openLegalModal(key) {
+      const doc = LEGAL_CONTENT[key] || LEGAL_CONTENT['mentions'];
+      document.getElementById('legalModalTitle').textContent = doc.title;
+      document.getElementById('legalModalBody').innerHTML = doc.body;
+
+      const modal = document.getElementById('modalLegal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 20);
+    }
+
+    function closeLegalModal() {
+      const modal = document.getElementById('modalLegal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+  </script>
+
+<script>
+const SITE_CONFIG = {
+  "identity": {
+    "siteName": "RAFINERY DU NIGERIA",
+    "subtitle": "Opportunité Énergétique & Mise en Relation",
+    "logo": "1004915935.png",
+    "whatsapp": "+2347084231858",
+    "email": "rafinerynigeria@gmail.com"
+  },
+  "theme": {
+    "navy": "#0e1d52",
+    "red": "#e51b24"
+  },
+  "hero": {
+    "title": "Une opportunité d'investissement dans l'énergie au Nigeria",
+    "description": "Découvrez une opportunité liée à Rafinery Du Nigeria et estimez en quelques secondes le montant correspondant au nombre d'actions qui vous intéresse.",
+    "primaryButton": "Découvrir l'opportunité",
+    "secondaryButton": "Calculer mon investissement",
+    "counter": "15 480+",
+    "allocation": 67
+  },
+  "positionnement": {
+    "title": "Une passerelle entre les investisseurs et Rafinery Du Nigeria",
+    "description": "Notre plateforme facilite la mise en relation entre les investisseurs et l'opportunité d'investissement liée à Rafinery Du Nigeria.",
+    "cards": [
+      [
+        "Découvrez",
+        "Accédez facilement aux informations disponibles sur l'opportunité, ses paramètres d'entrée et son contexte dans le secteur énergétique au Nigeria."
+      ],
+      [
+        "Calculez",
+        "Estimez votre sélection d'actions à partir du prix de référence affiché et visualisez l'équivalent dans votre monnaie locale."
+      ],
+      [
+        "Connectez-vous",
+        "Transmettez vos coordonnées afin d'être accompagné pour les prochaines étapes officielles."
+      ]
+    ]
+  },
+  "jalons": {
+    "title": "Feuille de route & Jalons clés du projet",
+    "description": "Une vision claire des étapes opérationnelles suivant la soumission et l'attribution des titres de participation.",
+    "items": [
+      [
+        "Souscription & Tranche Initiale",
+        "Ouverture de la phase de souscription, réception des dossiers, validation administrative et délivrance des attestations selon les documents officiels."
+      ],
+      [
+        "Audit Technique & Clôture",
+        "Finalisation des contrôles et clôture officielle du registre selon le calendrier communiqué."
+      ],
+      [
+        "Raccordement & Flux Commercial",
+        "Étape opérationnelle à compléter avec les informations officiellement publiées."
+      ],
+      [
+        "Assemblée & Rapports Périodiques",
+        "Informations et rapports publiés selon le calendrier officiel."
+      ]
+    ]
+  },
+  "opportunite": {
+    "title": "Positionnez-vous sur une opportunité liée au secteur énergétique nigérian",
+    "paragraphs": [
+      "Les infrastructures de raffinage transforment le brut en carburants à forte valeur ajoutée pour tout le continent.",
+      "Le Nigeria représente un acteur majeur du secteur énergétique africain. Les informations relatives au projet doivent être consultées dans les documents officiels disponibles.",
+      "Le raffinage local constitue un axe important de développement industriel et de distribution de produits pétroliers finis."
+    ]
+  },
+  "stats": {
+    "title": "L'opportunité en quelques chiffres",
+    "description": "Des paramètres d'accès transparents et conçus pour la clarté de chaque futur souscripteur.",
+    "price": 0.4,
+    "minimum": 10,
+    "investors": "À renseigner",
+    "currency": "USD"
+  },
+  "calculator": {
+    "pricePerShare": 0.4,
+    "minimumShares": 10,
+    "defaultShares": 100
+  },
+  "direction": {
+    "name": "[NOM DU DIRECTEUR]",
+    "title": "Directeur — Rafinery Du Nigeria",
+    "photo": "",
+    "intro": "Présentation officielle de la direction opérationnelle de Rafinery Du Nigeria.",
+    "bio": "La fiche institutionnelle et biographique de la direction générale sera publiée avec les informations officiellement vérifiées."
+  },
+  "processus": {
+    "title": "Comment fonctionne votre démarche ?",
+    "description": "Un processus en six étapes claires pour comprendre le parcours de la plateforme.",
+    "steps": [
+      [
+        "Découvrez l'opportunité",
+        "Consultez les informations disponibles et les documents officiels."
+      ],
+      [
+        "Choisissez vos actions",
+        "Déterminez le nombre de titres que vous souhaitez étudier."
+      ],
+      [
+        "Calculez votre montant",
+        "Visualisez le montant correspondant à votre sélection."
+      ],
+      [
+        "Renseignez vos informations",
+        "Complétez vos coordonnées pour le suivi du dossier."
+      ],
+      [
+        "Envoyez votre demande",
+        "Transmettez votre demande pour traitement."
+      ],
+      [
+        "Échangez avec notre équipe",
+        "Recevez les informations de suivi via les canaux officiels."
+      ]
+    ]
+  },
+  "faq": {
+    "title": "FAQ & Clarté Réglementaire",
+    "items": [
+      [
+        "Puis-je racheter d'autres parts avec mon même compte et ID ?",
+        "Oui, sous réserve de validation administrative et des conditions applicables."
+      ],
+      [
+        "Est-il possible de transférer mes parts à un autre identifiant ?",
+        "Toute opération de transfert doit suivre la procédure officielle et être validée par l'administration compétente."
+      ],
+      [
+        "Quel est le rôle exact de cette plateforme ?",
+        "La plateforme présente les informations disponibles, fournit des outils de calcul et facilite la transmission des demandes."
+      ]
+    ]
+  },
+  "footer": {
+    "company": "Rafinery Du Nigeria",
+    "email": "rafinerynigeria@gmail.com",
+    "whatsapp": "+2347084231858",
+    "address": ""
+  }
+};
+window.SITE_CONFIG = SITE_CONFIG;
+
+const __savedRDN = localStorage.getItem("rdn_v2_config");
+if(__savedRDN){ try { window.SITE_CONFIG = JSON.parse(__savedRDN); } catch(e) {} }
+</script>
+<script>
+(function(){
+  const c = window.SITE_CONFIG || {};
+  const $ = s => document.querySelector(s);
+
+  // Remplace les textes simples sans détruire la mise en forme HTML.
+  function replaceTextNodes(root, replacements){
+    const walker=document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const nodes=[]; let n;
+    while(n=walker.nextNode()) nodes.push(n);
+    nodes.forEach(node=>{
+      let v=node.nodeValue;
+      replacements.forEach(([from,to])=>{ if(from) v=v.split(from).join(String(to)); });
+      node.nodeValue=v;
+    });
+  }
+  function setBrandName(name){
+    const brandSpans=Array.from(document.querySelectorAll('header a.group > div:nth-child(2) > span:first-child'));
+    brandSpans.forEach(el=>{
+      const parts=String(name||'').trim().split(/\s+/);
+      if(parts.length>=3){ const red=parts.splice(-2).join(' '); el.innerHTML=parts.join(' ')+' <span class="text-brand-red">'+red.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</span>'; }
+      else el.textContent=String(name||'');
+    });
+    Array.from(document.querySelectorAll('span')).filter(el=>(el.textContent||'').trim()==='RAFINERY DU NIGERIA').forEach(el=>el.textContent=String(name||''));
+  }
+  function applyEditableBasics(){
+    const name=c.identity?.siteName || c.footer?.company || 'RAFINERY DU NIGERIA';
+    const subtitle=c.identity?.subtitle;
+    setBrandName(name);
+    if(subtitle){
+      Array.from(document.querySelectorAll('header span')).filter(el=>(el.textContent||'').trim()==='Opportunité Énergétique & Mise en Relation').forEach(el=>el.textContent=subtitle);
+    }
+    if(c.footer?.company){
+      replaceTextNodes(document.body,[['© 2026 Rafinery Du Nigeria','© 2026 '+c.footer.company],['Rafinery Du Nigeria',c.footer.company]]);
+    }
+  }
+  applyEditableBasics();
+  const $$ = s => Array.from(document.querySelectorAll(s));
+  const text = (el,v) => { if(el && v !== undefined) el.textContent = v; };
+
+  // Helpers
+  function section(id){ return document.getElementById(id); }
+  function headings(sec, tag){ return sec ? Array.from(sec.querySelectorAll(tag)) : []; }
+  function paragraphs(sec){ return sec ? Array.from(sec.querySelectorAll('p')) : []; }
+
+  // Identity / logo
+  document.title = (c.identity?.siteName || 'Site') + ' | Portail';
+  const logoValue = c.identity?.logo;
+  if(logoValue){
+    const logoImgs = Array.from(document.querySelectorAll('img[data-rdn-logo], img[src="1004915935.png"], img[alt*="Logo"], img[alt*="Emblème"]')); 
+    logoImgs.forEach(img => { img.src = logoValue; img.removeAttribute('srcset'); });
+    document.querySelectorAll('link[rel~="icon"], link[rel="shortcut icon"]').forEach(link => { link.href = logoValue; });
+  }
+  $$('a[href*="wa.me/"]').forEach(a => {
+    const digits=(c.identity?.whatsapp||'').replace(/\D/g,'');
+    if(digits) a.href='https://wa.me/'+digits;
+  });
+  $$('a[href^="mailto:"]').forEach(a => {
+    if(c.identity?.email){ a.href='mailto:'+c.identity.email; a.textContent=c.identity.email; }
+  });
+
+  // Images gérées depuis l'espace administrateur
+  if(c.images?.hero){
+    $$('img').filter(img => (img.src||'').includes('photo-1518709268805-4e9042af9f23')).forEach(img => img.src=c.images.hero);
+  }
+  if(c.images?.opportunity){
+    $$('img').filter(img => (img.src||'').includes('photo-1544620347-c4fd4a3d5957')).forEach(img => img.src=c.images.opportunity);
+  }
+
+  // Hero
+  const hero = $('main > section:first-of-type');
+  if(hero){
+    const h1=hero.querySelector('h1'); if(h1 && c.hero?.title){
+      h1.innerHTML = c.hero.title.replace(/Nigeria/gi,'<span class="text-brand-red">Nigeria</span>');
+    }
+    const ps=paragraphs(hero); if(ps[0] && c.hero?.description) ps[0].textContent=c.hero.description;
+    const buttons=hero.querySelectorAll('a');
+    if(buttons[0] && c.hero?.primaryButton) { const s=buttons[0].querySelector('span'); if(s)s.textContent=c.hero.primaryButton; }
+    if(buttons[1] && c.hero?.secondaryButton) { const s=buttons[1].querySelector('span'); if(s)s.textContent=c.hero.secondaryButton; }
+  }
+  if(c.hero?.counter){ text($('#topLiveCounter'),c.hero.counter); text($('#heroLiveCounter'),c.hero.counter); }
+  if(Number.isFinite(Number(c.hero?.allocation))){
+    const pct=Math.max(0,Math.min(100,Number(c.hero.allocation)));
+    $$('span').filter(x=>(x.textContent||'').includes('% Allouée')).forEach(x=>x.textContent=pct+'% Allouée');
+    const bar=$$('div[style*="width: 67%"]')[0]; if(bar) bar.style.width=pct+'%';
+  }
+
+  // Positionnement
+  const pos=section('positionnement');
+  if(pos){
+    const hs=headings(pos,'h2,h3'); if(hs[0]&&c.positionnement?.title) text(hs[0],c.positionnement.title);
+    const ps=paragraphs(pos); if(ps[0]&&c.positionnement?.description) text(ps[0],c.positionnement.description);
+    const cards=c.positionnement?.cards||[];
+    const cardEls=Array.from(pos.querySelectorAll('.grid > div')).slice(0,3);
+    cardEls.forEach((card,i)=>{
+      if(cards[i]){
+        const h=card.querySelector('h3'); const p=card.querySelector('p');
+        text(h,cards[i][0]); text(p,cards[i][1]);
+      }
+    });
+  }
+
+  // Roadmap
+  const road=section('jalons');
+  if(road){
+    const hs=headings(road,'h2,h3'); if(hs[0]&&c.jalons?.title) text(hs[0],c.jalons.title);
+    const ps=paragraphs(road); if(ps[0]&&c.jalons?.description) text(ps[0],c.jalons.description);
+    const items=c.jalons?.items||[];
+    const cards=Array.from(road.querySelectorAll('h3')).map(h=>h.closest('div')).filter(Boolean).slice(0,4);
+    cards.forEach((card,i)=>{ if(items[i]){ text(card.querySelector('h3'),items[i][0]); text(card.querySelector('p'),items[i][1]); }});
+  }
+
+  // Opportunity
+  const opp=section('opportunite');
+  if(opp){
+    const h=opp.querySelector('h2'); if(h&&c.opportunite?.title) text(h,c.opportunite.title);
+    const ps=paragraphs(opp), arr=c.opportunite?.paragraphs||[];
+    arr.slice(0,3).forEach((v,i)=>{ if(ps[i]) ps[i].textContent=v; });
+  }
+
+  // Stats
+  const statSection = $$('h2').find(h=>(h.textContent||'').includes('L’opportunité en quelques chiffres') || (h.textContent||'').includes("L'opportunité en quelques chiffres"))?.closest('section');
+  if(statSection){
+    const h=statSection.querySelector('h2'); text(h,c.stats?.title);
+    const ps=paragraphs(statSection); if(ps[0]) text(ps[0],c.stats?.description);
+    const vals=statSection.querySelectorAll('.font-mono, .font-display');
+    const price=Number(c.stats?.price);
+    if(Number.isFinite(price)){
+      vals.forEach(el=>{ if((el.textContent||'').includes('0,40')) el.textContent=price.toFixed(2).replace('.',',')+' $'; });
+    }
+  }
+
+  // Calculator constants (override the existing static JS variables safely for the UI).
+  if(Number.isFinite(Number(c.calculator?.pricePerShare))){
+    window.__RDN_PRICE_PER_SHARE = Number(c.calculator.pricePerShare);
+  }
+  if(Number.isFinite(Number(c.calculator?.minimumShares))){
+    const min=Number(c.calculator.minimumShares);
+    $$('input').filter(x=>x.id==='calcShareInput').forEach(x=>x.min=min);
+    $$('span,strong,label').forEach(el=>{
+      const t=el.textContent||'';
+      if(t.includes('Minimum : 10')) el.textContent=t.replace(/Minimum : 10/g,'Minimum : '+min);
+    });
+  }
+
+  // Prix et minimum : tous les affichages du site utilisent désormais les valeurs du gestionnaire.
+  const configuredPrice=Number(c.calculator?.pricePerShare ?? c.stats?.price);
+  if(Number.isFinite(configuredPrice)) PRICE_PER_SHARE=configuredPrice;
+  const configuredMin=Number(c.calculator?.minimumShares ?? c.stats?.minimum);
+  if(Number.isFinite(configuredMin)) MIN_SHARES=configuredMin;
+  const priceLabel=PRICE_PER_SHARE.toFixed(2).replace('.',',');
+  replaceTextNodes(document.body,[['0,40',priceLabel],['0.40',PRICE_PER_SHARE.toFixed(2)],['Minimum : 10','Minimum : '+MIN_SHARES],['minimum 10 actions','minimum '+MIN_SHARES+' actions'],['à partir de 10 actions','à partir de '+MIN_SHARES+' actions'],['minimum 10 actions','minimum '+MIN_SHARES+' actions']]);
+  // Direction
+  const dir=section('direction');
+  if(dir){
+    const hs=headings(dir,'h2,h3'); const ps=paragraphs(dir);
+    const h3=hs.find(h=>(h.textContent||'').includes('[NOM DU DIRECTEUR]')) || dir.querySelector('h3');
+    text(h3,c.direction?.name);
+    const titleEl=h3?.parentElement?.querySelector('p'); text(titleEl,c.direction?.title);
+    if(ps[0] && c.direction?.intro) text(ps[0],c.direction.intro);
+    const bio=Array.from(dir.querySelectorAll('.p-4 p'))[1]; if(bio&&c.direction?.bio) text(bio,c.direction.bio);
+    if(c.direction?.photo){
+      const box=dir.querySelector('.md\\:col-span-5 > div');
+      if(box) box.innerHTML='<img src="'+c.direction.photo.replace(/"/g,'&quot;')+'" alt="Photo de la direction" class="w-full h-full object-cover">';
+    }
+  }
+
+  // Process
+  const proc=section('processus');
+  if(proc){
+    const hs=headings(proc,'h2,h3,h4'); if(hs[0]&&c.processus?.title) text(hs[0],c.processus.title);
+    const ps=paragraphs(proc); if(ps[0]&&c.processus?.description) text(ps[0],c.processus.description);
+    const steps=c.processus?.steps||[];
+    const stepCards=Array.from(proc.querySelectorAll('h4')).map(h=>h.closest('div')).filter(Boolean).slice(0,6);
+    stepCards.forEach((card,i)=>{ if(steps[i]){ text(card.querySelector('h4'),steps[i][0]); text(card.querySelector('p'),steps[i][1]); }});
+  }
+
+  // FAQ
+  const faq=section('faq');
+  if(faq){
+    const h=faq.querySelector('h2'); if(h&&c.faq?.title) text(h,c.faq.title);
+    const details=Array.from(faq.querySelectorAll('details')), items=c.faq?.items||[];
+    details.slice(0,items.length).forEach((d,i)=>{
+      const sum=d.querySelector('summary span'); const p=d.querySelector('p');
+      text(sum,items[i][0]); text(p,items[i][1]);
+    });
+  }
+
+  // Footer
+  const foot=$('footer');
+  if(foot){
+    const email=c.footer?.email||c.identity?.email;
+    $$('a[href^="mailto:"]').forEach(a=>{if(email){a.href='mailto:'+email;a.textContent=email;}});
+    $$('a[href*="wa.me/"]').forEach(a=>{const n=(c.footer?.whatsapp||c.identity?.whatsapp||'').replace(/\D/g,'');if(n)a.href='https://wa.me/'+n;});
+  }
+
+  // Optional theme
+  if(c.theme?.navy) document.documentElement.style.setProperty('--rdn-navy',c.theme.navy);
+  if(c.theme?.red) document.documentElement.style.setProperty('--rdn-red',c.theme.red);
+})();
+</script>
+
+</body>
+</html>

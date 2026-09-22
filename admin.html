@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gestionnaire V2 — Rafinery Du Nigeria</title>
+<style>
+:root{--navy:#0e1d52;--red:#e51b24;--bg:#f5f7fb;--line:#dbe3ef}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#172033}
+.top{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:900;color:var(--navy)}.actions button,.btn{border:0;border-radius:10px;padding:10px 13px;font-weight:800;cursor:pointer}
+.primary{background:var(--navy);color:#fff}.danger{background:#fee2e2;color:#991b1b}.red{background:var(--red);color:#fff}.ghost{background:#eef2f7;color:var(--navy)}
+.layout{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 58px)}
+nav{background:#fff;border-right:1px solid var(--line);padding:16px;position:sticky;top:58px;height:calc(100vh - 58px);overflow:auto}
+nav button{display:block;width:100%;text-align:left;border:0;background:transparent;padding:11px;border-radius:9px;margin:2px 0;color:#475569;font-weight:750;cursor:pointer}
+nav button.active,nav button:hover{background:#eef2ff;color:var(--navy)}
+main{max-width:1050px;width:100%;margin:auto;padding:22px}
+.panel{display:none}.panel.active{display:block}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 5px 18px rgba(15,23,42,.04)}
+h1{margin:0 0 6px;color:var(--navy)}h2{margin:0 0 12px;color:var(--navy);font-size:19px}h3{font-size:14px;margin:18px 0 8px;color:var(--navy)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.full{grid-column:1/-1}
+label{display:block;font-size:12px;font-weight:850;margin:0 0 6px;color:#334155}
+input,textarea,select{width:100%;padding:10px 11px;border:1px solid #cbd5e1;border-radius:9px;background:#fff;font:inherit}
+textarea{min-height:92px;resize:vertical}.row{display:flex;flex-wrap:wrap;gap:8px}.hint{font-size:12px;line-height:1.55;color:#64748b}.notice{padding:12px;border-radius:12px;background:#fffbeb;border:1px solid #fde68a;font-size:12px;color:#78350f;margin-bottom:16px}
+.item{border:1px solid #e2e8f0;border-radius:12px;padding:13px;margin:10px 0;background:#fbfdff}.item-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.item button{border:0;background:#fee2e2;color:#991b1b;border-radius:8px;padding:6px 9px;font-weight:800;cursor:pointer}
+.status{font-size:12px;font-weight:800;color:#166534}.drop{border:2px dashed #cbd5e1;padding:14px;border-radius:12px;text-align:center;background:#f8fafc}
+@media(max-width:800px){.layout{grid-template-columns:1fr}nav{position:static;height:auto;display:flex;gap:5px;overflow:auto}nav button{white-space:nowrap;width:auto}.grid{grid-template-columns:1fr}.full{grid-column:auto}}
+
+#loginGate{position:fixed;inset:0;background:linear-gradient(135deg,#081133,#0e1d52);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px}#loginBox{width:min(430px,100%);background:#fff;border-radius:20px;padding:28px;box-shadow:0 25px 70px rgba(0,0,0,.3)}#loginBox h1{font-size:24px;margin:0 0 8px}#loginBox input{margin:10px 0}#loginError{color:#b91c1c;font-size:13px;font-weight:700;min-height:20px}.locked .top,.locked .layout{visibility:hidden}
+</style>
+</head>
+<body class="locked"><div id="loginGate"><div id="loginBox"><div style="font-size:38px;margin-bottom:8px">🔐</div><h1>Administration</h1><p class="hint">Accès protégé par un mot de passe sur cet appareil.</p><input id="adminPassword" type="password" placeholder="Mot de passe (6 caractères minimum)" autocomplete="new-password"><button class="btn primary" style="width:100%;margin-top:4px" onclick="adminLogin()">🔓 Accéder au gestionnaire</button><div id="loginError"></div><p class="hint" style="margin-top:12px">Le mot de passe est enregistré localement dans ce navigateur. Il n'est pas un système d'authentification en ligne.</p></div></div>
+<div class="top">
+  <div><div class="brand">RAFINERY DU NIGERIA — Gestion V2</div><div class="hint">Éditeur de contenu sans modification directe du code</div></div>
+  <div class="actions row">
+    <button class="ghost" onclick="saveLocal()">💾 Enregistrer</button>
+    <button class="ghost" onclick="loadLocal()">↩️ Charger</button>
+    <button class="ghost" onclick="importConfig()">📥 Importer</button>
+    <button class="primary" onclick="exportConfig()">⬇️ Publier la configuration</button>
+    <button class="ghost" onclick="openSite()">👁️ Ouvrir le site</button>
+    <button class="danger" onclick="logout()">🔒 Verrouiller</button>
+  </div>
+</div>
+
+<div class="layout">
+<nav>
+<button class="active" data-tab="general">🏢 Général</button>
+<button data-tab="hero">🏠 Accueil</button>
+<button data-tab="positionnement">🤝 Positionnement</button>
+<button data-tab="jalons">🗓️ Jalons</button>
+<button data-tab="opportunite">⚡ Opportunité</button>
+<button data-tab="stats">📊 Chiffres</button>
+<button data-tab="calculator">🧮 Calculateur</button>
+<button data-tab="direction">👤 Direction</button>
+<button data-tab="processus">🧭 Processus</button>
+<button data-tab="faq">❓ FAQ</button>
+<button data-tab="footer">📞 Contacts</button>
+<button data-tab="tools">🧰 Outils</button>
+</nav>
+
+<main>
+<div class="notice"><b>Important :</b> ce panneau modifie le contenu affiché par le site. Il ne crée pas de faux documents, de faux dirigeants, de faux investisseurs ou de fausses performances. Utilise uniquement des informations que tu peux vérifier et publier légalement.</div>
+
+<section id="general" class="panel active">
+<div class="card"><h1>Identité du site</h1><p class="hint">Ces informations apparaissent dans plusieurs endroits du site.</p>
+<div class="grid">
+<div><label>Nom</label><input data-path="identity.siteName"></div>
+<div><label>Sous-titre</label><input data-path="identity.subtitle"></div>
+<div><label>WhatsApp</label><input data-path="identity.whatsapp"></div>
+<div><label>Email</label><input data-path="identity.email"></div>
+<div class="full"><label>Logo — choisis une image ci-dessous ou indique une URL</label><input data-path="identity.logo"></div>
+<div><label>📷 Importer le logo</label><input type="file" id="logoFile" accept="image/*"></div>
+<div><label>📷 Importer l'image principale</label><input type="file" id="heroFile" accept="image/*"></div>
+<div><label>📷 Importer l'image Opportunité</label><input type="file" id="opportunityFile" accept="image/*"></div>
+<div class="full"><div class="grid"><div><img id="logoPreview" style="display:none;max-width:180px;max-height:100px;border-radius:10px;border:1px solid #dbe3ef;object-fit:contain"></div><div><img id="heroPreview" style="display:none;max-width:240px;max-height:130px;border-radius:10px;border:1px solid #dbe3ef;object-fit:cover"></div><div><img id="opportunityPreview" style="display:none;max-width:240px;max-height:130px;border-radius:10px;border:1px solid #dbe3ef;object-fit:cover"></div></div></div>
+</div></div>
+<div class="card"><h2>🎨 Couleurs</h2><div class="grid">
+<div><label>Bleu principal</label><input type="color" data-path="theme.navy"></div>
+<div><label>Rouge principal</label><input type="color" data-path="theme.red"></div>
+</div></div>
+</section>
+
+<section id="hero" class="panel"><div class="card"><h2>🏠 Page d'accueil</h2><div class="grid">
+<div class="full"><label>Titre principal</label><textarea data-path="hero.title"></textarea></div>
+<div class="full"><label>Description</label><textarea data-path="hero.description"></textarea></div>
+<div><label>Bouton principal</label><input data-path="hero.primaryButton"></div>
+<div><label>Bouton secondaire</label><input data-path="hero.secondaryButton"></div>
+<div><label>Compteur affiché</label><input data-path="hero.counter"></div>
+<div><label>Allocation affichée (%)</label><input type="number" data-path="hero.allocation"></div>
+</div></div></section>
+
+<section id="positionnement" class="panel"><div class="card"><h2>🤝 Positionnement</h2><div class="grid">
+<div class="full"><label>Titre</label><textarea data-path="positionnement.title"></textarea></div>
+<div class="full"><label>Description</label><textarea data-path="positionnement.description"></textarea></div>
+</div><div id="positionCards"></div></div></section>
+
+<section id="jalons" class="panel"><div class="card"><h2>🗓️ Feuille de route</h2><div class="grid">
+<div class="full"><label>Titre</label><input data-path="jalons.title"></div>
+<div class="full"><label>Description</label><textarea data-path="jalons.description"></textarea></div>
+</div><div id="jalonItems"></div><button class="btn ghost" onclick="addJalon()">+ Ajouter un jalon</button></div></section>
+
+<section id="opportunite" class="panel"><div class="card"><h2>⚡ Opportunité</h2>
+<label>Titre</label><textarea data-path="opportunite.title"></textarea>
+<div id="oppParagraphs"></div><button class="btn ghost" onclick="addOpp()">+ Ajouter un paragraphe</button>
+</div></section>
+
+<section id="stats" class="panel"><div class="card"><h2>📊 Chiffres</h2><div class="grid">
+<div class="full"><label>Titre</label><input data-path="stats.title"></div>
+<div class="full"><label>Description</label><textarea data-path="stats.description"></textarea></div>
+<div><label>Prix de référence</label><input type="number" step="0.01" data-path="stats.price"></div>
+<div><label>Minimum</label><input type="number" data-path="stats.minimum"></div>
+<div><label>Investisseurs (texte)</label><input data-path="stats.investors"></div>
+<div><label>Monnaie</label><input data-path="stats.currency"></div>
+</div></div></section>
+
+<section id="calculator" class="panel"><div class="card"><h2>🧮 Calculateur</h2><div class="grid">
+<div><label>Prix par action</label><input type="number" step="0.01" data-path="calculator.pricePerShare"></div>
+<div><label>Minimum d'actions</label><input type="number" data-path="calculator.minimumShares"></div>
+<div><label>Valeur par défaut</label><input type="number" data-path="calculator.defaultShares"></div>
+</div><p class="hint">Le prix et le minimum sont appliqués directement au calculateur et à tous les affichages du site après Enregistrer.</p></div></section>
+
+<section id="direction" class="panel"><div class="card"><h2>👤 Direction</h2><div class="grid">
+<div><label>Nom</label><input data-path="direction.name"></div>
+<div><label>Fonction</label><input data-path="direction.title"></div>
+<div class="full"><label>Présentation</label><textarea data-path="direction.intro"></textarea></div>
+<div class="full"><label>Biographie</label><textarea data-path="direction.bio"></textarea></div>
+<div class="full"><label>Photo — URL ou fichier</label><input data-path="direction.photo"></div>
+</div>
+<div class="drop" id="dirDrop">Glisse une photo ici ou <input type="file" id="dirFile" accept="image/*"> pour l'intégrer à la configuration.</div>
+</div></section>
+
+<section id="processus" class="panel"><div class="card"><h2>🧭 Processus</h2><div class="grid">
+<div class="full"><label>Titre</label><input data-path="processus.title"></div>
+<div class="full"><label>Description</label><textarea data-path="processus.description"></textarea></div>
+</div><div id="processItems"></div><button class="btn ghost" onclick="addProcess()">+ Ajouter une étape</button></div></section>
+
+<section id="faq" class="panel"><div class="card"><h2>❓ FAQ</h2><div class="grid"><div class="full"><label>Titre</label><input data-path="faq.title"></div></div><div id="faqItems"></div><button class="btn ghost" onclick="addFaq()">+ Ajouter une question</button></div></section>
+
+<section id="footer" class="panel"><div class="card"><h2>📞 Contacts & pied de page</h2><div class="grid">
+<div><label>Nom société</label><input data-path="footer.company"></div>
+<div><label>Email</label><input data-path="footer.email"></div>
+<div><label>WhatsApp</label><input data-path="footer.whatsapp"></div>
+<div><label>Adresse</label><input data-path="footer.address"></div>
+</div></div></section>
+
+<section id="tools" class="panel"><div class="card"><h2>🧰 Outils</h2>
+<div class="row">
+<button class="btn primary" onclick="exportConfig()">⬇️ Exporter site-config.js</button>
+<button class="btn ghost" onclick="exportJSON()">⬇️ Sauvegarde JSON</button>
+<button class="btn ghost" onclick="document.getElementById('jsonFile').click()">📥 Importer JSON</button>
+<input type="file" id="jsonFile" accept=".json" hidden>
+<button class="btn danger" onclick="resetAll()">🗑️ Réinitialiser</button>
+</div>
+<p class="hint">Le fichier <b>site-config.js</b> est le seul fichier à remplacer sur le site après une modification. Conserve toujours une copie de sauvegarde.</p>
+<div id="status" class="status" style="margin-top:12px"></div>
+</div></section>
+</main>
+</div>
+
+<script>
+const DEFAULT = {"identity": {"siteName": "RAFINERY DU NIGERIA", "subtitle": "Opportunité Énergétique & Mise en Relation", "logo": "1004915935.png", "whatsapp": "+2347084231858", "email": "rafinerynigeria@gmail.com"}, "theme": {"navy": "#0e1d52", "red": "#e51b24"}, "hero": {"title": "Une opportunité d'investissement dans l'énergie au Nigeria", "description": "Découvrez une opportunité liée à Rafinery Du Nigeria et estimez en quelques secondes le montant correspondant au nombre d'actions qui vous intéresse.", "primaryButton": "Découvrir l'opportunité", "secondaryButton": "Calculer mon investissement", "counter": "15 480+", "allocation": 67}, "positionnement": {"title": "Une passerelle entre les investisseurs et Rafinery Du Nigeria", "description": "Notre plateforme facilite la mise en relation entre les investisseurs et l'opportunité d'investissement liée à Rafinery Du Nigeria.", "cards": [["Découvrez", "Accédez facilement aux informations disponibles sur l'opportunité, ses paramètres d'entrée et son contexte dans le secteur énergétique au Nigeria."], ["Calculez", "Estimez votre sélection d'actions à partir du prix de référence affiché et visualisez l'équivalent dans votre monnaie locale."], ["Connectez-vous", "Transmettez vos coordonnées afin d'être accompagné pour les prochaines étapes officielles."]]}, "jalons": {"title": "Feuille de route & Jalons clés du projet", "description": "Une vision claire des étapes opérationnelles suivant la soumission et l'attribution des titres de participation.", "items": [["Souscription & Tranche Initiale", "Ouverture de la phase de souscription, réception des dossiers, validation administrative et délivrance des attestations selon les documents officiels."], ["Audit Technique & Clôture", "Finalisation des contrôles et clôture officielle du registre selon le calendrier communiqué."], ["Raccordement & Flux Commercial", "Étape opérationnelle à compléter avec les informations officiellement publiées."], ["Assemblée & Rapports Périodiques", "Informations et rapports publiés selon le calendrier officiel."]]}, "opportunite": {"title": "Positionnez-vous sur une opportunité liée au secteur énergétique nigérian", "paragraphs": ["Les infrastructures de raffinage transforment le brut en carburants à forte valeur ajoutée pour tout le continent.", "Le Nigeria représente un acteur majeur du secteur énergétique africain. Les informations relatives au projet doivent être consultées dans les documents officiels disponibles.", "Le raffinage local constitue un axe important de développement industriel et de distribution de produits pétroliers finis."]}, "stats": {"title": "L'opportunité en quelques chiffres", "description": "Des paramètres d'accès transparents et conçus pour la clarté de chaque futur souscripteur.", "price": 0.4, "minimum": 10, "investors": "À renseigner", "currency": "USD"}, "calculator": {"pricePerShare": 0.4, "minimumShares": 10, "defaultShares": 100}, "direction": {"name": "[NOM DU DIRECTEUR]", "title": "Directeur — Rafinery Du Nigeria", "photo": "", "intro": "Présentation officielle de la direction opérationnelle de Rafinery Du Nigeria.", "bio": "La fiche institutionnelle et biographique de la direction générale sera publiée avec les informations officiellement vérifiées."}, "processus": {"title": "Comment fonctionne votre démarche ?", "description": "Un processus en six étapes claires pour comprendre le parcours de la plateforme.", "steps": [["Découvrez l'opportunité", "Consultez les informations disponibles et les documents officiels."], ["Choisissez vos actions", "Déterminez le nombre de titres que vous souhaitez étudier."], ["Calculez votre montant", "Visualisez le montant correspondant à votre sélection."], ["Renseignez vos informations", "Complétez vos coordonnées pour le suivi du dossier."], ["Envoyez votre demande", "Transmettez votre demande pour traitement."], ["Échangez avec notre équipe", "Recevez les informations de suivi via les canaux officiels."]]}, "faq": {"title": "FAQ & Clarté Réglementaire", "items": [["Puis-je racheter d'autres parts avec mon même compte et ID ?", "Oui, sous réserve de validation administrative et des conditions applicables."], ["Est-il possible de transférer mes parts à un autre identifiant ?", "Toute opération de transfert doit suivre la procédure officielle et être validée par l'administration compétente."], ["Quel est le rôle exact de cette plateforme ?", "La plateforme présente les informations disponibles, fournit des outils de calcul et facilite la transmission des demandes."]]}, "footer": {"company": "Rafinery Du Nigeria", "email": "rafinerynigeria@gmail.com", "whatsapp": "+2347084231858", "address": ""}};
+let cfg = structuredClone(DEFAULT);
+cfg.images = cfg.images || { hero: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80", opportunity: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80" };
+
+function getPath(obj,path){return path.split('.').reduce((o,k)=>o?.[k],obj)}
+function setPath(obj,path,val){const p=path.split('.');let o=obj;for(let i=0;i<p.length-1;i++)o=o[p[i]]||(o[p[i]]={});o[p[p.length-1]]=val}
+function inputValue(el){
+  if(el.type==='number') return Number(el.value);
+  return el.value;
+}
+function syncInputs(){
+  document.querySelectorAll('[data-path]').forEach(el=>{
+    const v=getPath(cfg,el.dataset.path);
+    el.value=(v===undefined||v===null)?'':v;
+  });
+  renderArrays();
+}
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+  document.getElementById(b.dataset.tab).classList.add('active');
+});
+document.addEventListener('input',e=>{
+  if(e.target.dataset.path){setPath(cfg,e.target.dataset.path,inputValue(e.target));}
+});
+function itemEditor(containerId, arrPath, fields){
+  const box=document.getElementById(containerId);box.innerHTML='';
+  const arr=getPath(cfg,arrPath)||[];
+  arr.forEach((item,i)=>{
+    const d=document.createElement('div');d.className='item';
+    d.innerHTML='<div class="item-head"><b>Élément '+(i+1)+'</b><button type="button">Supprimer</button></div>';
+    fields.forEach((f,j)=>{
+      const label=document.createElement('label');label.textContent=f;
+      const inp=document.createElement(j===1?'textarea':'input');inp.value=item[j]||'';
+      inp.oninput=()=>{arr[i][j]=inp.value};
+      d.append(label,inp);
+    });
+    d.querySelector('button').onclick=()=>{arr.splice(i,1);renderArrays()};
+    box.appendChild(d);
+  });
+}
+function renderArrays(){
+  itemEditor('positionCards','positionnement.cards',['Titre','Texte']);
+  itemEditor('jalonItems','jalons.items',['Titre','Texte']);
+  itemEditor('processItems','processus.steps',['Titre','Texte']);
+  itemEditor('faqItems','faq.items',['Question','Réponse']);
+  const op=document.getElementById('oppParagraphs');op.innerHTML='';
+  (cfg.opportunite.paragraphs||[]).forEach((v,i)=>{
+    const d=document.createElement('div');d.className='item';
+    d.innerHTML='<div class="item-head"><b>Paragraphe '+(i+1)+'</b><button>Supprimer</button></div>';
+    const t=document.createElement('textarea');t.value=v;t.oninput=()=>cfg.opportunite.paragraphs[i]=t.value;
+    d.appendChild(t);d.querySelector('button').onclick=()=>{cfg.opportunite.paragraphs.splice(i,1);renderArrays()};op.appendChild(d);
+  });
+}
+function addJalon(){cfg.jalons.items.push(['Nouveau jalon','Description']);renderArrays()}
+function addProcess(){cfg.processus.steps.push(['Nouvelle étape','Description']);renderArrays()}
+function addFaq(){cfg.faq.items.push(['Nouvelle question','Nouvelle réponse']);renderArrays()}
+function addOpp(){cfg.opportunite.paragraphs.push('Nouveau paragraphe');renderArrays()}
+function saveLocal(){
+  localStorage.setItem('rdn_v2_config',JSON.stringify(cfg));
+  status('✅ Modifications enregistrées. Ouvre ou recharge le site pour les voir.');
+}
+function loadLocal(){const x=localStorage.getItem('rdn_v2_config');if(x){cfg=JSON.parse(x);cfg.images=cfg.images||{};syncInputs();status('Sauvegarde locale chargée.')}else status('Aucune sauvegarde locale.')}
+function status(t){document.getElementById('status').textContent=t}
+function exportConfig(){
+  const js='const SITE_CONFIG = '+JSON.stringify(cfg,null,2)+';\nwindow.SITE_CONFIG = SITE_CONFIG;\n';
+  download('site-config.js',js,'text/javascript');
+  status('Configuration exportée.');
+}
+function exportJSON(){download('DRN-site-config-backup.json',JSON.stringify(cfg,null,2),'application/json');status('Sauvegarde JSON exportée.')}
+function importConfig(){
+  const i=document.createElement('input');i.type='file';i.accept='.json';
+  i.onchange=()=>{const f=i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{cfg=JSON.parse(r.result);syncInputs();status('Configuration importée.')}catch(e){status('Fichier JSON invalide.')}};r.readAsText(f)};i.click();
+}
+document.getElementById('jsonFile').onchange=function(){const f=this.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{cfg=JSON.parse(r.result);syncInputs();status('JSON importé.')}catch(e){status('JSON invalide.')}};r.readAsText(f)};
+function resetAll(){if(confirm('Réinitialiser tous les champs ?')){cfg=structuredClone(DEFAULT);syncInputs();status('Configuration réinitialisée.')}}
+function download(name,data,type){const b=new Blob([data],{type});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function readImage(file,cb){const r=new FileReader();r.onload=()=>cb(r.result);r.readAsDataURL(file)}
+
+function adminLogin(){
+  const p=document.getElementById('adminPassword').value;
+  const saved=localStorage.getItem('RDN_ADMIN_PASSWORD');
+  const err=document.getElementById('loginError');
+  if(!saved){
+    if(p.length<6){err.textContent='Choisis au moins 6 caractères.';return;}
+    localStorage.setItem('RDN_ADMIN_PASSWORD',p);
+  }else if(p!==saved){err.textContent='Mot de passe incorrect.';return;}
+  document.body.classList.remove('locked');
+  document.getElementById('loginGate').style.display='none';
+  loadLocal();
+}
+function logout(){document.body.classList.add('locked');document.getElementById('loginGate').style.display='flex';document.getElementById('adminPassword').value='';}
+function openSite(){window.open('Rafinery%20Du%20Nigeria%20-%20Site%20modifiable.html','_blank');}
+function setImagePreview(id,value){const el=document.getElementById(id);if(!el)return; if(value){el.src=value;el.style.display='block';}else{el.removeAttribute('src');el.style.display='none';}}
+function handleImage(fileId,path,previewId,label){const el=document.getElementById(fileId);if(!el)return;el.onchange=function(){const f=this.files[0];if(!f)return;if(f.size>8*1024*1024){status('Image trop lourde : maximum 8 Mo.');return;}const r=new FileReader();r.onload=()=>{setPath(cfg,path,r.result);setImagePreview(previewId,r.result);status(label+' prête. Clique sur Enregistrer pour l’appliquer au site.');};r.readAsDataURL(f);};}
+handleImage('logoFile','identity.logo','logoPreview','Logo');
+handleImage('heroFile','images.hero','heroPreview','Image principale');
+handleImage('opportunityFile','images.opportunity','opportunityPreview','Image Opportunité');
+const oldSync=syncInputs;
+syncInputs=function(){oldSync();cfg.images=cfg.images||{};setImagePreview('logoPreview',cfg.identity?.logo);setImagePreview('heroPreview',cfg.images?.hero);setImagePreview('opportunityPreview',cfg.images?.opportunity);};
+document.getElementById('dirFile').onchange=function(){const f=this.files[0];if(f){const r=new FileReader();r.onload=()=>{cfg.direction.photo=r.result;status('Photo de direction prête. Clique sur Enregistrer.');};r.readAsDataURL(f);}};
+cfg.images=cfg.images||{};
+// L'écran reste verrouillé jusqu'à la connexion.
+</script>
+</body>
+</html>
