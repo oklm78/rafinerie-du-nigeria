@@ -1,0 +1,1 @@
+Ouvre admin.html → choisis le logo → Enregistrer → ouvre le site. Le logo est synchronisé sur toutes ses occurrences.
