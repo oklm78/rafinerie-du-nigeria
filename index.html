@@ -2024,6 +2024,8 @@
     </div>
   </footer>
 
+  <script src="site-config.js"></script>
+
   <script>
     let PRICE_PER_SHARE = Number(window.SITE_CONFIG?.calculator?.pricePerShare ?? window.SITE_CONFIG?.stats?.price ?? 0.40);
     let MIN_SHARES = Number(window.SITE_CONFIG?.calculator?.minimumShares ?? window.SITE_CONFIG?.stats?.minimum ?? 10);
@@ -3251,7 +3253,7 @@ const SITE_CONFIG = {
 window.SITE_CONFIG = SITE_CONFIG;
 
 const __savedRDN = localStorage.getItem("rdn_v2_config");
-if(__savedRDN){ try { window.SITE_CONFIG = JSON.parse(__savedRDN); } catch(e) {} }
+if(__savedRDN && !window.__RDN_CONFIG_EXTERNAL){ try { window.SITE_CONFIG = JSON.parse(__savedRDN); } catch(e) {} }
 </script>
 <script>
 (function(){
