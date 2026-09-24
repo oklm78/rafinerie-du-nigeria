@@ -151,7 +151,7 @@ textarea{min-height:92px;resize:vertical}.row{display:flex;flex-wrap:wrap;gap:8p
 <input type="file" id="jsonFile" accept=".json" hidden>
 <button class="btn danger" onclick="resetAll()">🗑️ Réinitialiser</button>
 </div>
-<p class="hint">Le fichier <b>site-config.js</b> est le seul fichier à remplacer sur le site après une modification. Conserve toujours une copie de sauvegarde.</p>
+<p class="hint">Après une modification : clique sur <b>Publier la configuration</b>, puis remplace le fichier <b>site-config.js</b> dans GitHub/Vercel. C’est ce fichier qui rend la modification visible à tous les visiteurs. Conserve toujours une copie de sauvegarde.</p>
 <div id="status" class="status" style="margin-top:12px"></div>
 </div></section>
 </main>
@@ -220,12 +220,12 @@ function saveLocal(){
   localStorage.setItem('rdn_v2_config',JSON.stringify(cfg));
   status('✅ Modifications enregistrées. Ouvre ou recharge le site pour les voir.');
 }
-function loadLocal(){const x=localStorage.getItem('rdn_v2_config');if(x){cfg=JSON.parse(x);cfg.images=cfg.images||{};syncInputs();status('Sauvegarde locale chargée.')}else status('Aucune sauvegarde locale.')}
+function loadLocal(){const x=localStorage.getItem('rdn_v2_config');if(x){try{cfg=JSON.parse(x);cfg.images=cfg.images||{};syncInputs();status('Sauvegarde locale chargée.')}catch(e){cfg=structuredClone(DEFAULT);syncInputs();status('Sauvegarde locale invalide : configuration par défaut chargée.')}}else{cfg.images=cfg.images||{};syncInputs();status('Configuration de départ chargée.')}}
 function status(t){document.getElementById('status').textContent=t}
 function exportConfig(){
-  const js='const SITE_CONFIG = '+JSON.stringify(cfg,null,2)+';\nwindow.SITE_CONFIG = SITE_CONFIG;\n';
+  const js='const SITE_CONFIG = '+JSON.stringify(cfg,null,2)+';\nwindow.SITE_CONFIG = SITE_CONFIG;\nwindow.__RDN_CONFIG_EXTERNAL = true;\n';
   download('site-config.js',js,'text/javascript');
-  status('Configuration exportée.');
+  status('✅ site-config.js créé. Remplace maintenant l’ancien site-config.js dans GitHub.');
 }
 function exportJSON(){download('DRN-site-config-backup.json',JSON.stringify(cfg,null,2),'application/json');status('Sauvegarde JSON exportée.')}
 function importConfig(){
@@ -250,7 +250,7 @@ function adminLogin(){
   loadLocal();
 }
 function logout(){document.body.classList.add('locked');document.getElementById('loginGate').style.display='flex';document.getElementById('adminPassword').value='';}
-function openSite(){window.open('Rafinery%20Du%20Nigeria%20-%20Site%20modifiable.html','_blank');}
+function openSite(){window.open('index.html','_blank');}
 function setImagePreview(id,value){const el=document.getElementById(id);if(!el)return; if(value){el.src=value;el.style.display='block';}else{el.removeAttribute('src');el.style.display='none';}}
 function handleImage(fileId,path,previewId,label){const el=document.getElementById(fileId);if(!el)return;el.onchange=function(){const f=this.files[0];if(!f)return;if(f.size>8*1024*1024){status('Image trop lourde : maximum 8 Mo.');return;}const r=new FileReader();r.onload=()=>{setPath(cfg,path,r.result);setImagePreview(previewId,r.result);status(label+' prête. Clique sur Enregistrer pour l’appliquer au site.');};r.readAsDataURL(f);};}
 handleImage('logoFile','identity.logo','logoPreview','Logo');
@@ -260,6 +260,7 @@ const oldSync=syncInputs;
 syncInputs=function(){oldSync();cfg.images=cfg.images||{};setImagePreview('logoPreview',cfg.identity?.logo);setImagePreview('heroPreview',cfg.images?.hero);setImagePreview('opportunityPreview',cfg.images?.opportunity);};
 document.getElementById('dirFile').onchange=function(){const f=this.files[0];if(f){const r=new FileReader();r.onload=()=>{cfg.direction.photo=r.result;status('Photo de direction prête. Clique sur Enregistrer.');};r.readAsDataURL(f);}};
 cfg.images=cfg.images||{};
+syncInputs();
 // L'écran reste verrouillé jusqu'à la connexion.
 </script>
 </body>
