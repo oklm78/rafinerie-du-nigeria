@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <title>Rafinery Du Nigeria | Portail d'Opportunité Énergétique</title>
   
   <!-- Tailwind CSS CDN -->
@@ -157,7 +159,7 @@
       <a href="#" class="flex items-center gap-3.5 group">
         <div class="h-12 w-12 flex items-center justify-center p-0.5 rounded-xl border border-slate-200 bg-white shadow-sm group-hover:border-brand-navy transition">
           <img 
-            src="1004915935.png" data-rdn-logo="true" 
+            src="1004915935.png" 
             alt="Logo Rafinery Du Nigeria" 
             class="h-full w-full object-contain"
             onerror="this.onerror=null; this.src='https://placehold.co/120x120/0e1d52/ffffff?text=RDN';"
@@ -356,7 +358,7 @@
             <div class="absolute inset-0 bg-gradient-to-t from-brand-navyDark/90 via-brand-navy/30 to-transparent"></div>
 
             <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md py-2 px-3.5 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-2.5">
-              <img src="1004915935.png" data-rdn-logo="true" alt="Emblème Rafinery Du Nigeria" class="w-8 h-8 object-contain">
+              <img src="1004915935.png" alt="Emblème Rafinery Du Nigeria" class="w-8 h-8 object-contain">
               <div>
                 <span class="text-[11px] font-bold text-brand-navy block uppercase leading-none">Rafinery Du Nigeria</span>
                 <span class="text-[9px] font-semibold text-slate-500">Infrastructures Pétrolières</span>
@@ -460,7 +462,7 @@
 
             <div class="w-full sm:w-1/3 p-4 rounded-2xl bg-brand-navy text-white shadow-md">
               <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center mx-auto mb-2">
-                <img src="1004915935.png" data-rdn-logo="true" alt="Logo mini" class="h-full w-full object-contain">
+                <img src="1004915935.png" alt="Logo mini" class="h-full w-full object-contain">
               </div>
               <span class="font-display font-extrabold text-sm text-white block">RAFINERY DU NIGERIA</span>
               <span class="text-[11px] text-slate-300">Opportunité Énergétique</span>
@@ -1131,6 +1133,7 @@
             <input type="hidden" name="Montant_Local" id="hiddenTotalLocal" value="62 000 NGN">
             <input type="hidden" name="Date" id="hiddenDate" value="">
             <input type="hidden" name="Heure" id="hiddenTime" value="">
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0;pointer-events:none">
 
             <div id="formStep1" class="space-y-4">
               <div class="border-b border-slate-100 pb-3"><h3 class="font-display font-bold text-lg text-brand-navy">Étape 1 : Identité</h3><p class="text-xs text-slate-500">Renseignez vos informations d'identification.</p></div>
@@ -1181,7 +1184,11 @@
             <h3 class="font-display font-black text-2xl text-brand-navy">Votre demande a bien été enregistrée</h3>
             <p class="text-sm text-slate-500 mt-2">Votre dossier a été transmis pour examen administratif.</p>
             <div class="important-dossier-id"><span>ID DOSSIER</span><strong id="inlineSuccessId">RDN-000000</strong></div>
-            <div class="flex flex-wrap justify-center gap-3 mt-5"><button type="button" onclick="document.getElementById('suivi').scrollIntoView({behavior:'smooth'})" class="px-6 py-3 rounded-xl bg-brand-navy text-white font-bold text-sm">Espace Investisseur</button><button type="button" onclick="launchSmartWhatsApp()" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Contacter le support WhatsApp</button></div>
+            <div class="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-left">
+              <div class="flex items-start gap-3"><div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0"><i class="fa-brands fa-whatsapp text-lg"></i></div><div><p class="font-bold text-emerald-900 text-sm">🎁 Avantage possible sur un prochain achat</p><p class="text-xs text-emerald-800 mt-1">Partagez simplement cette opportunité avec au moins 2 proches sur WhatsApp. Après votre déclaration, l’éligibilité à l’avantage futur pourra être vérifiée par l’administration.</p></div></div>
+              <div class="flex flex-wrap gap-2 mt-3"><button type="button" onclick="shareReferralWhatsApp()" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs"><i class="fa-brands fa-whatsapp mr-1"></i> Partager sur WhatsApp</button><button type="button" onclick="submitReferralClaim()" class="px-4 py-2.5 rounded-xl bg-white border border-emerald-300 text-emerald-800 font-bold text-xs">J’ai partagé</button></div><p id="referralClaimMsg" class="text-[11px] text-emerald-800 mt-2"></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3 mt-4"><button type="button" onclick="document.getElementById('suivi').scrollIntoView({behavior:'smooth'})" class="px-6 py-3 rounded-xl bg-brand-navy text-white font-bold text-sm">Espace Investisseur</button><button type="button" onclick="launchSmartWhatsApp()" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Contacter le support WhatsApp</button></div>
           </div>
         </div>
       </div>
@@ -1608,7 +1615,7 @@
 
       <div class="flex items-center gap-3 pb-4 border-b border-slate-100">
         <div class="h-10 w-10 flex items-center justify-center p-0.5 rounded-xl border border-slate-200 bg-white">
-          <img src="1004915935.png" data-rdn-logo="true" alt="Logo" class="h-full w-full object-contain">
+          <img src="1004915935.png" alt="Logo" class="h-full w-full object-contain">
         </div>
         <div>
           <h3 class="font-display font-black text-xl text-brand-navy">Vérifiez votre demande</h3>
@@ -1746,7 +1753,7 @@
 
       <div class="flex items-center gap-3 pb-4 border-b border-slate-100">
         <div class="h-12 w-12 flex items-center justify-center p-1 rounded-xl border border-slate-200 bg-white">
-          <img src="1004915935.png" data-rdn-logo="true" alt="Logo Rafinery Du Nigeria" class="h-full w-full object-contain">
+          <img src="1004915935.png" alt="Logo Rafinery Du Nigeria" class="h-full w-full object-contain">
         </div>
         <div>
           <h3 class="font-display font-black text-xl text-brand-navy">Document de Présentation (One-Pager)</h3>
@@ -1850,7 +1857,7 @@
     </div>
   </div>
 
-  <!-- Modal Admin (Indice retiré, mot de passe reste 2026) -->
+  <!-- Modal Admin : authentification Supabase, aucune identité ni mot de passe n'est exposé dans le code public -->
   <div id="modalAdmin" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
     <div class="bg-white max-w-4xl w-full rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xl relative text-left overflow-y-auto max-h-[92vh]">
       <button onclick="closeAdminModal()" class="absolute top-5 right-5 text-slate-400 hover:text-brand-navy p-2 rounded-full hover:bg-slate-100" aria-label="Fermer">
@@ -1873,23 +1880,17 @@
         </span>
       </div>
 
-      <!-- Écran PIN sans indice -->
+      <!-- Authentification Supabase : aucun PIN statique côté client -->
       <div id="adminAuthScreen" class="my-8 text-center max-w-xs mx-auto space-y-4">
         <div class="w-14 h-14 rounded-2xl bg-brand-redLight text-brand-red flex items-center justify-center text-2xl mx-auto">
           <i class="fa-solid fa-lock"></i>
         </div>
         <div>
-          <h4 class="font-bold text-brand-navy text-sm">Code PIN d'administration</h4>
-          <p class="text-xs text-slate-500">Entrez votre code secret pour accéder aux validations</p>
+          <h4 class="font-bold text-brand-navy text-sm">Connexion administrateur</h4>
+          <p class="text-xs text-slate-500">Utilisez le compte administrateur créé dans Supabase</p>
         </div>
-        <input 
-          type="password" 
-          id="inputAdminPin" 
-          maxlength="6" 
-          placeholder="Code PIN" 
-          inputmode="numeric"
-          class="w-full text-center tracking-widest font-mono text-xl py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-red"
-        />
+        <input type="email" id="inputAdminEmail" placeholder="E-mail administrateur" autocomplete="username" class="w-full py-2.5 px-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-red" />
+        <input type="password" id="inputAdminPassword" placeholder="Mot de passe" autocomplete="current-password" class="w-full py-2.5 px-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-red" />
         <button 
           type="button" 
           onclick="authenticateAdmin()" 
@@ -1900,6 +1901,7 @@
       </div>
 
       <div id="adminDashboardScreen" class="hidden my-5 space-y-5">
+        <div class="flex justify-end"><button type="button" onclick="logoutAdmin()" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold">Se déconnecter</button></div>
         <div class="flex flex-wrap items-center justify-between gap-3 bg-brand-slateBg p-4 rounded-2xl border border-slate-200">
           <div class="text-xs">
             <span class="text-slate-500">Requêtes totales enregistrées :</span>
@@ -1929,10 +1931,23 @@
           </table>
         </div>
 
+        <div class="rounded-2xl border border-amber-200 bg-amber-50 p-3 text-[11px] text-amber-900">
+          <strong>Protection renforcée :</strong> les ajouts et transferts sont traités côté Supabase. Le navigateur ne peut pas créditer ou débiter directement un compte.
+        </div>
         <p class="text-[11px] text-slate-400 italic">
-          * Les ajouts de parts et transferts validés ici sont automatiquement appliqués aux soldes des comptes concernés.
+          * Les opérations validées sont appliquées de manière transactionnelle côté serveur.
         </p>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal détail dossier administrateur -->
+  <div id="modalAdminDetail" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white max-w-2xl w-full rounded-3xl p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeAdminDetail()" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-brand-navy"><i class="fa-solid fa-xmark"></i></button>
+      <div class="flex items-center gap-3 mb-5"><div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center"><i class="fa-solid fa-folder-open"></i></div><div><h3 class="font-display font-black text-lg text-brand-navy">Dossier investisseur</h3><p class="text-xs text-slate-500">Vérification détaillée avant traitement</p></div></div>
+      <div id="adminDetailBody" class="grid sm:grid-cols-2 gap-3 text-xs"></div>
+      <div id="adminDetailActions" class="flex flex-wrap gap-2 justify-end mt-6 pt-4 border-t border-slate-100"></div>
     </div>
   </div>
 
@@ -1971,7 +1986,7 @@
         <div class="md:col-span-5 space-y-4">
           <div class="flex items-center gap-3">
             <div class="h-10 w-10 flex items-center justify-center p-0.5 rounded-xl border border-slate-200 bg-white">
-              <img src="1004915935.png" data-rdn-logo="true" alt="Logo Rafinery Du Nigeria" class="h-full w-full object-contain">
+              <img src="1004915935.png" alt="Logo Rafinery Du Nigeria" class="h-full w-full object-contain">
             </div>
             <span class="font-display font-black text-lg text-brand-navy">
               RAFINERY <span class="text-brand-red">DU NIGERIA</span>
@@ -2006,7 +2021,7 @@
             <li><button type="button" onclick="openLegalModal('cgu')" class="hover:text-brand-navy transition text-left">Conditions générales d'utilisation</button></li>
             <li><button type="button" onclick="openLegalModal('confidentialite')" class="hover:text-brand-navy transition text-left">Politique de confidentialité</button></li>
             <li><button type="button" onclick="openLegalModal('reglementaire')" class="hover:text-brand-navy transition text-left">Informations réglementaires</button></li>
-            <li><button type="button" onclick="openAdminModal()" class="hover:text-brand-navy transition text-left text-slate-400 font-semibold flex items-center gap-1 mt-2">
+            <li><button type="button" onclick="window.location.href='admin.html'" class="hover:text-brand-navy transition text-left text-slate-400 font-semibold flex items-center gap-1 mt-2">
               <i class="fa-solid fa-lock text-[10px]"></i> Espace Admin (Validation des dossiers)
             </button></li>
           </ul>
@@ -2024,13 +2039,144 @@
     </div>
   </footer>
 
-  <script src="site-config.js"></script>
-
   <script>
-    let PRICE_PER_SHARE = Number(window.SITE_CONFIG?.calculator?.pricePerShare ?? window.SITE_CONFIG?.stats?.price ?? 0.40);
-    let MIN_SHARES = Number(window.SITE_CONFIG?.calculator?.minimumShares ?? window.SITE_CONFIG?.stats?.minimum ?? 10);
+    const PRICE_PER_SHARE = 0.40;
+    const MIN_SHARES = 10;
     const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvkgojpe";
-    const WHATSAPP_PHONE = "2347084231858";
+
+    // Supabase — connexion partagée entre tous les navigateurs
+    const SUPABASE_URL = "https://enbqpwdkrzcfwjlexylo.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_u4jBAkF4jrFYC-jsdiylow_B-2lkzGz";
+    let SUPABASE_ACCESS_TOKEN = "";
+
+    async function supabaseRequest(path, options = {}) {
+      const headers = {
+        "apikey": SUPABASE_PUBLISHABLE_KEY,
+        "Content-Type": "application/json",
+        ...(options.headers || {})
+      };
+      if (SUPABASE_ACCESS_TOKEN) headers["Authorization"] = `Bearer ${SUPABASE_ACCESS_TOKEN}`;
+      const response = await fetch(`${SUPABASE_URL}${path}`, { ...options, headers });
+      const text = await response.text();
+      let data = null;
+      try { data = text ? JSON.parse(text) : null; } catch (_) { data = text; }
+      if (!response.ok) throw new Error((data && (data.message || data.error_description || data.hint)) || `Supabase ${response.status}`);
+      return data;
+    }
+
+    const RDN_SECURITY = {
+      minFormDwellMs: 2500,
+      publicSubmitCooldownMs: 15000,
+      lookupCooldownMs: 2500
+    };
+    let rdnFormOpenedAt = Date.now();
+    let rdnLastLookupAt = 0;
+    let rdnLastPublicSubmitAt = Number(localStorage.getItem('rdn_last_public_submit') || 0);
+
+    function resetRdnFormTimer() { rdnFormOpenedAt = Date.now(); }
+
+    function checkPublicSubmissionSecurity() {
+      const honeypot = document.getElementById('website');
+      if (honeypot && honeypot.value.trim() !== '') throw new Error('BOT_DETECTED');
+      if (Date.now() - rdnFormOpenedAt < RDN_SECURITY.minFormDwellMs) throw new Error('SUBMIT_TOO_FAST');
+      if (Date.now() - rdnLastPublicSubmitAt < RDN_SECURITY.publicSubmitCooldownMs) throw new Error('SUBMIT_RATE_LIMIT');
+      const shares = Number(document.getElementById('hiddenShares')?.value || 0);
+      if (!Number.isInteger(shares) || shares < MIN_SHARES || shares > 100000000) throw new Error('INVALID_SHARE_AMOUNT');
+      rdnLastPublicSubmitAt = Date.now();
+      localStorage.setItem('rdn_last_public_submit', String(rdnLastPublicSubmitAt));
+    }
+
+    function checkLookupRateLimit() {
+      const now = Date.now();
+      if (now - rdnLastLookupAt < RDN_SECURITY.lookupCooldownMs) throw new Error('LOOKUP_RATE_LIMIT');
+      rdnLastLookupAt = now;
+    }
+
+    async function saveInvestorToSupabase(prospect) {
+      return await supabaseRequest('/rest/v1/rpc/submit_investor_application', {
+        method: 'POST',
+        body: JSON.stringify({
+          p_investor_id: prospect.id,
+          p_full_name: prospect.name,
+          p_email: prospect.email,
+          p_phone: prospect.phone || '',
+          p_country: prospect.country || '',
+          p_city: prospect.city || '',
+          p_shares: Number(prospect.shares || 0)
+        })
+      });
+    }
+
+    async function lookupInvestorFromSupabase(email, investorId) {
+      return await supabaseRequest('/rest/v1/rpc/get_investor_portal', {
+        method: 'POST',
+        body: JSON.stringify({ p_email: email, p_investor_id: investorId })
+      });
+    }
+
+    async function loadAdminInvestorsFromSupabase() {
+      if (!SUPABASE_ACCESS_TOKEN) throw new Error('AUTH_REQUIRED');
+      return await supabaseRequest('/rest/v1/investors?select=*&order=id.desc', { method: 'GET' });
+    }
+
+    async function updateInvestorInSupabase(prospect, newStatus) {
+      if (!SUPABASE_ACCESS_TOKEN) throw new Error('AUTH_REQUIRED');
+      const status = newStatus === 'APPROUVE' ? 'approved' : 'rejected';
+      return await supabaseRequest(`/rest/v1/investors?investor_id=eq.${encodeURIComponent(prospect.id)}`, {
+        method: 'PATCH',
+        headers: { 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ status, shares: Number(prospect.shares || 0) })
+      });
+    }
+
+    async function submitAdminRequestToSupabase(data) {
+      return await supabaseRequest('/rest/v1/rpc/submit_admin_request', {
+        method: 'POST',
+        body: JSON.stringify({
+          p_request_id: data.request_id,
+          p_request_type: data.request_type,
+          p_parent_account: data.parent_account,
+          p_target_account: data.target_account,
+          p_full_name: data.full_name,
+          p_email: data.email,
+          p_phone: data.phone,
+          p_country: data.country,
+          p_city: data.city,
+          p_shares: Number(data.shares),
+          p_total_usd: Number(data.total_usd || 0),
+          p_total_local: data.total_local || ''
+        })
+      });
+    }
+
+    function shareReferralWhatsApp() {
+  const id = sessionStorage.getItem('rdn_investor_id') || sessionStorage.getItem('rdn_last_investor_id') || 'RDN';
+  const msg = encodeURIComponent(`Bonjour ! Je te partage cette opportunité liée à Rafinery Du Nigeria. Tu peux consulter les informations du site ici : ${window.location.href}\n\nRéférence : ${id}`);
+  window.open(`https://wa.me/?text=${msg}`, '_blank', 'noopener,noreferrer');
+  const el=document.getElementById('referralClaimMsg');
+  if(el) el.textContent='WhatsApp a été ouvert avec le message prêt à envoyer. Tu peux le transmettre à 2 proches ou plus.';
+}
+
+async function submitReferralClaim() {
+  const investorId = sessionStorage.getItem('rdn_investor_id') || sessionStorage.getItem('rdn_last_investor_id') || '';
+  const email = sessionStorage.getItem('rdn_email') || '';
+  if (!investorId || !email) { showToast('Consultez d’abord votre dossier investisseur pour associer le partage à votre demande.'); return; }
+  try {
+    await supabaseRequest('/rest/v1/referral_requests', {
+      method:'POST',
+      headers:{'Prefer':'return=minimal'},
+      body:JSON.stringify({investor_id:investorId,email:email,shares_purchase:0,shares_shared:2,status:'pending'})
+    });
+    const el=document.getElementById('referralClaimMsg');
+    if(el) el.textContent='Votre déclaration a été transmise. L’administration vérifiera l’éligibilité à l’avantage futur.';
+    showToast('Déclaration de partage transmise.');
+  } catch(e) {
+    console.error(e);
+    showToast('Cette déclaration n’a pas pu être enregistrée pour le moment.');
+  }
+}
+
+const WHATSAPP_PHONE = "2347084231858";
 
     const COUNTRY_DATA = {
       NGA: { name: "Nigeria", flag: "🇳🇬", currency: "NGN", symbol: "₦", rate: 1550, dial: "+234", decimals: 0 },
@@ -2083,7 +2229,6 @@
     let generatedUniqueId = 'RDN-' + Math.floor(100000 + Math.random() * 900000);
 
     let REAL_PROSPECTS = [];
-    const ADMIN_PIN = "2026"; // Code PIN admin conservé, sans indice dans l'interface
     let activeLoggedProspect = null;
 
     let liveSubscribedShares = 15480;
@@ -2143,17 +2288,11 @@
       if (heroEl) heroEl.textContent = formatted;
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('DOMContentLoaded', async () => {
       recalculate();
       
-      try {
-        const stored = localStorage.getItem('rdn_real_prospects') || sessionStorage.getItem('rdn_real_prospects');
-        if (stored) {
-          REAL_PROSPECTS = JSON.parse(stored);
-        }
-      } catch (e) {
-        REAL_PROSPECTS = [];
-      }
+      REAL_PROSPECTS = [];
+      try { const cached = sessionStorage.getItem('rdn_last_prospect'); if (cached) activeLoggedProspect = JSON.parse(cached); } catch (_) {}
 
       document.getElementById('hiddenOrderId').value = generatedUniqueId;
       document.getElementById('summaryId').textContent = generatedUniqueId;
@@ -2164,6 +2303,10 @@
       document.getElementById('inlineSuccessId').textContent = generatedUniqueId;
 
       setTimeout(triggerSocialProofToast, 4000);
+
+      // Pour protéger l'identité et la session administrateur, aucun jeton n'est restauré depuis le navigateur.
+      // L'administrateur doit se reconnecter après un rechargement de page.
+
     });
 
     function shareOnWhatsApp() {
@@ -2264,6 +2407,7 @@
     }
 
     function passSelectionToForm() {
+      resetRdnFormTimer();
       goToStep(1);
       setTimeout(() => { document.getElementById('inputFormName').focus(); }, 100);
     }
@@ -2371,6 +2515,14 @@
       const btn = document.getElementById('btnSubmitFormspree');
       const btnText = document.getElementById('btnSubmitText');
 
+      try {
+        checkPublicSubmissionSecurity();
+      } catch (securityError) {
+        const messages = { BOT_DETECTED:'Requête bloquée.', SUBMIT_TOO_FAST:'Veuillez prendre quelques secondes pour vérifier votre demande.', SUBMIT_RATE_LIMIT:'Veuillez patienter avant de renvoyer une demande.', INVALID_SHARE_AMOUNT:'Le nombre d’actions demandé est invalide.' };
+        showToast(messages[securityError.message] || 'Requête bloquée.');
+        return;
+      }
+
       btn.disabled = true;
       btnText.textContent = "Transmission en cours...";
 
@@ -2403,58 +2555,42 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(payload)
-        });
+        }).catch(() => {});
 
-        recordRealProspect(payload);
+        await recordRealProspect(payload);
         closeSummaryModal();
-
         const successModal = document.getElementById('modalSuccess');
         successModal.classList.remove('hidden');
         setTimeout(() => successModal.classList.remove('opacity-0'), 20);
-
       } catch (err) {
-        recordRealProspect(payload);
-        closeSummaryModal();
-        const successModal = document.getElementById('modalSuccess');
-        successModal.classList.remove('hidden');
-        setTimeout(() => successModal.classList.remove('opacity-0'), 20);
+        console.error(err);
+        showToast('Impossible d’enregistrer la demande. Vérifiez votre connexion puis réessayez.');
       } finally {
         btn.disabled = false;
         btnText.textContent = "Envoyer ma demande";
       }
     }
 
-    function recordRealProspect(data) {
+    async function recordRealProspect(data) {
       const prospect = {
         id: data.Demande_ID,
         type: data.Type_Requete || "SOUSCRIPTION INITIALE",
-        name: data.Nom_Complet,
-        country: data.Pays,
-        city: data.Ville,
-        phone: data.Telephone,
-        email: data.Email,
-        shares: Number(data.Nombre_Actions),
-        totalUsd: data.Total_USD,
-        totalLocal: data.Montant_Local,
-        date: data.Date,
-        time: data.Heure,
-        status: "EN_ATTENTE",
+        name: data.Nom_Complet, country: data.Pays, city: data.Ville,
+        phone: data.Telephone, email: data.Email,
+        shares: Number(data.Nombre_Actions), totalUsd: data.Total_USD, totalLocal: data.Montant_Local,
+        date: data.Date, time: data.Heure, status: "EN_ATTENTE",
         statusLabel: "En attente de validation administrative"
       };
-
-      const existingIdx = REAL_PROSPECTS.findIndex(p => p.id === prospect.id);
-      if (existingIdx >= 0) {
-        REAL_PROSPECTS[existingIdx] = prospect;
-      } else {
-        REAL_PROSPECTS.unshift(prospect);
+      try { await saveInvestorToSupabase(prospect); } catch (e) {
+        console.error('Supabase submission error:', e);
+        showToast('La demande n’a pas pu être enregistrée dans la base en ligne.');
+        throw e;
       }
-
-      try {
-        localStorage.setItem('rdn_real_prospects', JSON.stringify(REAL_PROSPECTS));
-      } catch (e) {}
-
       activeLoggedProspect = prospect;
+      try { sessionStorage.setItem('rdn_investor_id', prospect.id); sessionStorage.setItem('rdn_last_investor_id', prospect.id); sessionStorage.setItem('rdn_email', prospect.email || ''); } catch (_) {}
       updateTrackingDisplay(prospect);
+      try { sessionStorage.setItem('rdn_last_prospect', JSON.stringify(prospect)); } catch (_) {}
+      return prospect;
     }
 
     function viewDossierInTracking() {
@@ -2463,7 +2599,8 @@
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
 
-    function searchDossierStatus() {
+    async function searchDossierStatus() {
+      try { checkLookupRateLimit(); } catch (_) { showToast('Veuillez patienter avant une nouvelle recherche.'); return; }
       const emailEl = document.getElementById('searchInvestorEmail');
       const idEl = document.getElementById('searchDossierInput');
       const email = (emailEl.value || '').trim().toLowerCase();
@@ -2473,12 +2610,17 @@
         showToast("Veuillez entrer l'adresse e-mail utilisée lors de votre demande.");
         return;
       }
-      if (!/^RDN-\d{6}/.test(input)) {
+      if (!/^RDN-\d{6}$/.test(input)) {
         showToast("Veuillez entrer un ID de dossier valide (RDN-XXXXXX).");
         return;
       }
 
-      const found = REAL_PROSPECTS.find(p => String(p.id).toUpperCase() === input && String(p.email).trim().toLowerCase() === email);
+      let found = null;
+      try {
+        const rows = await lookupInvestorFromSupabase(email, input);
+        const r = Array.isArray(rows) ? rows[0] : rows;
+        if (r) found = { id:r.investor_id, name:r.full_name, email:r.email, country:r.country, city:r.city, phone:r.phone, shares:Number(r.shares||0), status:r.status==='approved'?'APPROUVE':(r.status==='rejected'?'REJETE':'EN_ATTENTE'), totalUsd:`${(Number(r.shares||0)*0.40).toFixed(2)} USD`, totalLocal:`${(Number(r.shares||0)*0.40).toFixed(2)} USD`, type:'SOUSCRIPTION INITIALE' };
+      } catch (e) { console.error(e); }
       if (!found) {
         activeLoggedProspect = null;
         document.getElementById('trackDossierId').textContent = "Dossier non trouvé";
@@ -2653,29 +2795,25 @@
         });
       } catch (e) {}
 
-      // Enregistrement comme requête administrative indépendante à valider
-      const addRequestProspect = {
-        id: addRequestId,
-        parentAccount: activeLoggedProspect.id,
-        type: "ACHAT PARTS SUPP.",
-        name: activeLoggedProspect.name,
-        country: activeLoggedProspect.country,
-        city: activeLoggedProspect.city,
-        phone: activeLoggedProspect.phone,
-        email: activeLoggedProspect.email,
-        shares: extraQty,
-        totalUsd: extraUsdFormatted,
-        totalLocal: extraLocalFormatted,
-        date: dateStr,
-        time: timeStr,
-        status: "EN_ATTENTE",
-        statusLabel: "En attente de validation administrative"
-      };
-
-      REAL_PROSPECTS.unshift(addRequestProspect);
       try {
-        localStorage.setItem('rdn_real_prospects', JSON.stringify(REAL_PROSPECTS));
-      } catch (e) {}
+        await submitAdminRequestToSupabase({
+          request_id: addRequestId,
+          request_type: 'ACHAT PARTS SUPP.',
+          parent_account: activeLoggedProspect.id,
+          target_account: null,
+          full_name: activeLoggedProspect.name,
+          email: activeLoggedProspect.email,
+          phone: activeLoggedProspect.phone,
+          country: activeLoggedProspect.country,
+          city: activeLoggedProspect.city,
+          shares: extraQty,
+          total_usd: extraUsdNum,
+          total_local: extraLocalFormatted
+        });
+      } catch (e) {
+        showToast('La demande n’a pas pu être enregistrée.');
+        return;
+      }
 
       closeAddSharesModal();
       btn.disabled = false;
@@ -2720,7 +2858,7 @@
       const qty = parseInt(document.getElementById('transferQtyInput').value, 10) || 0;
       const currentAvailable = Number(activeLoggedProspect.shares || 0);
 
-      if (!/^RDN-\d{6}/.test(targetId)) {
+      if (!/^RDN-\d{6}$/.test(targetId)) {
         showToast("Veuillez saisir un identifiant destinataire valide (RDN-XXXXXX).");
         return;
       }
@@ -2764,30 +2902,25 @@
         });
       } catch (e) {}
 
-      // Enregistrement comme requête administrative de transfert à valider
-      const transferRecord = {
-        id: transferRequestId,
-        parentAccount: activeLoggedProspect.id,
-        targetAccount: targetId,
-        type: "TRANSFERT DE PARTS",
-        name: `${activeLoggedProspect.name} ➔ ${targetId}`,
-        country: activeLoggedProspect.country,
-        city: activeLoggedProspect.city,
-        phone: activeLoggedProspect.phone,
-        email: activeLoggedProspect.email,
-        shares: qty,
-        totalUsd: `${(qty * PRICE_PER_SHARE).toFixed(2)} USD`,
-        totalLocal: "Transfert Inter-comptes",
-        date: dateStr,
-        time: timeStr,
-        status: "EN_ATTENTE",
-        statusLabel: "En attente de validation administrative"
-      };
-
-      REAL_PROSPECTS.unshift(transferRecord);
       try {
-        localStorage.setItem('rdn_real_prospects', JSON.stringify(REAL_PROSPECTS));
-      } catch (e) {}
+        await submitAdminRequestToSupabase({
+          request_id: transferRequestId,
+          request_type: 'TRANSFERT DE PARTS',
+          parent_account: activeLoggedProspect.id,
+          target_account: targetId,
+          full_name: activeLoggedProspect.name,
+          email: activeLoggedProspect.email,
+          phone: activeLoggedProspect.phone,
+          country: activeLoggedProspect.country,
+          city: activeLoggedProspect.city,
+          shares: qty,
+          total_usd: qty * PRICE_PER_SHARE,
+          total_local: 'Transfert Inter-comptes'
+        });
+      } catch (e) {
+        showToast('La demande de transfert n’a pas pu être enregistrée.');
+        return;
+      }
 
       closeTransferSharesModal();
       btn.disabled = false;
@@ -2813,18 +2946,24 @@
       setTimeout(() => modal.classList.add('hidden'), 300);
     }
 
-    function loginInvestorPortal() {
+    async function loginInvestorPortal() {
+      try { checkLookupRateLimit(); } catch (_) { showToast('Veuillez patienter avant une nouvelle recherche.'); return; }
       const email = document.getElementById('portalInvestorEmail').value.trim().toLowerCase();
       const id = document.getElementById('portalInvestorId').value.trim().toUpperCase();
       const error = document.getElementById('portalInvestorError');
 
-      if (!email || !email.includes('@') || !/^RDN-\d{6}/.test(id)) {
+      if (!email || !email.includes('@') || !/^RDN-\d{6}$/.test(id)) {
         error.textContent = 'Veuillez renseigner un e-mail valide et un ID RDN-XXXXXX.';
         error.classList.remove('hidden');
         return;
       }
 
-      const found = REAL_PROSPECTS.find(p => String(p.id).toUpperCase() === id && String(p.email).trim().toLowerCase() === email);
+      let found = null;
+      try {
+        const rows = await lookupInvestorFromSupabase(email, id);
+        const r = Array.isArray(rows) ? rows[0] : rows;
+        if (r) found = { id:r.investor_id, name:r.full_name, email:r.email, country:r.country, city:r.city, phone:r.phone, shares:Number(r.shares||0), status:r.status==='approved'?'APPROUVE':(r.status==='rejected'?'REJETE':'EN_ATTENTE'), totalUsd:`${(Number(r.shares||0)*0.40).toFixed(2)} USD`, totalLocal:`${(Number(r.shares||0)*0.40).toFixed(2)} USD`, type:'SOUSCRIPTION INITIALE' };
+      } catch (e) { console.error(e); }
       if (!found) {
         error.textContent = 'Aucun dossier ne correspond à cet e-mail et à cet identifiant.';
         error.classList.remove('hidden');
@@ -2853,21 +2992,77 @@
       setTimeout(() => modal.classList.add('hidden'), 300);
     }
 
-    function authenticateAdmin() {
-      const pin = document.getElementById('inputAdminPin').value;
-      if (pin === ADMIN_PIN) {
+    async function getSupabaseUser() {
+      if (!SUPABASE_ACCESS_TOKEN) return null;
+      return await supabaseRequest('/auth/v1/user', { method: 'GET' });
+    }
+
+    async function verifyAdminAccount() {
+      const user = await getSupabaseUser();
+      if (!user || !user.id) throw new Error('ADMIN_AUTH_REQUIRED');
+
+      // admin_users est volontairement dans le schema privé :
+      // on vérifie l'autorisation via la fonction RPC publique,
+      // sans exposer directement la table privée au navigateur.
+      const result = await supabaseRequest('/rest/v1/rpc/is_admin', {
+        method: 'POST',
+        body: '{}'
+      });
+
+      if (result !== true) throw new Error('NOT_ADMIN');
+      return user;
+    }
+
+    async function logoutAdmin() {
+      try {
+        if (SUPABASE_ACCESS_TOKEN) {
+          await supabaseRequest('/auth/v1/logout', { method: 'POST' });
+        }
+      } catch (_) {}
+      SUPABASE_ACCESS_TOKEN = '';
+      document.getElementById('adminDashboardScreen')?.classList.add('hidden');
+      document.getElementById('adminAuthScreen')?.classList.remove('hidden');
+      showToast('Session administrateur fermée.');
+    }
+
+    async function authenticateAdmin() {
+      const emailInput = document.getElementById('inputAdminEmail');
+      const passwordInput = document.getElementById('inputAdminPassword');
+      const email = emailInput ? emailInput.value.trim() : '';
+      const password = passwordInput ? passwordInput.value : '';
+      if (!email || !password) { showToast('Entrez l’e-mail et le mot de passe administrateur.'); return; }
+      try {
+        const result = await supabaseRequest('/auth/v1/token?grant_type=password', {
+          method: 'POST',
+          body: JSON.stringify({ email, password })
+        });
+        SUPABASE_ACCESS_TOKEN = result.access_token;
+        await verifyAdminAccount();
         document.getElementById('adminAuthScreen').classList.add('hidden');
         document.getElementById('adminDashboardScreen').classList.remove('hidden');
-        refreshAdminTable();
-      } else {
-        showToast("Code PIN incorrect.");
+        await refreshAdminTable();
+      } catch (e) {
+        console.error(e);
+        showToast('Identifiants administrateur incorrects ou compte non configuré.');
       }
     }
 
-    function refreshAdminTable() {
+    async function refreshAdminTable() {
       const tbody = document.getElementById('adminTableBody');
       const countEl = document.getElementById('adminCountTotal');
       tbody.innerHTML = '';
+      try {
+        const rows = await loadAdminInvestorsFromSupabase();
+        const requests = await supabaseRequest('/rest/v1/rpc/admin_list_requests', { method:'POST', body:'{}' });
+        const initial = rows.map(r => ({ source:'investor', id:r.investor_id, name:r.full_name, email:r.email, country:r.country, city:r.city, phone:r.phone, shares:Number(r.shares||0), status:r.status==='approved'?'APPROUVE':(r.status==='rejected'?'REJETE':'EN_ATTENTE'), totalUsd:`${(Number(r.shares||0)*0.40).toFixed(2)} USD`, totalLocal:`${(Number(r.shares||0)*0.40).toFixed(2)} USD`, type:'SOUSCRIPTION INITIALE' }));
+        const adminReqs = (requests || []).map(r => ({ source:'request', requestId:r.request_id, id:r.request_id, parentAccount:r.parent_account, targetAccount:r.target_account, name:r.full_name, email:r.email, country:r.country, city:r.city, phone:r.phone, shares:Number(r.shares||0), status:r.status==='approved'?'APPROUVE':(r.status==='rejected'?'REJETE':'EN_ATTENTE'), totalUsd:`${Number(r.total_usd||0).toFixed(2)} USD`, totalLocal:r.total_local || '', type:r.request_type }));
+        REAL_PROSPECTS = [...adminReqs, ...initial];
+      } catch (e) {
+        console.error(e);
+        if (e.message === 'AUTH_REQUIRED') showToast('Connexion administrateur requise.');
+        tbody.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-rose-600">Impossible de charger les demandes.</td></tr>';
+        return;
+      }
       countEl.textContent = REAL_PROSPECTS.length;
 
       if (REAL_PROSPECTS.length === 0) {
@@ -2900,6 +3095,7 @@
           </td>
           <td class="p-3">${statusBadge}</td>
           <td class="p-3 text-right space-x-1 whitespace-nowrap">
+            <button onclick="adminViewDetails(${index})" class="px-2 py-1 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 rounded-lg text-[11px] font-bold transition"><i class="fa-solid fa-eye"></i> Dossier</button>
             <button onclick="adminSetStatus(${index}, 'APPROUVE')" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold transition">
               <i class="fa-solid fa-check"></i> Valider
             </button>
@@ -2915,58 +3111,36 @@
       });
     }
 
-    function adminSetStatus(index, newStatus) {
+    function closeAdminDetail(){ const m=document.getElementById('modalAdminDetail'); m.classList.add('opacity-0'); setTimeout(()=>m.classList.add('hidden'),200); }
+    function adminViewDetails(index){
+      const p=REAL_PROSPECTS[index]; if(!p) return;
+      const esc=v=>String(v??'—').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      const fields=[['ID dossier',p.id],['Type',p.type],['Nom complet',p.name],['E-mail',p.email],['Téléphone',p.phone],['Pays',p.country],['Ville',p.city],['Actions',p.shares],['Montant USD',p.totalUsd],['Montant local',p.totalLocal],['Compte source',p.parentAccount],['Compte cible',p.targetAccount],['Statut',p.status]];
+      document.getElementById('adminDetailBody').innerHTML=fields.map(([k,v])=>`<div class="rounded-xl bg-slate-50 border border-slate-100 p-3"><div class="text-[10px] uppercase tracking-wide text-slate-400 font-bold">${esc(k)}</div><div class="mt-1 font-semibold text-brand-navy break-words">${esc(v)}</div></div>`).join('');
+      document.getElementById('adminDetailActions').innerHTML=`<button onclick="adminNotifyWhatsApp(${index})" class="px-3 py-2 rounded-xl bg-emerald-50 text-emerald-700 font-bold text-xs"><i class="fa-brands fa-whatsapp mr-1"></i> WhatsApp</button><button onclick="closeAdminDetail();adminSetStatus(${index},'REJETE')" class="px-3 py-2 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Rejeter</button><button onclick="closeAdminDetail();adminSetStatus(${index},'APPROUVE')" class="px-3 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs">Valider</button>`;
+      const m=document.getElementById('modalAdminDetail'); m.classList.remove('hidden'); setTimeout(()=>m.classList.remove('opacity-0'),20);
+    }
+
+    async function adminSetStatus(index, newStatus) {
       const item = REAL_PROSPECTS[index];
       if (!item) return;
-
-      item.status = newStatus;
-
-      // Si c'est une requête d'achat de parts validée, on cumule sur le compte principal
-      if (newStatus === "APPROUVE" && item.type === "ACHAT PARTS SUPP." && item.parentAccount) {
-        const parent = REAL_PROSPECTS.find(p => p.id === item.parentAccount);
-        if (parent) {
-          parent.shares = Number(parent.shares || 0) + Number(item.shares || 0);
-          const totalUsd = parent.shares * PRICE_PER_SHARE;
-          const c = COUNTRY_DATA[currentCountryKey] || COUNTRY_DATA['NGA'];
-          parent.totalUsd = `${totalUsd.toFixed(2)} USD`;
-          parent.totalLocal = `${formatAmount(totalUsd * c.rate, c.decimals)} ${c.currency}`;
-          if (activeLoggedProspect && activeLoggedProspect.id === parent.id) {
-            updateTrackingDisplay(parent);
-          }
-        }
-      }
-
-      // Si c'est un transfert approuvé, on décrémente le cédant et on crédite le destinataire
-      if (newStatus === "APPROUVE" && item.type === "TRANSFERT DE PARTS") {
-        const sender = REAL_PROSPECTS.find(p => p.id === item.parentAccount);
-        const target = REAL_PROSPECTS.find(p => p.id.toUpperCase() === item.targetAccount.toUpperCase());
-        const qty = Number(item.shares || 0);
-
-        if (sender && Number(sender.shares) >= qty) {
-          sender.shares = Number(sender.shares) - qty;
-          const c = COUNTRY_DATA[currentCountryKey] || COUNTRY_DATA['NGA'];
-          sender.totalUsd = `${(sender.shares * PRICE_PER_SHARE).toFixed(2)} USD`;
-          sender.totalLocal = `${formatAmount(sender.shares * PRICE_PER_SHARE * c.rate, c.decimals)} ${c.currency}`;
-        }
-        if (target) {
-          target.shares = Number(target.shares || 0) + qty;
-          const c = COUNTRY_DATA[currentCountryKey] || COUNTRY_DATA['NGA'];
-          target.totalUsd = `${(target.shares * PRICE_PER_SHARE).toFixed(2)} USD`;
-          target.totalLocal = `${formatAmount(target.shares * PRICE_PER_SHARE * c.rate, c.decimals)} ${c.currency}`;
-        }
-
-        if (activeLoggedProspect) {
-          const updatedSelf = REAL_PROSPECTS.find(p => p.id === activeLoggedProspect.id);
-          if (updatedSelf) updateTrackingDisplay(updatedSelf);
-        }
-      }
+      const backendStatus = newStatus === 'APPROUVE' ? 'approved' : 'rejected';
 
       try {
-        localStorage.setItem('rdn_real_prospects', JSON.stringify(REAL_PROSPECTS));
-      } catch (e) {}
-
-      refreshAdminTable();
-      showToast(`Requête ${item.id} mise à jour : ${newStatus}`);
+        if (item.source === 'request') {
+          await supabaseRequest('/rest/v1/rpc/admin_process_request', {
+            method: 'POST',
+            body: JSON.stringify({ p_request_id:item.requestId, p_new_status:backendStatus })
+          });
+        } else {
+          await updateInvestorInSupabase(item, newStatus);
+        }
+        await refreshAdminTable();
+        showToast(`Requête ${item.id} mise à jour : ${newStatus}`);
+      } catch (e) {
+        console.error(e);
+        showToast('Opération refusée ou impossible. Vérifiez les droits administrateur et l’état du dossier.');
+      }
     }
 
     function adminNotifyWhatsApp(index) {
@@ -3106,192 +3280,24 @@ ID : ${id}`;
       setTimeout(() => modal.classList.add('hidden'), 300);
     }
   </script>
-
+<script src="site-config.js"></script>
 <script>
-const SITE_CONFIG = {
-  "identity": {
-    "siteName": "RAFINERY DU NIGERIA",
-    "subtitle": "Opportunité Énergétique & Mise en Relation",
-    "logo": "1004915935.png",
-    "whatsapp": "+2347084231858",
-    "email": "rafinerynigeria@gmail.com"
-  },
-  "theme": {
-    "navy": "#0e1d52",
-    "red": "#e51b24"
-  },
-  "hero": {
-    "title": "Une opportunité d'investissement dans l'énergie au Nigeria",
-    "description": "Découvrez une opportunité liée à Rafinery Du Nigeria et estimez en quelques secondes le montant correspondant au nombre d'actions qui vous intéresse.",
-    "primaryButton": "Découvrir l'opportunité",
-    "secondaryButton": "Calculer mon investissement",
-    "counter": "15 480+",
-    "allocation": 67
-  },
-  "positionnement": {
-    "title": "Une passerelle entre les investisseurs et Rafinery Du Nigeria",
-    "description": "Notre plateforme facilite la mise en relation entre les investisseurs et l'opportunité d'investissement liée à Rafinery Du Nigeria.",
-    "cards": [
-      [
-        "Découvrez",
-        "Accédez facilement aux informations disponibles sur l'opportunité, ses paramètres d'entrée et son contexte dans le secteur énergétique au Nigeria."
-      ],
-      [
-        "Calculez",
-        "Estimez votre sélection d'actions à partir du prix de référence affiché et visualisez l'équivalent dans votre monnaie locale."
-      ],
-      [
-        "Connectez-vous",
-        "Transmettez vos coordonnées afin d'être accompagné pour les prochaines étapes officielles."
-      ]
-    ]
-  },
-  "jalons": {
-    "title": "Feuille de route & Jalons clés du projet",
-    "description": "Une vision claire des étapes opérationnelles suivant la soumission et l'attribution des titres de participation.",
-    "items": [
-      [
-        "Souscription & Tranche Initiale",
-        "Ouverture de la phase de souscription, réception des dossiers, validation administrative et délivrance des attestations selon les documents officiels."
-      ],
-      [
-        "Audit Technique & Clôture",
-        "Finalisation des contrôles et clôture officielle du registre selon le calendrier communiqué."
-      ],
-      [
-        "Raccordement & Flux Commercial",
-        "Étape opérationnelle à compléter avec les informations officiellement publiées."
-      ],
-      [
-        "Assemblée & Rapports Périodiques",
-        "Informations et rapports publiés selon le calendrier officiel."
-      ]
-    ]
-  },
-  "opportunite": {
-    "title": "Positionnez-vous sur une opportunité liée au secteur énergétique nigérian",
-    "paragraphs": [
-      "Les infrastructures de raffinage transforment le brut en carburants à forte valeur ajoutée pour tout le continent.",
-      "Le Nigeria représente un acteur majeur du secteur énergétique africain. Les informations relatives au projet doivent être consultées dans les documents officiels disponibles.",
-      "Le raffinage local constitue un axe important de développement industriel et de distribution de produits pétroliers finis."
-    ]
-  },
-  "stats": {
-    "title": "L'opportunité en quelques chiffres",
-    "description": "Des paramètres d'accès transparents et conçus pour la clarté de chaque futur souscripteur.",
-    "price": 0.4,
-    "minimum": 10,
-    "investors": "À renseigner",
-    "currency": "USD"
-  },
-  "calculator": {
-    "pricePerShare": 0.4,
-    "minimumShares": 10,
-    "defaultShares": 100
-  },
-  "direction": {
-    "name": "[NOM DU DIRECTEUR]",
-    "title": "Directeur — Rafinery Du Nigeria",
-    "photo": "",
-    "intro": "Présentation officielle de la direction opérationnelle de Rafinery Du Nigeria.",
-    "bio": "La fiche institutionnelle et biographique de la direction générale sera publiée avec les informations officiellement vérifiées."
-  },
-  "processus": {
-    "title": "Comment fonctionne votre démarche ?",
-    "description": "Un processus en six étapes claires pour comprendre le parcours de la plateforme.",
-    "steps": [
-      [
-        "Découvrez l'opportunité",
-        "Consultez les informations disponibles et les documents officiels."
-      ],
-      [
-        "Choisissez vos actions",
-        "Déterminez le nombre de titres que vous souhaitez étudier."
-      ],
-      [
-        "Calculez votre montant",
-        "Visualisez le montant correspondant à votre sélection."
-      ],
-      [
-        "Renseignez vos informations",
-        "Complétez vos coordonnées pour le suivi du dossier."
-      ],
-      [
-        "Envoyez votre demande",
-        "Transmettez votre demande pour traitement."
-      ],
-      [
-        "Échangez avec notre équipe",
-        "Recevez les informations de suivi via les canaux officiels."
-      ]
-    ]
-  },
-  "faq": {
-    "title": "FAQ & Clarté Réglementaire",
-    "items": [
-      [
-        "Puis-je racheter d'autres parts avec mon même compte et ID ?",
-        "Oui, sous réserve de validation administrative et des conditions applicables."
-      ],
-      [
-        "Est-il possible de transférer mes parts à un autre identifiant ?",
-        "Toute opération de transfert doit suivre la procédure officielle et être validée par l'administration compétente."
-      ],
-      [
-        "Quel est le rôle exact de cette plateforme ?",
-        "La plateforme présente les informations disponibles, fournit des outils de calcul et facilite la transmission des demandes."
-      ]
-    ]
-  },
-  "footer": {
-    "company": "Rafinery Du Nigeria",
-    "email": "rafinerynigeria@gmail.com",
-    "whatsapp": "+2347084231858",
-    "address": ""
-  }
-};
-window.SITE_CONFIG = SITE_CONFIG;
+const RDN_SUPABASE_URL='https://enbqpwdkrzcfwjlexylo.supabase.co';
+const RDN_SUPABASE_KEY='sb_publishable_u4jBAkF4jrFYC-jsdiylow_B-2lkzGz';
+async function rdnLoadRemoteConfig(){
+  try{
+    const r=await fetch(RDN_SUPABASE_URL+'/rest/v1/site_config?select=config&id=eq.main&limit=1',{headers:{apikey:RDN_SUPABASE_KEY}});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const rows=await r.json();
+    if(rows?.[0]?.config && Object.keys(rows[0].config).length){ window.SITE_CONFIG=rows[0].config; return true; }
+  }catch(e){ console.warn('Configuration Supabase indisponible, utilisation du fallback local.',e); }
+  try{const local=localStorage.getItem('rdn_v8_last_config');if(local){window.SITE_CONFIG=JSON.parse(local);return true;}}catch(e){}
+  return false;
+}
 
-const __savedRDN = localStorage.getItem("rdn_v2_config");
-if(__savedRDN && !window.__RDN_CONFIG_EXTERNAL){ try { window.SITE_CONFIG = JSON.parse(__savedRDN); } catch(e) {} }
-</script>
-<script>
-(function(){
+function rdnApplyConfig(){
   const c = window.SITE_CONFIG || {};
   const $ = s => document.querySelector(s);
-
-  // Remplace les textes simples sans détruire la mise en forme HTML.
-  function replaceTextNodes(root, replacements){
-    const walker=document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-    const nodes=[]; let n;
-    while(n=walker.nextNode()) nodes.push(n);
-    nodes.forEach(node=>{
-      let v=node.nodeValue;
-      replacements.forEach(([from,to])=>{ if(from) v=v.split(from).join(String(to)); });
-      node.nodeValue=v;
-    });
-  }
-  function setBrandName(name){
-    const brandSpans=Array.from(document.querySelectorAll('header a.group > div:nth-child(2) > span:first-child'));
-    brandSpans.forEach(el=>{
-      const parts=String(name||'').trim().split(/\s+/);
-      if(parts.length>=3){ const red=parts.splice(-2).join(' '); el.innerHTML=parts.join(' ')+' <span class="text-brand-red">'+red.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</span>'; }
-      else el.textContent=String(name||'');
-    });
-    Array.from(document.querySelectorAll('span')).filter(el=>(el.textContent||'').trim()==='RAFINERY DU NIGERIA').forEach(el=>el.textContent=String(name||''));
-  }
-  function applyEditableBasics(){
-    const name=c.identity?.siteName || c.footer?.company || 'RAFINERY DU NIGERIA';
-    const subtitle=c.identity?.subtitle;
-    setBrandName(name);
-    if(subtitle){
-      Array.from(document.querySelectorAll('header span')).filter(el=>(el.textContent||'').trim()==='Opportunité Énergétique & Mise en Relation').forEach(el=>el.textContent=subtitle);
-    }
-    if(c.footer?.company){
-      replaceTextNodes(document.body,[['© 2026 Rafinery Du Nigeria','© 2026 '+c.footer.company],['Rafinery Du Nigeria',c.footer.company]]);
-    }
-  }
-  applyEditableBasics();
   const $$ = s => Array.from(document.querySelectorAll(s));
   const text = (el,v) => { if(el && v !== undefined) el.textContent = v; };
 
@@ -3302,12 +3308,7 @@ if(__savedRDN && !window.__RDN_CONFIG_EXTERNAL){ try { window.SITE_CONFIG = JSON
 
   // Identity / logo
   document.title = (c.identity?.siteName || 'Site') + ' | Portail';
-  const logoValue = c.identity?.logo;
-  if(logoValue){
-    const logoImgs = Array.from(document.querySelectorAll('img[data-rdn-logo], img[src="1004915935.png"], img[alt*="Logo"], img[alt*="Emblème"]')); 
-    logoImgs.forEach(img => { img.src = logoValue; img.removeAttribute('srcset'); });
-    document.querySelectorAll('link[rel~="icon"], link[rel="shortcut icon"]').forEach(link => { link.href = logoValue; });
-  }
+  $$('img[src="1004915935.png"]').forEach(img => { if(c.identity?.logo) img.src=c.identity.logo; });
   $$('a[href*="wa.me/"]').forEach(a => {
     const digits=(c.identity?.whatsapp||'').replace(/\D/g,'');
     if(digits) a.href='https://wa.me/'+digits;
@@ -3400,13 +3401,6 @@ if(__savedRDN && !window.__RDN_CONFIG_EXTERNAL){ try { window.SITE_CONFIG = JSON
     });
   }
 
-  // Prix et minimum : tous les affichages du site utilisent désormais les valeurs du gestionnaire.
-  const configuredPrice=Number(c.calculator?.pricePerShare ?? c.stats?.price);
-  if(Number.isFinite(configuredPrice)) PRICE_PER_SHARE=configuredPrice;
-  const configuredMin=Number(c.calculator?.minimumShares ?? c.stats?.minimum);
-  if(Number.isFinite(configuredMin)) MIN_SHARES=configuredMin;
-  const priceLabel=PRICE_PER_SHARE.toFixed(2).replace('.',',');
-  replaceTextNodes(document.body,[['0,40',priceLabel],['0.40',PRICE_PER_SHARE.toFixed(2)],['Minimum : 10','Minimum : '+MIN_SHARES],['minimum 10 actions','minimum '+MIN_SHARES+' actions'],['à partir de 10 actions','à partir de '+MIN_SHARES+' actions'],['minimum 10 actions','minimum '+MIN_SHARES+' actions']]);
   // Direction
   const dir=section('direction');
   if(dir){
@@ -3454,8 +3448,11 @@ if(__savedRDN && !window.__RDN_CONFIG_EXTERNAL){ try { window.SITE_CONFIG = JSON
   // Optional theme
   if(c.theme?.navy) document.documentElement.style.setProperty('--rdn-navy',c.theme.navy);
   if(c.theme?.red) document.documentElement.style.setProperty('--rdn-red',c.theme.red);
+}
+(async function(){
+  await rdnLoadRemoteConfig();
+  rdnApplyConfig();
 })();
 </script>
-
 </body>
 </html>
